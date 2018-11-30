@@ -74,9 +74,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52A218D221B16C2400825CFB /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				C40B973121B16B020067A565 /* LaunchScreen.storyboard */,
+				C40B973421B16B020067A565 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		52A218D321B16C3B00825CFB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C40B972F21B16B020067A565 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		52A218D421B16C4600825CFB /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		52A218D521B16C4D00825CFB /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		52A218D621B16C5600825CFB /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C40B972821B16B010067A565 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		C40B971C21B16B010067A565 = {
 			isa = PBXGroup;
 			children = (
+				52A218D621B16C5600825CFB /* Application */,
+				52A218D521B16C4D00825CFB /* Common */,
+				52A218D421B16C4600825CFB /* Modules */,
+				52A218D321B16C3B00825CFB /* Resources */,
+				52A218D221B16C2400825CFB /* SupportingFiles */,
 				C40B972721B16B010067A565 /* TheMovsApp */,
 				C40B973C21B16B030067A565 /* TheMovsAppTests */,
 				C40B974721B16B030067A565 /* TheMovsAppUITests */,
@@ -97,12 +141,8 @@
 		C40B972721B16B010067A565 /* TheMovsApp */ = {
 			isa = PBXGroup;
 			children = (
-				C40B972821B16B010067A565 /* AppDelegate.swift */,
 				C40B972A21B16B010067A565 /* ViewController.swift */,
 				C40B972C21B16B010067A565 /* Main.storyboard */,
-				C40B972F21B16B020067A565 /* Assets.xcassets */,
-				C40B973121B16B020067A565 /* LaunchScreen.storyboard */,
-				C40B973421B16B020067A565 /* Info.plist */,
 			);
 			path = TheMovsApp;
 			sourceTree = "<group>";
@@ -434,7 +474,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2FKBPG5826;
-				INFOPLIST_FILE = TheMovsApp/Info.plist;
+				INFOPLIST_FILE = SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,7 +492,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2FKBPG5826;
-				INFOPLIST_FILE = TheMovsApp/Info.plist;
+				INFOPLIST_FILE = SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
