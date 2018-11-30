@@ -1,0 +1,18 @@
+platform :ios, '9.0'
+
+target 'TheMovsApp' do
+  use_frameworks!
+
+  pod "SnapKit"
+
+  target 'TheMovsAppTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'TheMovsAppUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
