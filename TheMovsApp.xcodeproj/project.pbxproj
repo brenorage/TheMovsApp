@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39631A9A52D3F457EABE26D0 /* Pods_TheMovsAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFA3FCEC50B4FE1FB770DC96 /* Pods_TheMovsAppTests.framework */; };
+		59130392B6401E0503B0F5E7 /* Pods_TheMovsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9BE3741990BAC59B9B2030 /* Pods_TheMovsApp.framework */; };
+		612152E568D05700619CB6E2 /* Pods_TheMovsAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6818540AA66A2BD3DC0CD09 /* Pods_TheMovsAppUITests.framework */; };
 		C40B972921B16B010067A565 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40B972821B16B010067A565 /* AppDelegate.swift */; };
 		C40B972B21B16B010067A565 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40B972A21B16B010067A565 /* ViewController.swift */; };
 		C40B972E21B16B010067A565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C40B972C21B16B010067A565 /* Main.storyboard */; };
@@ -34,6 +37,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E261A689FD44ED3118D2189 /* Pods-TheMovsAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsAppTests/Pods-TheMovsAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		59FC8BBDCAAD456439A55274 /* Pods-TheMovsAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsAppUITests/Pods-TheMovsAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7441659497A4173788F10266 /* Pods-TheMovsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsApp/Pods-TheMovsApp.debug.xcconfig"; sourceTree = "<group>"; };
+		7F46CE6E043064722B41B7F0 /* Pods-TheMovsAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsAppUITests/Pods-TheMovsAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AFA3FCEC50B4FE1FB770DC96 /* Pods_TheMovsAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovsAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF39B3B5D5F614B1EA86B8A9 /* Pods-TheMovsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsApp/Pods-TheMovsApp.release.xcconfig"; sourceTree = "<group>"; };
 		C40B972521B16B010067A565 /* TheMovsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMovsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C40B972821B16B010067A565 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C40B972A21B16B010067A565 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +56,9 @@
 		C40B974421B16B030067A565 /* TheMovsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheMovsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C40B974821B16B030067A565 /* TheMovsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovsAppUITests.swift; sourceTree = "<group>"; };
 		C40B974A21B16B030067A565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD9BE3741990BAC59B9B2030 /* Pods_TheMovsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E23EDA5CDA088B2DD15C6B4D /* Pods-TheMovsAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsAppTests/Pods-TheMovsAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		F6818540AA66A2BD3DC0CD09 /* Pods_TheMovsAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovsAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59130392B6401E0503B0F5E7 /* Pods_TheMovsApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39631A9A52D3F457EABE26D0 /* Pods_TheMovsAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				612152E568D05700619CB6E2 /* Pods_TheMovsAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +140,8 @@
 				C40B973C21B16B030067A565 /* TheMovsAppTests */,
 				C40B974721B16B030067A565 /* TheMovsAppUITests */,
 				C40B972621B16B010067A565 /* Products */,
+				D0BDF0797B6C065B307F2FD6 /* Pods */,
+				DE7A363EBDE8098222C07943 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,6 +182,29 @@
 			path = TheMovsAppUITests;
 			sourceTree = "<group>";
 		};
+		D0BDF0797B6C065B307F2FD6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7441659497A4173788F10266 /* Pods-TheMovsApp.debug.xcconfig */,
+				BF39B3B5D5F614B1EA86B8A9 /* Pods-TheMovsApp.release.xcconfig */,
+				2E261A689FD44ED3118D2189 /* Pods-TheMovsAppTests.debug.xcconfig */,
+				E23EDA5CDA088B2DD15C6B4D /* Pods-TheMovsAppTests.release.xcconfig */,
+				7F46CE6E043064722B41B7F0 /* Pods-TheMovsAppUITests.debug.xcconfig */,
+				59FC8BBDCAAD456439A55274 /* Pods-TheMovsAppUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DE7A363EBDE8098222C07943 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD9BE3741990BAC59B9B2030 /* Pods_TheMovsApp.framework */,
+				AFA3FCEC50B4FE1FB770DC96 /* Pods_TheMovsAppTests.framework */,
+				F6818540AA66A2BD3DC0CD09 /* Pods_TheMovsAppUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,9 +212,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C40B974D21B16B030067A565 /* Build configuration list for PBXNativeTarget "TheMovsApp" */;
 			buildPhases = (
+				486231D95D19F33D2943C706 /* [CP] Check Pods Manifest.lock */,
 				C40B972121B16B010067A565 /* Sources */,
 				C40B972221B16B010067A565 /* Frameworks */,
 				C40B972321B16B010067A565 /* Resources */,
+				5DD7963ED99D250023417B4F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -189,6 +231,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C40B975021B16B030067A565 /* Build configuration list for PBXNativeTarget "TheMovsAppTests" */;
 			buildPhases = (
+				313690B8E74B4B3AB2BF7E01 /* [CP] Check Pods Manifest.lock */,
 				C40B973521B16B030067A565 /* Sources */,
 				C40B973621B16B030067A565 /* Frameworks */,
 				C40B973721B16B030067A565 /* Resources */,
@@ -207,6 +250,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C40B975321B16B030067A565 /* Build configuration list for PBXNativeTarget "TheMovsAppUITests" */;
 			buildPhases = (
+				AD0F1B20C5D7BB0AEF4C85BD /* [CP] Check Pods Manifest.lock */,
 				C40B974021B16B030067A565 /* Sources */,
 				C40B974121B16B030067A565 /* Frameworks */,
 				C40B974221B16B030067A565 /* Resources */,
@@ -290,6 +334,97 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		313690B8E74B4B3AB2BF7E01 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TheMovsAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		486231D95D19F33D2943C706 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TheMovsApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5DD7963ED99D250023417B4F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TheMovsApp/Pods-TheMovsApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TheMovsApp/Pods-TheMovsApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD0F1B20C5D7BB0AEF4C85BD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TheMovsAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C40B972121B16B010067A565 /* Sources */ = {
@@ -470,6 +605,7 @@
 		};
 		C40B974E21B16B030067A565 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7441659497A4173788F10266 /* Pods-TheMovsApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -488,6 +624,7 @@
 		};
 		C40B974F21B16B030067A565 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF39B3B5D5F614B1EA86B8A9 /* Pods-TheMovsApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -506,6 +643,7 @@
 		};
 		C40B975121B16B030067A565 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E261A689FD44ED3118D2189 /* Pods-TheMovsAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -526,6 +664,7 @@
 		};
 		C40B975221B16B030067A565 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E23EDA5CDA088B2DD15C6B4D /* Pods-TheMovsAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -546,6 +685,7 @@
 		};
 		C40B975421B16B030067A565 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F46CE6E043064722B41B7F0 /* Pods-TheMovsAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -565,6 +705,7 @@
 		};
 		C40B975521B16B030067A565 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59FC8BBDCAAD456439A55274 /* Pods-TheMovsAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
