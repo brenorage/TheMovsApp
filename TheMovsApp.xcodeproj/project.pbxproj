@@ -108,13 +108,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		52A218D421B16C4600825CFB /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Modules;
-			sourceTree = "<group>";
-		};
 		52A218D521B16C4D00825CFB /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,11 +135,6 @@
 		C40B971C21B16B010067A565 = {
 			isa = PBXGroup;
 			children = (
-				52A218D621B16C5600825CFB /* Application */,
-				52A218D521B16C4D00825CFB /* Common */,
-				52A218D421B16C4600825CFB /* Modules */,
-				52A218D321B16C3B00825CFB /* Resources */,
-				52A218D221B16C2400825CFB /* SupportingFiles */,
 				C40B972721B16B010067A565 /* TheMovsApp */,
 				C40B973C21B16B030067A565 /* TheMovsAppTests */,
 				C40B974721B16B030067A565 /* TheMovsAppUITests */,
@@ -169,6 +157,11 @@
 		C40B972721B16B010067A565 /* TheMovsApp */ = {
 			isa = PBXGroup;
 			children = (
+				C4BE2A3221B174D100DDA163 /* Modules */,
+				52A218D621B16C5600825CFB /* Application */,
+				52A218D521B16C4D00825CFB /* Common */,
+				52A218D321B16C3B00825CFB /* Resources */,
+				52A218D221B16C2400825CFB /* SupportingFiles */,
 				C40B972A21B16B010067A565 /* ViewController.swift */,
 				C40B972C21B16B010067A565 /* Main.storyboard */,
 			);
@@ -191,6 +184,13 @@
 				C40B974A21B16B030067A565 /* Info.plist */,
 			);
 			path = TheMovsAppUITests;
+			sourceTree = "<group>";
+		};
+		C4BE2A3221B174D100DDA163 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		D0BDF0797B6C065B307F2FD6 /* Pods */ = {
