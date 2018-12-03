@@ -13,9 +13,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let initializers: [Initializable] = [ThemeInitializer()]
+        initializers.forEach { $0.performInitialization() }
+        
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = UINavigationController(rootViewController: HomeViewController(tabs: .movies))
+        self.window = window
+        window.makeKeyAndVisible()
+        
         return true
     }
 
