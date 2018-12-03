@@ -16,8 +16,10 @@
 		C40B972E21B16B010067A565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C40B972C21B16B010067A565 /* Main.storyboard */; };
 		C40B973021B16B020067A565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C40B972F21B16B020067A565 /* Assets.xcassets */; };
 		C40B973321B16B020067A565 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C40B973121B16B020067A565 /* LaunchScreen.storyboard */; };
-		C40B973E21B16B030067A565 /* TheMovsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40B973D21B16B030067A565 /* TheMovsAppTests.swift */; };
 		C40B974921B16B030067A565 /* TheMovsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40B974821B16B030067A565 /* TheMovsAppUITests.swift */; };
+		C4BE2A3521B1759900DDA163 /* RequestResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A3421B1759900DDA163 /* RequestResultType.swift */; };
+		C4BE2A3921B1763F00DDA163 /* HTTPServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A3821B1763F00DDA163 /* HTTPServices.swift */; };
+		C4BE2A3B21B18BFB00DDA163 /* NetworkLayerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A3A21B18BFB00DDA163 /* NetworkLayerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,11 +55,13 @@
 		C40B973221B16B020067A565 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C40B973421B16B020067A565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C40B973921B16B030067A565 /* TheMovsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheMovsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C40B973D21B16B030067A565 /* TheMovsAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovsAppTests.swift; sourceTree = "<group>"; };
 		C40B973F21B16B030067A565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C40B974421B16B030067A565 /* TheMovsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheMovsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C40B974821B16B030067A565 /* TheMovsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovsAppUITests.swift; sourceTree = "<group>"; };
 		C40B974A21B16B030067A565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4BE2A3421B1759900DDA163 /* RequestResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResultType.swift; sourceTree = "<group>"; };
+		C4BE2A3821B1763F00DDA163 /* HTTPServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPServices.swift; sourceTree = "<group>"; };
+		C4BE2A3A21B18BFB00DDA163 /* NetworkLayerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayerTest.swift; sourceTree = "<group>"; };
 		CD9BE3741990BAC59B9B2030 /* Pods_TheMovsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23EDA5CDA088B2DD15C6B4D /* Pods-TheMovsAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsAppTests/Pods-TheMovsAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		F6818540AA66A2BD3DC0CD09 /* Pods_TheMovsAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovsAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +161,7 @@
 		C40B972721B16B010067A565 /* TheMovsApp */ = {
 			isa = PBXGroup;
 			children = (
+				C4BE2A3321B1758500DDA163 /* Network */,
 				C4BE2A3221B174D100DDA163 /* Modules */,
 				52A218D621B16C5600825CFB /* Application */,
 				52A218D521B16C4D00825CFB /* Common */,
@@ -171,8 +176,8 @@
 		C40B973C21B16B030067A565 /* TheMovsAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				C40B973D21B16B030067A565 /* TheMovsAppTests.swift */,
 				C40B973F21B16B030067A565 /* Info.plist */,
+				C4BE2A3A21B18BFB00DDA163 /* NetworkLayerTest.swift */,
 			);
 			path = TheMovsAppTests;
 			sourceTree = "<group>";
@@ -191,6 +196,15 @@
 			children = (
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		C4BE2A3321B1758500DDA163 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C4BE2A3421B1759900DDA163 /* RequestResultType.swift */,
+				C4BE2A3821B1763F00DDA163 /* HTTPServices.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		D0BDF0797B6C065B307F2FD6 /* Pods */ = {
@@ -246,6 +260,7 @@
 				C40B973521B16B030067A565 /* Sources */,
 				C40B973621B16B030067A565 /* Frameworks */,
 				C40B973721B16B030067A565 /* Resources */,
+				D4D25E3E18F2809A0B1D35D8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -435,6 +450,34 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D4D25E3E18F2809A0B1D35D8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TheMovsAppTests/Pods-TheMovsAppTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Mockingjay/Mockingjay.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/URITemplate/URITemplate.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mockingjay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/URITemplate.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TheMovsAppTests/Pods-TheMovsAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -442,9 +485,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4BE2A3521B1759900DDA163 /* RequestResultType.swift in Sources */,
 				52A218DC21B1724C00825CFB /* CodeView.swift in Sources */,
 				C40B972B21B16B010067A565 /* ViewController.swift in Sources */,
 				C40B972921B16B010067A565 /* AppDelegate.swift in Sources */,
+				C4BE2A3921B1763F00DDA163 /* HTTPServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,7 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C40B973E21B16B030067A565 /* TheMovsAppTests.swift in Sources */,
+				C4BE2A3B21B18BFB00DDA163 /* NetworkLayerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,7 +667,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2FKBPG5826;
-				INFOPLIST_FILE = SupportingFiles/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TheMovsApp/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -641,7 +686,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2FKBPG5826;
-				INFOPLIST_FILE = SupportingFiles/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TheMovsApp/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
