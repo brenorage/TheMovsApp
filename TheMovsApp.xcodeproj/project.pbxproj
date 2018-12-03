@@ -20,6 +20,11 @@
 		C4BE2A3521B1759900DDA163 /* RequestResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A3421B1759900DDA163 /* RequestResultType.swift */; };
 		C4BE2A3921B1763F00DDA163 /* HTTPServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A3821B1763F00DDA163 /* HTTPServices.swift */; };
 		C4BE2A3B21B18BFB00DDA163 /* NetworkLayerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A3A21B18BFB00DDA163 /* NetworkLayerTest.swift */; };
+		C4BE2A3E21B5A5E000DDA163 /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A3D21B5A5E000DDA163 /* MoviesListViewController.swift */; };
+		C4BE2A4321B5A62000DDA163 /* MoviesListViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A4221B5A62000DDA163 /* MoviesListViewProtocol.swift */; };
+		C4BE2A4521B5A62D00DDA163 /* MoviesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A4421B5A62D00DDA163 /* MoviesListPresenter.swift */; };
+		C4BE2A4721B5A63800DDA163 /* MoviesListPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A4621B5A63800DDA163 /* MoviesListPresenterProtocol.swift */; };
+		C4BE2A4A21B5B93F00DDA163 /* MoviesListClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A4921B5B93F00DDA163 /* MoviesListClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +67,11 @@
 		C4BE2A3421B1759900DDA163 /* RequestResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResultType.swift; sourceTree = "<group>"; };
 		C4BE2A3821B1763F00DDA163 /* HTTPServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPServices.swift; sourceTree = "<group>"; };
 		C4BE2A3A21B18BFB00DDA163 /* NetworkLayerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayerTest.swift; sourceTree = "<group>"; };
+		C4BE2A3D21B5A5E000DDA163 /* MoviesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewController.swift; sourceTree = "<group>"; };
+		C4BE2A4221B5A62000DDA163 /* MoviesListViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewProtocol.swift; sourceTree = "<group>"; };
+		C4BE2A4421B5A62D00DDA163 /* MoviesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListPresenter.swift; sourceTree = "<group>"; };
+		C4BE2A4621B5A63800DDA163 /* MoviesListPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListPresenterProtocol.swift; sourceTree = "<group>"; };
+		C4BE2A4921B5B93F00DDA163 /* MoviesListClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListClient.swift; sourceTree = "<group>"; };
 		CD9BE3741990BAC59B9B2030 /* Pods_TheMovsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23EDA5CDA088B2DD15C6B4D /* Pods-TheMovsAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsAppTests/Pods-TheMovsAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		F6818540AA66A2BD3DC0CD09 /* Pods_TheMovsAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovsAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +204,7 @@
 		C4BE2A3221B174D100DDA163 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C4BE2A3C21B5A5CB00DDA163 /* MoviesList */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -205,6 +216,50 @@
 				C4BE2A3821B1763F00DDA163 /* HTTPServices.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		C4BE2A3C21B5A5CB00DDA163 /* MoviesList */ = {
+			isa = PBXGroup;
+			children = (
+				C4BE2A4821B5B93000DDA163 /* Client */,
+				C4BE2A3F21B5A5E400DDA163 /* Model */,
+				C4BE2A4021B5A5F000DDA163 /* View */,
+				C4BE2A4121B5A5F500DDA163 /* Presenter */,
+			);
+			path = MoviesList;
+			sourceTree = "<group>";
+		};
+		C4BE2A3F21B5A5E400DDA163 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C4BE2A4021B5A5F000DDA163 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4BE2A3D21B5A5E000DDA163 /* MoviesListViewController.swift */,
+				C4BE2A4221B5A62000DDA163 /* MoviesListViewProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C4BE2A4121B5A5F500DDA163 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				C4BE2A4421B5A62D00DDA163 /* MoviesListPresenter.swift */,
+				C4BE2A4621B5A63800DDA163 /* MoviesListPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C4BE2A4821B5B93000DDA163 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				C4BE2A4921B5B93F00DDA163 /* MoviesListClient.swift */,
+			);
+			path = Client;
 			sourceTree = "<group>";
 		};
 		D0BDF0797B6C065B307F2FD6 /* Pods */ = {
@@ -488,8 +543,13 @@
 				C4BE2A3521B1759900DDA163 /* RequestResultType.swift in Sources */,
 				52A218DC21B1724C00825CFB /* CodeView.swift in Sources */,
 				C40B972B21B16B010067A565 /* ViewController.swift in Sources */,
+				C4BE2A4521B5A62D00DDA163 /* MoviesListPresenter.swift in Sources */,
 				C40B972921B16B010067A565 /* AppDelegate.swift in Sources */,
+				C4BE2A4A21B5B93F00DDA163 /* MoviesListClient.swift in Sources */,
+				C4BE2A4721B5A63800DDA163 /* MoviesListPresenterProtocol.swift in Sources */,
 				C4BE2A3921B1763F00DDA163 /* HTTPServices.swift in Sources */,
+				C4BE2A4321B5A62000DDA163 /* MoviesListViewProtocol.swift in Sources */,
+				C4BE2A3E21B5A5E000DDA163 /* MoviesListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
