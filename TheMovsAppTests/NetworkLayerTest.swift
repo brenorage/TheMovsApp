@@ -23,6 +23,11 @@ class NetworkLayerTest: XCTestCase {
         "age": "23"
     ]
     
+    let personJson2 = [
+        "name" : "Rage",
+        "age" : "21"
+    ]
+    
     var networkService: HTTPServicesProtocol!
     
     override func setUp() {
@@ -54,6 +59,24 @@ class NetworkLayerTest: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
 
+    func testIfNetworkLayerCanFormatJSONArrayWithAGoodFormat() {
+        let mockURL = "https://www.google.com"
+        let url = URL(string: mockURL)!
+        let expectation = XCTestExpectation(description: "Test JSON parse in network layer")
+        self.stub(everything, json([personJson, personJson2]))
+        networkService.get(url: url) { (result: RequestResultType<[Person]>) in
+            switch result {
+            case let .success(persons):
+                XCTAssert(persons.count == 2)
+            default:
+                XCTFail()
+            }
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
     func testIfNetworkLayerCanHandleAError() {
         let mockURL = "https://www.google.com"
         let url = URL(string: mockURL)!
