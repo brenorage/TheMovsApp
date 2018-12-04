@@ -14,6 +14,7 @@
 		52014C0621B59AB3005B1481 /* Initializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52014C0521B59AB3005B1481 /* Initializable.swift */; };
 		52014C0821B59ADC005B1481 /* ThemeInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52014C0721B59ADC005B1481 /* ThemeInitializer.swift */; };
 		52014C0B21B59B68005B1481 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52014C0A21B59B68005B1481 /* UIColor+Extension.swift */; };
+		52014C0D21B6A8B8005B1481 /* HomeViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52014C0C21B6A8B8005B1481 /* HomeViewControllerSpec.swift */; };
 		52A218DC21B1724C00825CFB /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A218DB21B1724C00825CFB /* CodeView.swift */; };
 		52A218DF21B1796900825CFB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A218DE21B1796900825CFB /* HomeViewController.swift */; };
 		52B2FF7521B186D90043052C /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2FF7421B186D90043052C /* TabBarModel.swift */; };
@@ -55,6 +56,7 @@
 		52014C0521B59AB3005B1481 /* Initializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initializable.swift; sourceTree = "<group>"; };
 		52014C0721B59ADC005B1481 /* ThemeInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeInitializer.swift; sourceTree = "<group>"; };
 		52014C0A21B59B68005B1481 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		52014C0C21B6A8B8005B1481 /* HomeViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerSpec.swift; sourceTree = "<group>"; };
 		52A218DB21B1724C00825CFB /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		52A218DE21B1796900825CFB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		52B2FF7421B186D90043052C /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			children = (
 				C40B973F21B16B030067A565 /* Info.plist */,
 				C4BE2A3A21B18BFB00DDA163 /* NetworkLayerTest.swift */,
+				52014C0C21B6A8B8005B1481 /* HomeViewControllerSpec.swift */,
 			);
 			path = TheMovsAppTests;
 			sourceTree = "<group>";
@@ -549,7 +552,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-                52014C0121B588DD005B1481 /* HomePresenter.swift in Sources */,
+				52014C0121B588DD005B1481 /* HomePresenter.swift in Sources */,
 				52014C0321B588EC005B1481 /* HomePresenterProtocol.swift in Sources */,
 				C4BE2A3521B1759900DDA163 /* RequestResultType.swift in Sources */,
 				52A218DC21B1724C00825CFB /* CodeView.swift in Sources */,
@@ -569,6 +572,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52014C0D21B6A8B8005B1481 /* HomeViewControllerSpec.swift in Sources */,
 				C4BE2A3B21B18BFB00DDA163 /* NetworkLayerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

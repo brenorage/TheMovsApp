@@ -10,14 +10,14 @@ import UIKit
 
 class HomeViewController: UITabBarController {
     
-    var homeTabs: [TabBarModel]
+    private var homeTabs: [TabBarModel]
     
     private lazy var presenter: HomePresenterProtocol = {
         let presenter = HomePresenter(view: self)
         return presenter
     }()
     
-    init(tabs: TabBarModel...) {
+    init(tabs: [TabBarModel] = []) {
         homeTabs = tabs
         super.init(nibName: nil, bundle: nil)
     }
@@ -53,5 +53,7 @@ extension HomeViewController {
     }
     
 }
+
+// MARK: - HomeViewProtocol
 
 extension HomeViewController: HomeViewProtocol { }
