@@ -9,7 +9,7 @@
 import UIKit
 
 struct TabBarModel {
-    var title: String
-    var icon: UIImage?
-    var viewController: UIViewController
+    let title: String
+    let icon: UIImage
+    let viewController: UIViewController
 }

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initializers.forEach { $0.performInitialization() }
         
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = UINavigationController(rootViewController: HomeViewController())
+        window.rootViewController = UINavigationController(rootViewController: HomeViewController(tabs: []))
         self.window = window
         window.makeKeyAndVisible()
         

@@ -17,9 +17,13 @@ class HomeViewController: UITabBarController {
         return presenter
     }()
     
-    init(tabs: [TabBarModel] = []) {
+    init(tabs: [TabBarModel]) {
         homeTabs = tabs
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    init() {
+        fatalError("should call init(tbs:)")
     }
     
     required init?(coder aDecoder: NSCoder) {
