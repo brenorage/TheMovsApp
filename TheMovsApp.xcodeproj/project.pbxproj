@@ -18,6 +18,9 @@
 		52A218DC21B1724C00825CFB /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A218DB21B1724C00825CFB /* CodeView.swift */; };
 		52A218DF21B1796900825CFB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A218DE21B1796900825CFB /* HomeViewController.swift */; };
 		52B2FF7521B186D90043052C /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2FF7421B186D90043052C /* TabBarModel.swift */; };
+		52CF26D421B6DE970048D201 /* MovsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52CF26D221B6DE970048D201 /* MovsDataModel.xcdatamodeld */; };
+		52CF26D721B6E5A30048D201 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF26D621B6E5A30048D201 /* CoreDataManager.swift */; };
+		52CF271621B70A230048D201 /* CoreDataManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF271521B70A230048D201 /* CoreDataManagerSpec.swift */; };
 		59130392B6401E0503B0F5E7 /* Pods_TheMovsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9BE3741990BAC59B9B2030 /* Pods_TheMovsApp.framework */; };
 		612152E568D05700619CB6E2 /* Pods_TheMovsAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6818540AA66A2BD3DC0CD09 /* Pods_TheMovsAppUITests.framework */; };
 		C40B972921B16B010067A565 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40B972821B16B010067A565 /* AppDelegate.swift */; };
@@ -60,6 +63,9 @@
 		52A218DB21B1724C00825CFB /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		52A218DE21B1796900825CFB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		52B2FF7421B186D90043052C /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
+		52CF26D321B6DE970048D201 /* MovsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovsDataModel.xcdatamodel; sourceTree = "<group>"; };
+		52CF26D621B6E5A30048D201 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		52CF271521B70A230048D201 /* CoreDataManagerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerSpec.swift; sourceTree = "<group>"; };
 		59FC8BBDCAAD456439A55274 /* Pods-TheMovsAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsAppUITests/Pods-TheMovsAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7441659497A4173788F10266 /* Pods-TheMovsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsApp/Pods-TheMovsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7F46CE6E043064722B41B7F0 /* Pods-TheMovsAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsAppUITests/Pods-TheMovsAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -135,6 +141,7 @@
 			children = (
 				C40B973121B16B020067A565 /* LaunchScreen.storyboard */,
 				C40B973421B16B020067A565 /* Info.plist */,
+				52CF26D221B6DE970048D201 /* MovsDataModel.xcdatamodeld */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -150,6 +157,7 @@
 		52A218D521B16C4D00825CFB /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				52CF26D521B6E57A0048D201 /* CoreData */,
 				52014C0921B59B31005B1481 /* Extensions */,
 				52B2FF7221B186B20043052C /* Model */,
 				52A218DA21B1723600825CFB /* CodeViewProtocol */,
@@ -201,6 +209,14 @@
 			path = TabBarModel;
 			sourceTree = "<group>";
 		};
+		52CF26D521B6E57A0048D201 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				52CF26D621B6E5A30048D201 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		C40B971C21B16B010067A565 = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +260,7 @@
 				C40B973F21B16B030067A565 /* Info.plist */,
 				C4BE2A3A21B18BFB00DDA163 /* NetworkLayerTest.swift */,
 				52014C0C21B6A8B8005B1481 /* HomeViewControllerSpec.swift */,
+				52CF271521B70A230048D201 /* CoreDataManagerSpec.swift */,
 			);
 			path = TheMovsAppTests;
 			sourceTree = "<group>";
@@ -552,6 +569,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52CF26D721B6E5A30048D201 /* CoreDataManager.swift in Sources */,
 				52014C0121B588DD005B1481 /* HomePresenter.swift in Sources */,
 				52014C0321B588EC005B1481 /* HomePresenterProtocol.swift in Sources */,
 				C4BE2A3521B1759900DDA163 /* RequestResultType.swift in Sources */,
@@ -560,6 +578,7 @@
 				52014BFF21B588B6005B1481 /* HomeViewProtocol.swift in Sources */,
 				52014C0821B59ADC005B1481 /* ThemeInitializer.swift in Sources */,
 				52A218DF21B1796900825CFB /* HomeViewController.swift in Sources */,
+				52CF26D421B6DE970048D201 /* MovsDataModel.xcdatamodeld in Sources */,
 				C40B972B21B16B010067A565 /* ViewController.swift in Sources */,
 				52B2FF7521B186D90043052C /* TabBarModel.swift in Sources */,
 				52014C0621B59AB3005B1481 /* Initializable.swift in Sources */,
@@ -573,6 +592,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52014C0D21B6A8B8005B1481 /* HomeViewControllerSpec.swift in Sources */,
+				52CF271621B70A230048D201 /* CoreDataManagerSpec.swift in Sources */,
 				C4BE2A3B21B18BFB00DDA163 /* NetworkLayerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -896,6 +916,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		52CF26D221B6DE970048D201 /* MovsDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				52CF26D321B6DE970048D201 /* MovsDataModel.xcdatamodel */,
+			);
+			currentVersion = 52CF26D321B6DE970048D201 /* MovsDataModel.xcdatamodel */;
+			path = MovsDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C40B971D21B16B010067A565 /* Project object */;
 }
