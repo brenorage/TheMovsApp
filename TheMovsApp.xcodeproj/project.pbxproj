@@ -8,7 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		39631A9A52D3F457EABE26D0 /* Pods_TheMovsAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFA3FCEC50B4FE1FB770DC96 /* Pods_TheMovsAppTests.framework */; };
+		52014BFF21B588B6005B1481 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52014BFE21B588B6005B1481 /* HomeViewProtocol.swift */; };
+		52014C0121B588DD005B1481 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52014C0021B588DD005B1481 /* HomePresenter.swift */; };
+		52014C0321B588EC005B1481 /* HomePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52014C0221B588EC005B1481 /* HomePresenterProtocol.swift */; };
+		52014C0621B59AB3005B1481 /* Initializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52014C0521B59AB3005B1481 /* Initializable.swift */; };
+		52014C0821B59ADC005B1481 /* ThemeInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52014C0721B59ADC005B1481 /* ThemeInitializer.swift */; };
+		52014C0B21B59B68005B1481 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52014C0A21B59B68005B1481 /* UIColor+Extension.swift */; };
+		52014C0D21B6A8B8005B1481 /* HomeViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52014C0C21B6A8B8005B1481 /* HomeViewControllerSpec.swift */; };
 		52A218DC21B1724C00825CFB /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A218DB21B1724C00825CFB /* CodeView.swift */; };
+		52A218DF21B1796900825CFB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A218DE21B1796900825CFB /* HomeViewController.swift */; };
+		52B2FF7521B186D90043052C /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2FF7421B186D90043052C /* TabBarModel.swift */; };
 		59130392B6401E0503B0F5E7 /* Pods_TheMovsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9BE3741990BAC59B9B2030 /* Pods_TheMovsApp.framework */; };
 		612152E568D05700619CB6E2 /* Pods_TheMovsAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6818540AA66A2BD3DC0CD09 /* Pods_TheMovsAppUITests.framework */; };
 		C40B972921B16B010067A565 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40B972821B16B010067A565 /* AppDelegate.swift */; };
@@ -41,7 +50,16 @@
 
 /* Begin PBXFileReference section */
 		2E261A689FD44ED3118D2189 /* Pods-TheMovsAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsAppTests/Pods-TheMovsAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		52014BFE21B588B6005B1481 /* HomeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProtocol.swift; sourceTree = "<group>"; };
+		52014C0021B588DD005B1481 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		52014C0221B588EC005B1481 /* HomePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterProtocol.swift; sourceTree = "<group>"; };
+		52014C0521B59AB3005B1481 /* Initializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initializable.swift; sourceTree = "<group>"; };
+		52014C0721B59ADC005B1481 /* ThemeInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeInitializer.swift; sourceTree = "<group>"; };
+		52014C0A21B59B68005B1481 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		52014C0C21B6A8B8005B1481 /* HomeViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerSpec.swift; sourceTree = "<group>"; };
 		52A218DB21B1724C00825CFB /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
+		52A218DE21B1796900825CFB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		52B2FF7421B186D90043052C /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
 		59FC8BBDCAAD456439A55274 /* Pods-TheMovsAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsAppUITests/Pods-TheMovsAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7441659497A4173788F10266 /* Pods-TheMovsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsApp/Pods-TheMovsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7F46CE6E043064722B41B7F0 /* Pods-TheMovsAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsAppUITests/Pods-TheMovsAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +113,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52014C0421B59A95005B1481 /* Initializer */ = {
+			isa = PBXGroup;
+			children = (
+				52014C0521B59AB3005B1481 /* Initializable.swift */,
+				52014C0721B59ADC005B1481 /* ThemeInitializer.swift */,
+			);
+			path = Initializer;
+			sourceTree = "<group>";
+		};
+		52014C0921B59B31005B1481 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				52014C0A21B59B68005B1481 /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		52A218D221B16C2400825CFB /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +150,8 @@
 		52A218D521B16C4D00825CFB /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				52014C0921B59B31005B1481 /* Extensions */,
+				52B2FF7221B186B20043052C /* Model */,
 				52A218DA21B1723600825CFB /* CodeViewProtocol */,
 			);
 			path = Common;
@@ -123,6 +160,7 @@
 		52A218D621B16C5600825CFB /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				52014C0421B59A95005B1481 /* Initializer */,
 				C40B972821B16B010067A565 /* AppDelegate.swift */,
 			);
 			path = Application;
@@ -134,6 +172,33 @@
 				52A218DB21B1724C00825CFB /* CodeView.swift */,
 			);
 			path = CodeViewProtocol;
+			sourceTree = "<group>";
+		};
+		52A218DD21B178B300825CFB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				52A218DE21B1796900825CFB /* HomeViewController.swift */,
+				52014BFE21B588B6005B1481 /* HomeViewProtocol.swift */,
+				52014C0021B588DD005B1481 /* HomePresenter.swift */,
+				52014C0221B588EC005B1481 /* HomePresenterProtocol.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		52B2FF7221B186B20043052C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				52B2FF7321B186BC0043052C /* TabBarModel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		52B2FF7321B186BC0043052C /* TabBarModel */ = {
+			isa = PBXGroup;
+			children = (
+				52B2FF7421B186D90043052C /* TabBarModel.swift */,
+			);
+			path = TabBarModel;
 			sourceTree = "<group>";
 		};
 		C40B971C21B16B010067A565 = {
@@ -178,6 +243,7 @@
 			children = (
 				C40B973F21B16B030067A565 /* Info.plist */,
 				C4BE2A3A21B18BFB00DDA163 /* NetworkLayerTest.swift */,
+				52014C0C21B6A8B8005B1481 /* HomeViewControllerSpec.swift */,
 			);
 			path = TheMovsAppTests;
 			sourceTree = "<group>";
@@ -194,6 +260,7 @@
 		C4BE2A3221B174D100DDA163 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				52A218DD21B178B300825CFB /* Home */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -485,9 +552,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52014C0121B588DD005B1481 /* HomePresenter.swift in Sources */,
+				52014C0321B588EC005B1481 /* HomePresenterProtocol.swift in Sources */,
 				C4BE2A3521B1759900DDA163 /* RequestResultType.swift in Sources */,
 				52A218DC21B1724C00825CFB /* CodeView.swift in Sources */,
+				52014C0B21B59B68005B1481 /* UIColor+Extension.swift in Sources */,
+				52014BFF21B588B6005B1481 /* HomeViewProtocol.swift in Sources */,
+				52014C0821B59ADC005B1481 /* ThemeInitializer.swift in Sources */,
+				52A218DF21B1796900825CFB /* HomeViewController.swift in Sources */,
 				C40B972B21B16B010067A565 /* ViewController.swift in Sources */,
+				52B2FF7521B186D90043052C /* TabBarModel.swift in Sources */,
+				52014C0621B59AB3005B1481 /* Initializable.swift in Sources */,
 				C40B972921B16B010067A565 /* AppDelegate.swift in Sources */,
 				C4BE2A3921B1763F00DDA163 /* HTTPServices.swift in Sources */,
 			);
@@ -497,6 +572,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52014C0D21B6A8B8005B1481 /* HomeViewControllerSpec.swift in Sources */,
 				C4BE2A3B21B18BFB00DDA163 /* NetworkLayerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
