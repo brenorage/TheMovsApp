@@ -10,15 +10,11 @@ import Foundation
 
 protocol HTTPServicesProtocol {
     typealias RequestCallback<T> = (RequestResultType<T>) -> Void
-    typealias HeadersParams = [String : String]
     
-    init(configuration: URLSessionConfiguration)
-    func get<T: Decodable>(url: URL, headers: [HeadersParams]?, completion: @escaping RequestCallback<T>)
+    func get<T: Decodable>(url: URL, completion: @escaping RequestCallback<T>)
     func cancelTasks()
 }
 
 extension HTTPServicesProtocol {
-    func get<T: Decodable>(url: URL, headers: [HeadersParams]? = nil, completion: @escaping RequestCallback<T>) {
-        get(url: url, headers: headers, completion: completion)
-    }
+    func cancelTasks() { }
 }

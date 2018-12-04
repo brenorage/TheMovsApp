@@ -11,9 +11,17 @@ import Foundation
 class MoviesListModel: Codable {
     let page: Int
     let results: [MovieModel]
+    let totalPages: Int
     
-    init(page: Int, results: [MovieModel]) {
+    init(page: Int, results: [MovieModel], totalPages: Int) {
         self.page = page
         self.results = results
+        self.totalPages = totalPages
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case page
+        case results
+        case totalPages = "total_pages"
     }
 }
