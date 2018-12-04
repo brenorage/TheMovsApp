@@ -8,7 +8,4 @@
 
 import UIKit
 
-protocol HomeViewProtocol: class {
-    var homeTabs: [HomeTabs] { get }
-    func setTabViewControllers(_ viewControllers:[UIViewController])
-}
+protocol HomeViewProtocol: class { }

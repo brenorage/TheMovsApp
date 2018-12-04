@@ -8,27 +8,18 @@
 
 import UIKit
 
-enum HomeTabs: Int, CaseIterable {
-    case movies
-    
-}
-
 class HomeViewController: UITabBarController {
     
-    var homeTabs: [HomeTabs]
+    var homeTabs: [TabBarModel]
     
     private lazy var presenter: HomePresenterProtocol = {
         let presenter = HomePresenter(view: self)
         return presenter
     }()
     
-    init(tabs: HomeTabs...) {
+    init(tabs: TabBarModel...) {
         homeTabs = tabs
         super.init(nibName: nil, bundle: nil)
-    }
-    
-    init() {
-        fatalError("You must call init(tabs:)")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,18 +33,25 @@ class HomeViewController: UITabBarController {
 
 }
 
+// MARK: - Functions
+
 extension HomeViewController {
     
     private func setupAdditionalConfiguration() {
         view.backgroundColor = .white
+        setupTabs()
+    }
+    
+    private func setupTabs() {
+        let tabControllers: [UIViewController] = homeTabs.map { tab in
+            let tabBarItem = UITabBarItem(title: tab.title, image: tab.icon, selectedImage: tab.icon)
+            let viewController = tab.viewController
+            viewController.tabBarItem = tabBarItem
+            return viewController
+        }
+        setViewControllers(tabControllers, animated: true)
     }
     
 }
 
-extension HomeViewController: HomeViewProtocol {
-    
-    func setTabViewControllers(_ viewControllers: [UIViewController]) {
-        setViewControllers(viewControllers, animated: true)
-    }
-    
-}
+extension HomeViewController: HomeViewProtocol { }
