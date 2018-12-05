@@ -27,9 +27,17 @@ class MoviesGridViewSpec: QuickSpec {
                 _ = moviesGridViewSUT.view
             }
             
-            it("should have the expected look like MoviesGridListView") {
+            it("should have the expected look like MoviesGridListView with mock") {
 //                expect(moviesGridViewSUT).toEventually(recordSnapshot(named: "MoviesGridViewController"))
                 expect(moviesGridViewSUT).toEventually(haveValidSnapshot(named: "MoviesGridViewController"))
+            }
+            
+            it("should have the expected look of a loading screen") {
+                moviesGridViewSUT.hideMoviesGrid()
+                moviesGridViewSUT.showLoading()
+                
+//                expect(moviesGridViewSUT).toEventually(recordSnapshot(named: "MoviesGridViewControllerLoadingState"))
+                expect(moviesGridViewSUT).toEventually(haveValidSnapshot(named: "MoviesGridViewControllerLoadingState"))
             }
         }
     }

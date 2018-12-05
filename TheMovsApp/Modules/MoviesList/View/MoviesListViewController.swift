@@ -72,6 +72,7 @@ extension MoviesGridViewController: MoviesGridViewProtocol {
     
     func hideMoviesGrid() {
         moviesGridView.moviesCollectionView.isHidden = true
+        moviesGridView.layoutIfNeeded()
     }
     
     func reloadMoviesGrid(with sectionIndex: Int) {
