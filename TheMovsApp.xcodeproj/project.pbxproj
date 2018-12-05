@@ -22,7 +22,7 @@
 		52CF26D721B6E5A30048D201 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF26D621B6E5A30048D201 /* CoreDataManager.swift */; };
 		52CF271921B7EE840048D201 /* DescribeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF271821B7EE840048D201 /* DescribeProtocol.swift */; };
 		52CF271B21B7EEB10048D201 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF271A21B7EEB10048D201 /* NSObject+Extension.swift */; };
-		52CF271D21B7EEF30048D201 /* CoreDataWorkerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF271C21B7EEF30048D201 /* CoreDataWorkerProtocol.swift */; };
+		52CF271D21B7EEF30048D201 /* CoreDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF271C21B7EEF30048D201 /* CoreDataWorker.swift */; };
 		52CF272021B7F0990048D201 /* MovieMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF271F21B7F0990048D201 /* MovieMO.swift */; };
 		52CF272221B7F1C90048D201 /* GenreMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF272121B7F1C90048D201 /* GenreMO.swift */; };
 		52CF272421B7F6430048D201 /* CoreDataWorkerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF272321B7F6430048D201 /* CoreDataWorkerSpec.swift */; };
@@ -72,7 +72,7 @@
 		52CF26D621B6E5A30048D201 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		52CF271821B7EE840048D201 /* DescribeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribeProtocol.swift; sourceTree = "<group>"; };
 		52CF271A21B7EEB10048D201 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
-		52CF271C21B7EEF30048D201 /* CoreDataWorkerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWorkerProtocol.swift; sourceTree = "<group>"; };
+		52CF271C21B7EEF30048D201 /* CoreDataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWorker.swift; sourceTree = "<group>"; };
 		52CF271F21B7F0990048D201 /* MovieMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMO.swift; sourceTree = "<group>"; };
 		52CF272121B7F1C90048D201 /* GenreMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreMO.swift; sourceTree = "<group>"; };
 		52CF272321B7F6430048D201 /* CoreDataWorkerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWorkerSpec.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				52CF26D621B6E5A30048D201 /* CoreDataManager.swift */,
-				52CF271C21B7EEF30048D201 /* CoreDataWorkerProtocol.swift */,
+				52CF271C21B7EEF30048D201 /* CoreDataWorker.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -611,7 +611,7 @@
 				52CF272021B7F0990048D201 /* MovieMO.swift in Sources */,
 				52014C0821B59ADC005B1481 /* ThemeInitializer.swift in Sources */,
 				52A218DF21B1796900825CFB /* HomeViewController.swift in Sources */,
-				52CF271D21B7EEF30048D201 /* CoreDataWorkerProtocol.swift in Sources */,
+				52CF271D21B7EEF30048D201 /* CoreDataWorker.swift in Sources */,
 				52CF26D421B6DE970048D201 /* MovsDataModel.xcdatamodeld in Sources */,
 				52CF272221B7F1C90048D201 /* GenreMO.swift in Sources */,
 				C40B972B21B16B010067A565 /* ViewController.swift in Sources */,
