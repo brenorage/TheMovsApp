@@ -10,7 +10,7 @@ import XCTest
 import Nimble
 @testable import TheMovsApp
 
-class CoreDataWorkerSpecs: XCTestCase {
+class CoreDataWorkerSpec: XCTestCase {
     
     var sut: CoreDataWorker!
     
