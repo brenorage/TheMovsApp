@@ -12,6 +12,8 @@ class MovieCell: UICollectionViewCell {
 
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var movieTitleLabel: UILabel!
+
+    static let cellSize = CGSize(width: 150, height: 260)
     
     var model: MovieModel? {
         didSet {

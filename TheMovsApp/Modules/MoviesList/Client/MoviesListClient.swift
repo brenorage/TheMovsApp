@@ -8,20 +8,26 @@
 
 import Foundation
 
-class MoviesListClient {
-    
-    typealias MoviesPage = [MovieModel]
+internal typealias MoviesPage = [MovieModel]
+
+protocol MoviesListClientProtocol {
+    var movies: [MoviesPage] { get }
+    init(httpService: HTTPServicesProtocol)
+    func getMovies(completion: @escaping ((RequestResultType<Int>) -> Void))
+}
+
+class MoviesListClient: MoviesListClientProtocol {
     
     private let httpService: HTTPServicesProtocol
     var movies: [MoviesPage] = []
     var nextPage: Int = 1
     var totalPages: Int = 2
     
-    init(httpService: HTTPServicesProtocol = HTTPServices()) {
+    required init(httpService: HTTPServicesProtocol = HTTPServices()) {
         self.httpService = httpService
     }
     
-    func getMovies(completion: @escaping ((RequestResultType<MoviesPage>) -> Void)) {
+    func getMovies(completion: @escaping ((RequestResultType<Int>) -> Void)) {
         if nextPage > totalPages { return completion(.failure) }
         
         guard let moviesURL = TMDBEndpoint.popularMovies(page: nextPage).endpoint else { return completion(.failure) }
@@ -30,7 +36,7 @@ class MoviesListClient {
             switch result {
             case let .success(moviesListModel):
                 self?.addMoviesPage(with: moviesListModel)
-                completion(.success(moviesListModel.results))
+                completion(.success(moviesListModel.page - 1))
             case .failure:
                 completion(.failure)
             }

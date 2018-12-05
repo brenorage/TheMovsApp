@@ -15,6 +15,7 @@ target 'TheMovsApp' do
     
     pod "Quick"
     pod "Nimble"
+    pod "Nimble-Snapshots"
     pod "Mockingjay"
     
   end
@@ -22,6 +23,11 @@ target 'TheMovsApp' do
   target 'TheMovsAppUITests' do
     inherit! :search_paths
     # Pods for testing
+    
+    pod "Quick"
+    pod "Nimble"
+    pod "Nimble-Snapshots"
+    
   end
 
 end

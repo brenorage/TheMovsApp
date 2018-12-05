@@ -30,7 +30,8 @@ class MoviesClientTest: XCTestCase {
         httpServices.injectedURL = URL(fileURLWithPath: filePath)
         moviesClient.getMovies { result in
             switch result {
-            case .success(_):
+            case let .success(pageIndex):
+                XCTAssert(pageIndex == 0)
                 XCTAssert(self.moviesClient.nextPage == 2)
             case .failure:
                 XCTFail()

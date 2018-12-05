@@ -9,5 +9,9 @@
 import Foundation
 
 protocol MoviesGridViewProtocol: class {
-    
+    func showLoading()
+    func hideLoading()
+    func showMoviesGrid()
+    func hideMoviesGrid()
+    func reloadMoviesGrid(with sectionIndex: Int)
 }

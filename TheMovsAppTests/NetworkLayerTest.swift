@@ -69,7 +69,7 @@ class NetworkLayerTest: XCTestCase {
             case let .success(persons):
                 XCTAssert(persons.count == 2)
             default:
-                XCTFail()
+                fatalError()
             }
             expectation.fulfill()
         }
@@ -85,7 +85,7 @@ class NetworkLayerTest: XCTestCase {
         networkService.get(url: url) { (result: RequestResultType<Person>) in
             switch result {
             case .success(_):
-                XCTFail()
+                fatalError()
             case .failure:
                 XCTAssert(true)
             }

@@ -8,12 +8,21 @@
 
 import UIKit
 
-class MoviesCollectionViewDelegate: NSObject {}
+class MoviesCollectionViewDelegate: NSObject {
+    
+    private let collectionViewPadding: CGFloat = 10
+    
+}
 
 extension MoviesCollectionViewDelegate: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 210, height: 280)
+        let bounds = collectionView.bounds
+        let width = bounds.width/2 - (2*collectionViewPadding)
+        let heightMultiplier = width / MovieCell.cellSize.width
+        let height = MovieCell.cellSize.height * heightMultiplier
+        
+        return CGSize(width: width, height: height)
     }
     
 }

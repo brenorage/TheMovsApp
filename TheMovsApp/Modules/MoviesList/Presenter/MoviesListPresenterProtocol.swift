@@ -8,6 +8,8 @@
 
 import Foundation
 
-protocol MoviesListPresenterProtocol {
+protocol MoviesListPresenterProtocol: class {
     var moviesPages: [MoviesPage] { get }
+    var viewProtocol: MoviesGridViewProtocol? { set get }
+    func getList()
 }

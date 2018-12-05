@@ -10,13 +10,14 @@ import Foundation
 
 class MoviesListPresenter: MoviesListPresenterProtocol {
     
-    private weak var viewProtocol: MoviesGridViewProtocol?
+    weak var viewProtocol: MoviesGridViewProtocol?
     private var moviesClient: MoviesListClientProtocol
     
-    var moviesPages: [MoviesPage] = []
+    var moviesPages: [MoviesPage] {
+        return moviesClient.movies
+    }
     
-    init(viewProtocol: MoviesGridViewProtocol, moviesClient: MoviesListClientProtocol = MoviesListClient()) {
-        self.viewProtocol = viewProtocol
+    init(moviesClient: MoviesListClientProtocol = MoviesListClient()) {
         self.moviesClient = moviesClient
     }
 }
@@ -24,13 +25,20 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
 //MARK: List methods
 extension MoviesListPresenter {
     func getList() {
-        moviesClient.getMovies { result in
+        viewProtocol?.showLoading()
+        moviesClient.getMovies { [weak self] result in
+            self?.viewProtocol?.hideLoading()
             switch result {
-            case let .success(moviesPage):
-                break
+            case .success(_):
+                self?.viewProtocol?.showMoviesGrid()
             case .failure:
                 break
             }
         }
+    }
+    
+    private func treatSuccess(with pageIndex: Int) {
+        viewProtocol?.showMoviesGrid()
+        viewProtocol?.reloadMoviesGrid(with: pageIndex)
     }
 }
