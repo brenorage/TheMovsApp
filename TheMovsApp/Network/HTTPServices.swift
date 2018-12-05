@@ -9,7 +9,7 @@
 import Foundation
 
 protocol HTTPServicesProtocol {
-    typealias RequestCallback<T> = (RequestResultType<T>) -> Void
+    typealias RequestCallback<T> = (ResultType<T>) -> Void
     typealias HeadersParams = [String : String]
     
     init(configuration: URLSessionConfiguration)
