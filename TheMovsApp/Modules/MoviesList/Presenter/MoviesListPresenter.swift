@@ -37,8 +37,19 @@ extension MoviesListPresenter {
         }
     }
     
-    private func treatSuccess(with pageIndex: Int) {
+    func getMoreMovies() {
+        moviesClient.getMovies { [weak self] result in
+            switch result {
+            case .success(_):
+                self?.treatSuccess()
+            case .failure:
+                break
+            }
+        }
+    }
+    
+    private func treatSuccess() {
         viewProtocol?.showMoviesGrid()
-        viewProtocol?.reloadMoviesGrid(with: pageIndex)
+        viewProtocol?.reloadMoviesGrid()
     }
 }

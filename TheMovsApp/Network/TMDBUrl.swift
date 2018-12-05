@@ -37,7 +37,7 @@ enum TMDBEndpoint {
         case let .popularMovies(page):
             let tmdbURL = TMDBUrl()
             var urlComponents = tmdbURL.getAPIURL(route: self.rawValue)
-            let pageQueryItem = URLQueryItem.init(name: "", value: String(page))
+            let pageQueryItem = URLQueryItem(name: "page", value: String(page))
             urlComponents?.queryItems?.append(pageQueryItem)
             return urlComponents?.url
         }

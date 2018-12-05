@@ -13,5 +13,5 @@ protocol MoviesGridViewProtocol: class {
     func hideLoading()
     func showMoviesGrid()
     func hideMoviesGrid()
-    func reloadMoviesGrid(with sectionIndex: Int)
+    func reloadMoviesGrid()
 }

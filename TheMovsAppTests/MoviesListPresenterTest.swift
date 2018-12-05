@@ -25,16 +25,21 @@ class MoviesListPresenterTest: XCTestCase {
         presenter = nil
     }
 
-    func testIfPresenterCallReloadSectionInCorrectlySection() {
+    func testIfPresenterCallShowMoviesGrid() {
         presenter.getList()
         XCTAssert(viewMock.calledShowMovies)
     }
 
+    func testIfPresenterCallReloadSectionInMovieGrid() {
+        presenter.getMoreMovies()
+        XCTAssert(viewMock.calledReloadMovies)
+    }
 }
 
 class MockMoviesListView: MoviesGridViewProtocol {
     
     var calledShowMovies = false
+    var calledReloadMovies = false
     
     func showLoading() {}
     
@@ -46,7 +51,9 @@ class MockMoviesListView: MoviesGridViewProtocol {
     
     func hideMoviesGrid() {}
     
-    func reloadMoviesGrid(with sectionIndex: Int) {}
+    func reloadMoviesGrid() {
+        calledReloadMovies = true
+    }
 }
 
 class MockMoviesClient: MoviesListClientProtocol {

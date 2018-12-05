@@ -36,7 +36,7 @@ class MoviesListClient: MoviesListClientProtocol {
             switch result {
             case let .success(moviesListModel):
                 self?.addMoviesPage(with: moviesListModel)
-                completion(.success(moviesListModel.page - 1))
+                completion(.success(moviesListModel.page))
             case .failure:
                 completion(.failure)
             }

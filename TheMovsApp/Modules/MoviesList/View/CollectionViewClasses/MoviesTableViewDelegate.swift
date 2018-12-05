@@ -9,9 +9,12 @@
 import UIKit
 
 class MoviesCollectionViewDelegate: NSObject {
-    
     private let collectionViewPadding: CGFloat = 10
+    private var presenter: MoviesListPresenterProtocol
     
+    init(presenter: MoviesListPresenterProtocol) {
+        self.presenter = presenter
+    }
 }
 
 extension MoviesCollectionViewDelegate: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -25,4 +28,11 @@ extension MoviesCollectionViewDelegate: UICollectionViewDelegate, UICollectionVi
         return CGSize(width: width, height: height)
     }
     
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        let scrollPosition = scrollView.contentOffset.y
+        let seventyPercent = scrollView.contentSize.height * 0.7
+        if scrollPosition >= seventyPercent {
+            presenter.getMoreMovies()
+        }
+    }
 }

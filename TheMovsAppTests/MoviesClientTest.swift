@@ -31,7 +31,7 @@ class MoviesClientTest: XCTestCase {
         moviesClient.getMovies { result in
             switch result {
             case let .success(pageIndex):
-                XCTAssert(pageIndex == 0)
+                XCTAssert(pageIndex == 1)
                 XCTAssert(self.moviesClient.nextPage == 2)
             case .failure:
                 XCTFail()

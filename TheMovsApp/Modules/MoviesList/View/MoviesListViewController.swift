@@ -11,14 +11,15 @@ import UIKit
 class MoviesGridViewController: UIViewController {
     
     private let moviesGridView = MoviesGridView()
-    private let delegate = MoviesCollectionViewDelegate()
     
+    private var delegate: MoviesCollectionViewDelegate
     private var dataSource: MoviesCollectionViewDataSource
     private var presenter: MoviesListPresenterProtocol
     
     init(presenter: MoviesListPresenterProtocol = MoviesListPresenter()) {
         self.presenter = presenter
         dataSource = MoviesCollectionViewDataSource(presenter: presenter)
+        delegate = MoviesCollectionViewDelegate(presenter: presenter)
         super.init(nibName: nil, bundle: nil)
         self.presenter.viewProtocol = self
     }
@@ -75,8 +76,9 @@ extension MoviesGridViewController: MoviesGridViewProtocol {
         moviesGridView.layoutIfNeeded()
     }
     
-    func reloadMoviesGrid(with sectionIndex: Int) {
-        let indexSet = IndexSet(integer: sectionIndex)
-        moviesGridView.moviesCollectionView.reloadSections(indexSet)
+    func reloadMoviesGrid() {
+        DispatchQueue.main.async {
+            self.moviesGridView.moviesCollectionView.reloadData()
+        }
     }
 }
