@@ -11,6 +11,7 @@ import CoreData
 @objc(MovieMO)
 public class MovieMO: NSManagedObject {
     
+    @NSManaged public var movieId: Int32
     @NSManaged public var overview: String?
     @NSManaged public var poster: Data?
     @NSManaged public var title: String?
