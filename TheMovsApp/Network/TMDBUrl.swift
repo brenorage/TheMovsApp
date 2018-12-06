@@ -31,6 +31,7 @@ struct TMDBUrl {
 enum TMDBEndpoint {
     
     case popularMovies(page: Int)
+    case configuration
     
     var endpoint: URL? {
         switch self {
@@ -40,6 +41,9 @@ enum TMDBEndpoint {
             let pageQueryItem = URLQueryItem(name: "page", value: String(page))
             urlComponents?.queryItems?.append(pageQueryItem)
             return urlComponents?.url
+        case .configuration:
+            let tmdbURL = TMDBUrl()
+            return tmdbURL.getAPIURL(route: self.rawValue)?.url
         }
     }
     
@@ -47,6 +51,8 @@ enum TMDBEndpoint {
         switch self {
         case .popularMovies(_):
             return "movie/popular"
+        case .configuration:
+            return "configuration"
         }
     }
 }

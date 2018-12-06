@@ -61,7 +61,7 @@ class MockMoviesClient: MoviesListClientProtocol {
     
     required init(httpService: HTTPServicesProtocol = HTTPServices()) { }
     
-    func getMovies(completion: @escaping ((RequestResultType<Int>) -> Void)) {
+    func getMovies(completion: @escaping ((ResultType<Int>) -> Void)) {
         completion(.success(2))
     }
 }

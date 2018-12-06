@@ -49,7 +49,7 @@ class HTTPServiceMock: HTTPServicesProtocol {
     
     var injectedURL: URL!
     
-    func get<T: Decodable>(url: URL, completion: @escaping (RequestResultType<T>) -> ()) {
+    func get<T: Decodable>(url: URL, completion: @escaping (ResultType<T>) -> ()) {
         let data = try! Data.init(contentsOf: injectedURL, options: .alwaysMapped)
         let object = try! JSONDecoder().decode(T.self, from: data)
         completion(.success(object))

@@ -13,7 +13,7 @@ internal typealias MoviesPage = [MovieModel]
 protocol MoviesListClientProtocol {
     var movies: [MoviesPage] { get }
     init(httpService: HTTPServicesProtocol)
-    func getMovies(completion: @escaping ((RequestResultType<Int>) -> Void))
+    func getMovies(completion: @escaping ((ResultType<Int>) -> Void))
 }
 
 class MoviesListClient: MoviesListClientProtocol {
@@ -27,12 +27,12 @@ class MoviesListClient: MoviesListClientProtocol {
         self.httpService = httpService
     }
     
-    func getMovies(completion: @escaping ((RequestResultType<Int>) -> Void)) {
+    func getMovies(completion: @escaping ((ResultType<Int>) -> Void)) {
         if nextPage > totalPages { return completion(.failure) }
         
         guard let moviesURL = TMDBEndpoint.popularMovies(page: nextPage).endpoint else { return completion(.failure) }
         
-        httpService.get(url: moviesURL) { [weak self] (result: RequestResultType<MoviesListModel>) in
+        httpService.get(url: moviesURL) { [weak self] (result: ResultType<MoviesListModel>) in
             switch result {
             case let .success(moviesListModel):
                 self?.addMoviesPage(with: moviesListModel)

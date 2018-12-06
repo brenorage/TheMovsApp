@@ -1,5 +1,5 @@
 //
-//  RequestResultType.swift
+//  ResultType.swift
 //  TheMovsApp
 //
 //  Created by Breno Rage Aboud on 30/11/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum RequestResultType<T> {
+enum ResultType<T> {
     case success(T)
     case failure
 }

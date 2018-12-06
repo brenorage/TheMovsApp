@@ -13,7 +13,7 @@ class HTTPServices {
     private let urlSession: URLSession?
     private var dataTask: URLSessionDataTask?
 
-    required init(configuration: URLSessionConfiguration = .default) {
+    init(configuration: URLSessionConfiguration = .default) {
         urlSession = URLSession(configuration: configuration)
     }
     

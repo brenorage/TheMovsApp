@@ -45,7 +45,7 @@ class NetworkLayerTest: XCTestCase {
         let url = URL(string: mockURL)!
         let expectation = XCTestExpectation(description: "Test JSON parse in network layer")
         self.stub(everything, json(personJson))
-        networkService.get(url: url) { (result: RequestResultType<Person>) in
+        networkService.get(url: url) { (result: ResultType<Person>) in
             switch result {
             case let .success(person):
                 XCTAssertTrue(person.name == "Breno")
@@ -64,7 +64,7 @@ class NetworkLayerTest: XCTestCase {
         let url = URL(string: mockURL)!
         let expectation = XCTestExpectation(description: "Test JSON parse in network layer")
         self.stub(everything, json([personJson, personJson2]))
-        networkService.get(url: url) { (result: RequestResultType<[Person]>) in
+        networkService.get(url: url) { (result: ResultType<[Person]>) in
             switch result {
             case let .success(persons):
                 XCTAssert(persons.count == 2)
@@ -82,7 +82,7 @@ class NetworkLayerTest: XCTestCase {
         let url = URL(string: mockURL)!
         let expectation = XCTestExpectation(description: "Test Error in network layer")
         self.stub(everything, failure(NSError.init(domain: "Stub Error", code: 500, userInfo: nil)))
-        networkService.get(url: url) { (result: RequestResultType<Person>) in
+        networkService.get(url: url) { (result: ResultType<Person>) in
             switch result {
             case .success(_):
                 fatalError()
