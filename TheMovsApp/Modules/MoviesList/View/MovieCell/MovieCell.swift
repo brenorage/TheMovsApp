@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieCell: UICollectionViewCell {
 
@@ -18,6 +19,11 @@ class MovieCell: UICollectionViewCell {
     var model: MovieModel? {
         didSet {
             movieTitleLabel.text = model?.title
+//            imageView.kf.setImage(with: )
         }
+    }
+    
+    override func prepareForReuse() {
+        imageView.kf.cancelDownloadTask()
     }
 }

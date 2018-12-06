@@ -7,6 +7,7 @@ target 'TheMovsApp' do
 
   # Pods for TheMovsApp
   pod "SnapKit"
+  pod "Kingfisher", "~> 4.0"
   
 
   target 'TheMovsAppTests' do
