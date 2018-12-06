@@ -13,8 +13,14 @@
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="genres" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GenreMO" inverseName="movies" inverseEntity="GenreMO" syncable="YES"/>
     </entity>
+    <entity name="TMDBConfigurationMO" representedClassName="TMDBConfigurationMO" syncable="YES">
+        <attribute name="backdropSizes" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="baseURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="posterSizes" optional="YES" attributeType="Transformable" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="MovieMO" positionX="-54" positionY="-9" width="128" height="135"/>
         <element name="GenreMO" positionX="161.609375" positionY="20.2578125" width="128" height="90"/>
+        <element name="MovieMO" positionX="-54" positionY="-9" width="128" height="135"/>
+        <element name="TMDBConfigurationMO" positionX="54" positionY="45" width="128" height="90"/>
     </elements>
 </model>
