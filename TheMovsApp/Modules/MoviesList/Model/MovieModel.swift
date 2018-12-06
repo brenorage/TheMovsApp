@@ -15,21 +15,14 @@ class MovieModel: Codable {
     private let releaseDate: String
     let posterPath: String
     let genreIds: [Int]
-
+    var coreDataWorker: CoreDataWorkerProtocol = CoreDataWorker()
+    
     var releaseYear: String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         guard let date = dateFormatter.date(from: self.releaseDate) else { return nil }
         let year = Calendar.current.component(.year, from: date)
         return "\(year)"
-    }
-    
-    init(title: String, overview: String, releaseDate: String, posterPath: String, genreIds: [Int]) {
-        self.title = title
-        self.overview = overview
-        self.releaseDate = releaseDate
-        self.posterPath = posterPath
-        self.genreIds = genreIds
     }
     
     enum CodingKeys: String, CodingKey {
@@ -39,5 +32,22 @@ class MovieModel: Codable {
         case posterPath = "poster_path"
         case genreIds = "genre_ids"
     }
-    
+}
+
+extension MovieModel {
+    func getPosterURL(completion: @escaping (URL?) -> Void){
+        coreDataWorker.fetchAll { (result: ResultType<[TMDBConfigurationMO]>) in
+            switch result {
+            case let .success(data):
+                guard let configModelMO = data.first else { return completion(nil) }
+                let baseURL = configModelMO.baseURL
+                var url = URL(string: baseURL)
+                url?.appendPathComponent("original")
+                url?.appendPathComponent(self.posterPath)
+                completion(url)
+            case .failure:
+                completion(nil)
+            }
+        }
+    }
 }
