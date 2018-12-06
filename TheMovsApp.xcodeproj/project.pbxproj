@@ -18,7 +18,6 @@
 		52A218DC21B1724C00825CFB /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A218DB21B1724C00825CFB /* CodeView.swift */; };
 		52A218DF21B1796900825CFB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A218DE21B1796900825CFB /* HomeViewController.swift */; };
 		52B2FF7521B186D90043052C /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2FF7421B186D90043052C /* TabBarModel.swift */; };
-		52CF26D421B6DE970048D201 /* MovsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52CF26D221B6DE970048D201 /* MovsDataModel.xcdatamodeld */; };
 		52CF26D721B6E5A30048D201 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF26D621B6E5A30048D201 /* CoreDataManager.swift */; };
 		52CF271921B7EE840048D201 /* DescribeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF271821B7EE840048D201 /* DescribeProtocol.swift */; };
 		52CF271B21B7EEB10048D201 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF271A21B7EEB10048D201 /* NSObject+Extension.swift */; };
@@ -57,10 +56,12 @@
 		C4BE2A7921B84EFB00DDA163 /* MoviesGridViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A7621B830D200DDA163 /* MoviesGridViewSpec.swift */; };
 		C4BE2A7E21B95F5F00DDA163 /* TMDBConfigurationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A7D21B95F5F00DDA163 /* TMDBConfigurationClient.swift */; };
 		C4BE2A8021B9601400DDA163 /* TMDBConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A7F21B9601400DDA163 /* TMDBConfigurationModel.swift */; };
-		C4BE2A8421B9632500DDA163 /* TMDBConfigurationMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A8321B9632500DDA163 /* TMDBConfigurationMO.swift */; };
 		C4BE2A8621B97DA500DDA163 /* TMDBConfigurationClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A8521B97DA500DDA163 /* TMDBConfigurationClientSpec.swift */; };
 		C4BE2A8D21B9915000DDA163 /* HTTPServicesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A8C21B9915000DDA163 /* HTTPServicesProtocol.swift */; };
 		C4BE2A9121B9934B00DDA163 /* TMDBUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A9021B9934B00DDA163 /* TMDBUrl.swift */; };
+		C4BE2A9321B9AB5400DDA163 /* TMDBConfigurationModelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A9221B9AB5400DDA163 /* TMDBConfigurationModelResponse.swift */; };
+		C4BE2A9621B9AEE500DDA163 /* MovsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A9421B9AEE500DDA163 /* MovsDataModel.xcdatamodeld */; };
+		C4BE2A9921B9AF5900DDA163 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A9821B9AF5900DDA163 /* UserDefaultsWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,7 +93,6 @@
 		52A218DB21B1724C00825CFB /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		52A218DE21B1796900825CFB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		52B2FF7421B186D90043052C /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
-		52CF26D321B6DE970048D201 /* MovsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovsDataModel.xcdatamodel; sourceTree = "<group>"; };
 		52CF26D621B6E5A30048D201 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		52CF271821B7EE840048D201 /* DescribeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescribeProtocol.swift; sourceTree = "<group>"; };
 		52CF271A21B7EEB10048D201 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
@@ -139,10 +139,12 @@
 		C4BE2A7621B830D200DDA163 /* MoviesGridViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesGridViewSpec.swift; sourceTree = "<group>"; };
 		C4BE2A7D21B95F5F00DDA163 /* TMDBConfigurationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBConfigurationClient.swift; sourceTree = "<group>"; };
 		C4BE2A7F21B9601400DDA163 /* TMDBConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBConfigurationModel.swift; sourceTree = "<group>"; };
-		C4BE2A8321B9632500DDA163 /* TMDBConfigurationMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBConfigurationMO.swift; sourceTree = "<group>"; };
 		C4BE2A8521B97DA500DDA163 /* TMDBConfigurationClientSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBConfigurationClientSpec.swift; sourceTree = "<group>"; };
 		C4BE2A8C21B9915000DDA163 /* HTTPServicesProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPServicesProtocol.swift; sourceTree = "<group>"; };
 		C4BE2A9021B9934B00DDA163 /* TMDBUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDBUrl.swift; sourceTree = "<group>"; };
+		C4BE2A9221B9AB5400DDA163 /* TMDBConfigurationModelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBConfigurationModelResponse.swift; sourceTree = "<group>"; };
+		C4BE2A9521B9AEE500DDA163 /* MovsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovsDataModel.xcdatamodel; sourceTree = "<group>"; };
+		C4BE2A9821B9AF5900DDA163 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		CD9BE3741990BAC59B9B2030 /* Pods_TheMovsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23EDA5CDA088B2DD15C6B4D /* Pods-TheMovsAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsAppTests/Pods-TheMovsAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		F6818540AA66A2BD3DC0CD09 /* Pods_TheMovsAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovsAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,7 +202,7 @@
 			children = (
 				C40B973121B16B020067A565 /* LaunchScreen.storyboard */,
 				C40B973421B16B020067A565 /* Info.plist */,
-				52CF26D221B6DE970048D201 /* MovsDataModel.xcdatamodeld */,
+				C4BE2A9421B9AEE500DDA163 /* MovsDataModel.xcdatamodeld */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -216,6 +218,7 @@
 		52A218D521B16C4D00825CFB /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C4BE2A9721B9AF4700DDA163 /* UserDefaultWrapper */,
 				C4BE2A7A21B95F3700DDA163 /* TMDBConfigurationModel */,
 				52CF271721B7EE700048D201 /* DescribeProtocol */,
 				52CF26D521B6E57A0048D201 /* CoreData */,
@@ -293,7 +296,6 @@
 			children = (
 				52CF271F21B7F0990048D201 /* MovieMO.swift */,
 				52CF272121B7F1C90048D201 /* GenreMO.swift */,
-				C4BE2A8321B9632500DDA163 /* TMDBConfigurationMO.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -461,6 +463,7 @@
 			isa = PBXGroup;
 			children = (
 				C4BE2A7F21B9601400DDA163 /* TMDBConfigurationModel.swift */,
+				C4BE2A9221B9AB5400DDA163 /* TMDBConfigurationModelResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -470,6 +473,14 @@
 			children = (
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		C4BE2A9721B9AF4700DDA163 /* UserDefaultWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				C4BE2A9821B9AF5900DDA163 /* UserDefaultsWrapper.swift */,
+			);
+			path = UserDefaultWrapper;
 			sourceTree = "<group>";
 		};
 		D0BDF0797B6C065B307F2FD6 /* Pods */ = {
@@ -792,6 +803,7 @@
 				52014C0121B588DD005B1481 /* HomePresenter.swift in Sources */,
 				52014C0321B588EC005B1481 /* HomePresenterProtocol.swift in Sources */,
 				C4BE2A3521B1759900DDA163 /* ResultType.swift in Sources */,
+				C4BE2A9921B9AF5900DDA163 /* UserDefaultsWrapper.swift in Sources */,
 				52CF271921B7EE840048D201 /* DescribeProtocol.swift in Sources */,
 				C4BE2A8021B9601400DDA163 /* TMDBConfigurationModel.swift in Sources */,
 				C4BE2A5E21B6F97300DDA163 /* MoviesListView.swift in Sources */,
@@ -802,10 +814,9 @@
 				52CF272021B7F0990048D201 /* MovieMO.swift in Sources */,
 				52014C0821B59ADC005B1481 /* ThemeInitializer.swift in Sources */,
 				C4BE2A8D21B9915000DDA163 /* HTTPServicesProtocol.swift in Sources */,
+				C4BE2A9621B9AEE500DDA163 /* MovsDataModel.xcdatamodeld in Sources */,
 				52A218DF21B1796900825CFB /* HomeViewController.swift in Sources */,
 				52CF271D21B7EEF30048D201 /* CoreDataWorker.swift in Sources */,
-				52CF26D421B6DE970048D201 /* MovsDataModel.xcdatamodeld in Sources */,
-				C4BE2A8421B9632500DDA163 /* TMDBConfigurationMO.swift in Sources */,
 				52CF272221B7F1C90048D201 /* GenreMO.swift in Sources */,
 				C4BE2A4C21B5C16400DDA163 /* MovieModel.swift in Sources */,
 				C40B972B21B16B010067A565 /* ViewController.swift in Sources */,
@@ -816,6 +827,7 @@
 				52014C0621B59AB3005B1481 /* Initializable.swift in Sources */,
 				C4BE2A4521B5A62D00DDA163 /* MoviesListPresenter.swift in Sources */,
 				C40B972921B16B010067A565 /* AppDelegate.swift in Sources */,
+				C4BE2A9321B9AB5400DDA163 /* TMDBConfigurationModelResponse.swift in Sources */,
 				C4BE2A6121B6FA6000DDA163 /* MoviesTableViewDelegate.swift in Sources */,
 				C4BE2A7121B7135B00DDA163 /* UICollectionView+Extension.swift in Sources */,
 				C4BE2A4A21B5B93F00DDA163 /* MoviesListClient.swift in Sources */,
@@ -1167,12 +1179,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		52CF26D221B6DE970048D201 /* MovsDataModel.xcdatamodeld */ = {
+		C4BE2A9421B9AEE500DDA163 /* MovsDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				52CF26D321B6DE970048D201 /* MovsDataModel.xcdatamodel */,
+				C4BE2A9521B9AEE500DDA163 /* MovsDataModel.xcdatamodel */,
 			);
-			currentVersion = 52CF26D321B6DE970048D201 /* MovsDataModel.xcdatamodel */;
+			currentVersion = C4BE2A9521B9AEE500DDA163 /* MovsDataModel.xcdatamodel */;
 			path = MovsDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

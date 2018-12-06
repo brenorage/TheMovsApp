@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import CoreData
 
 @testable import TheMovsApp
 
@@ -31,32 +30,31 @@ class MovieTests: XCTestCase {
     
     func testIfModelMountCorrectlyPosterURL() {
         let movie = try! JSONDecoder().decode(MovieModel.self, from: movieJSON)
-        movie.coreDataWorker = CoreDataWorkerMockForMovieModel()
-        let expectation = XCTestExpectation(description: "test if model form a correctly url")
-        movie.getPosterURL { url in
-            XCTAssert(url!.absoluteString == "http://baseurl.com/original/posterPath")
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 1.0)
+        movie.userDefaultWrapper = UserDefaultMockForMovieModel()
+        let url = movie.getPosterURL()
+        XCTAssert(url!.absoluteString == "http://baseurl.com/w185/posterPath")
     }
 
 }
 
-class CoreDataWorkerMockForMovieModel: CoreDataWorkerProtocol {
-    func delete(enity: NSManagedObject) {
+class UserDefaultMockForMovieModel: UserDefaultWrapperProtocol {
+    func saveJSON<T>(object: T, with key: String) where T : Encodable {
         
     }
     
-    func fetchAll<T: NSManagedObject>(completion: @escaping (ResultType<Array<T>>) -> ()) {
-        let configModelMO = TMDBConfigurationMO()
-        configModelMO.baseURL = "http://baseurl.com/"
-        configModelMO.backdropSizes = ["size1"]
-        configModelMO.posterSizes = ["size2"]
-        completion(.success([configModelMO as! T]))
+    func getObjectFromJSON<T>(with key: String) -> T? where T : Decodable {
+        let configModel = TMDBConfigurationModel(baseURL: "http://baseurl.com/", backdropSizes: ["size1"], posterSizes: ["size2"])
+        return configModel as? T
     }
     
-    func save() throws {
-        
+    func get<T>(with key: String) -> T? {
+        let configModel = TMDBConfigurationModel(baseURL: "http://baseurl.com/", backdropSizes: ["size1"], posterSizes: ["size2"])
+        return configModel as? T
+    }
+    
+    func save<T>(object: T, with key: String) { }
+    
+    func deleteItem<T: Equatable>(in index: Int, with key: String) -> [T]? {
+        return []
     }
 }

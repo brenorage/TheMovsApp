@@ -19,11 +19,9 @@ class MovieCell: UICollectionViewCell {
     var model: MovieModel? {
         didSet {
             movieTitleLabel.text = model?.title
-//            imageView.kf.setImage(with: )
+            DispatchQueue.main.async {
+                self.imageView.kf.setImage(with: self.model?.getPosterURL())
+            }
         }
-    }
-    
-    override func prepareForReuse() {
-        imageView.kf.cancelDownloadTask()
     }
 }

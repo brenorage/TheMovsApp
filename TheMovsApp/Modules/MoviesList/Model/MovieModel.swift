@@ -15,7 +15,7 @@ class MovieModel: Codable {
     private let releaseDate: String
     let posterPath: String
     let genreIds: [Int]
-    var coreDataWorker: CoreDataWorkerProtocol = CoreDataWorker()
+    var userDefaultWrapper: UserDefaultWrapperProtocol = UserDefaultWrapper()
     
     var releaseYear: String? {
         let dateFormatter = DateFormatter()
@@ -35,19 +35,12 @@ class MovieModel: Codable {
 }
 
 extension MovieModel {
-    func getPosterURL(completion: @escaping (URL?) -> Void){
-        coreDataWorker.fetchAll { (result: ResultType<[TMDBConfigurationMO]>) in
-            switch result {
-            case let .success(data):
-                guard let configModelMO = data.first else { return completion(nil) }
-                let baseURL = configModelMO.baseURL
-                var url = URL(string: baseURL)
-                url?.appendPathComponent("original")
-                url?.appendPathComponent(self.posterPath)
-                completion(url)
-            case .failure:
-                completion(nil)
-            }
-        }
+    func getPosterURL() -> URL? {
+        let configModel: TMDBConfigurationModel? = userDefaultWrapper.getObjectFromJSON(with: UserDefaultWrapper.configModelKey)
+        guard let baseURL = configModel?.baseURL else { return nil }
+        var url = URL(string: baseURL)
+        url?.appendPathComponent("w185")
+        url?.appendPathComponent(self.posterPath)
+        return url
     }
 }

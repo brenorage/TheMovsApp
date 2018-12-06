@@ -12,6 +12,7 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
     
     weak var viewProtocol: MoviesGridViewProtocol?
     private var moviesClient: MoviesListClientProtocol
+    private var tmdbConfigClient = TMDBConfigurationClient()
     
     var moviesPages: [MoviesPage] {
         return moviesClient.movies
@@ -26,6 +27,7 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
 extension MoviesListPresenter {
     func getList() {
         viewProtocol?.showLoading()
+        getConfigModel()
         moviesClient.getMovies { [weak self] result in
             self?.viewProtocol?.hideLoading()
             switch result {
@@ -51,5 +53,9 @@ extension MoviesListPresenter {
     private func treatSuccess() {
         viewProtocol?.showMoviesGrid()
         viewProtocol?.reloadMoviesGrid()
+    }
+    
+    private func getConfigModel() {
+        tmdbConfigClient.getConfigurationModel(completion: nil)
     }
 }

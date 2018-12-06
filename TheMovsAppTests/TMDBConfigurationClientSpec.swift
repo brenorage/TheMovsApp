@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CoreData
 
 @testable import TheMovsApp
 
@@ -16,7 +17,7 @@ class TMDBConfigurationClientSpec: XCTestCase {
     
     override func setUp() {
         let httpService: HTTPServicesProtocol = MockHTTPServiceForTMDBConfig()
-        tmdbConfigClient = TMDBConfigurationClient(httpService: httpService)
+        tmdbConfigClient = TMDBConfigurationClient(httpService: httpService, userDefault: UserDefaultMockForTMDBConfig())
     }
 
     override func tearDown() {
@@ -46,7 +47,28 @@ class MockHTTPServiceForTMDBConfig: HTTPServicesProtocol {
     var injectedURL: URL!
     
     func get<T: Decodable>(url: URL, completion: @escaping (ResultType<T>) -> ()) {
-        let tmdbObject = TMDBConfigurationModel.init(baseURL: "baseURL", backdropSizes: ["backdropSize"], posterSizes: ["posterSize"]) as! T
-        completion(.success(tmdbObject))
+        let tmdbObject = TMDBConfigurationModel(baseURL: "baseURL", backdropSizes: ["backdropSize"], posterSizes: ["posterSize"])
+        let tmdbConfig = TMDBConfigurationModelResponse.init(images: tmdbObject) as! T
+        completion(.success(tmdbConfig))
+    }
+}
+
+class UserDefaultMockForTMDBConfig: UserDefaultWrapperProtocol {
+    func saveJSON<T>(object: T, with key: String) where T : Encodable {
+        
+    }
+    
+    func getObjectFromJSON<T>(with key: String) -> T? where T : Decodable {
+        return nil
+    }
+    
+    func get<T>(with key: String) -> T? {
+        return nil
+    }
+    
+    func save<T>(object: T, with key: String) { }
+    
+    func deleteItem<T: Equatable>(in index: Int, with key: String) -> [T]? {
+        return []
     }
 }

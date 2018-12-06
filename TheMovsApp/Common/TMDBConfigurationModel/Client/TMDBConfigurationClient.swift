@@ -9,44 +9,35 @@
 import Foundation
 
 protocol TMDBConfigurationClientProtocol {
-    init(httpService: HTTPServicesProtocol)
+    init(httpService: HTTPServicesProtocol, userDefault: UserDefaultWrapperProtocol)
 }
 
 class TMDBConfigurationClient: TMDBConfigurationClientProtocol {
     
     fileprivate var httpService: HTTPServicesProtocol
+    fileprivate var userDefault: UserDefaultWrapperProtocol
     
-    required init(httpService: HTTPServicesProtocol = HTTPServices()) {
+    required init(httpService: HTTPServicesProtocol = HTTPServices(), userDefault: UserDefaultWrapperProtocol = UserDefaultWrapper()) {
         self.httpService = httpService
+        self.userDefault = userDefault
     }
 }
 
 extension TMDBConfigurationClient {
-    func getConfigurationModel(completion: @escaping (ResultType<Bool>) -> Void) {
-        guard let url = TMDBEndpoint.configuration.endpoint else { return completion(.failure) }
+    func getConfigurationModel(completion: ((ResultType<Bool>) -> Void)?) {
+        guard let url = TMDBEndpoint.configuration.endpoint else {
+            completion?(.failure)
+            return
+        }
         
-        httpService.get(url: url) { [weak self] (result: ResultType<TMDBConfigurationModel>) in
+        httpService.get(url: url) { [weak self] (result: ResultType<TMDBConfigurationModelResponse>) in
             switch result {
             case let .success(configModel):
-                _ = self?.mountTMDBMO(with: configModel)
-                do {
-                    let worker = CoreDataWorker()
-                    try worker.save()
-                    completion(.success(true))
-                } catch {
-                    completion(.success(false))
-                }
+                self?.userDefault.saveJSON(object: configModel.images, with: UserDefaultWrapper.configModelKey)
+                completion?(.success(true))
             case .failure:
-                completion(.failure)
+                completion?(.failure)
             }
         }
-    }
-    
-    private func mountTMDBMO(with configModel: TMDBConfigurationModel) -> TMDBConfigurationMO {
-        let coreDataModel = TMDBConfigurationMO()
-        coreDataModel.baseURL = configModel.baseURL
-        coreDataModel.backdropSizes = configModel.backdropSizes
-        coreDataModel.posterSizes = configModel.posterSizes
-        return coreDataModel
     }
 }
