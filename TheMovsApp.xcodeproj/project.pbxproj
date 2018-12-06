@@ -26,6 +26,11 @@
 		52CF272021B7F0990048D201 /* MovieMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF271F21B7F0990048D201 /* MovieMO.swift */; };
 		52CF272221B7F1C90048D201 /* GenreMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF272121B7F1C90048D201 /* GenreMO.swift */; };
 		52CF272421B7F6430048D201 /* CoreDataWorkerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF272321B7F6430048D201 /* CoreDataWorkerSpec.swift */; };
+		52CF272A21B940D90048D201 /* GenreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF272921B940D90048D201 /* GenreClient.swift */; };
+		52CF272C21B941E10048D201 /* GenreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF272B21B941E10048D201 /* GenreModel.swift */; };
+		52CF273021B957250048D201 /* GenreClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF272F21B957250048D201 /* GenreClientSpec.swift */; };
+		52CF273321B95E520048D201 /* Genres.json in Resources */ = {isa = PBXBuildFile; fileRef = 52CF273221B95E520048D201 /* Genres.json */; };
+		52CF273521B97DA70048D201 /* GenreResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF273421B97DA70048D201 /* GenreResponseModel.swift */; };
 		59130392B6401E0503B0F5E7 /* Pods_TheMovsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD9BE3741990BAC59B9B2030 /* Pods_TheMovsApp.framework */; };
 		612152E568D05700619CB6E2 /* Pods_TheMovsAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6818540AA66A2BD3DC0CD09 /* Pods_TheMovsAppUITests.framework */; };
 		C40B972921B16B010067A565 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40B972821B16B010067A565 /* AppDelegate.swift */; };
@@ -82,6 +87,11 @@
 		52CF271F21B7F0990048D201 /* MovieMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieMO.swift; sourceTree = "<group>"; };
 		52CF272121B7F1C90048D201 /* GenreMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreMO.swift; sourceTree = "<group>"; };
 		52CF272321B7F6430048D201 /* CoreDataWorkerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataWorkerSpec.swift; sourceTree = "<group>"; };
+		52CF272921B940D90048D201 /* GenreClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreClient.swift; sourceTree = "<group>"; };
+		52CF272B21B941E10048D201 /* GenreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreModel.swift; sourceTree = "<group>"; };
+		52CF272F21B957250048D201 /* GenreClientSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreClientSpec.swift; sourceTree = "<group>"; };
+		52CF273221B95E520048D201 /* Genres.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Genres.json; sourceTree = "<group>"; };
+		52CF273421B97DA70048D201 /* GenreResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreResponseModel.swift; sourceTree = "<group>"; };
 		59FC8BBDCAAD456439A55274 /* Pods-TheMovsAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsAppUITests/Pods-TheMovsAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7441659497A4173788F10266 /* Pods-TheMovsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsApp/Pods-TheMovsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7F46CE6E043064722B41B7F0 /* Pods-TheMovsAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsAppUITests/Pods-TheMovsAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +190,7 @@
 		52A218D521B16C4D00825CFB /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				52CF272E21B9531F0048D201 /* GenreClient */,
 				C4BE2A7A21B95F3700DDA163 /* TMDBConfigurationModel */,
 				52CF271721B7EE700048D201 /* DescribeProtocol */,
 				52CF26D521B6E57A0048D201 /* CoreData */,
@@ -222,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				52CF271E21B7F07E0048D201 /* CoreData */,
+				52CF272D21B94CDB0048D201 /* GenreModel */,
 				52B2FF7321B186BC0043052C /* TabBarModel */,
 			);
 			path = Model;
@@ -260,6 +272,31 @@
 				C4BE2A8321B9632500DDA163 /* TMDBConfigurationMO.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		52CF272D21B94CDB0048D201 /* GenreModel */ = {
+			isa = PBXGroup;
+			children = (
+				52CF273421B97DA70048D201 /* GenreResponseModel.swift */,
+				52CF272B21B941E10048D201 /* GenreModel.swift */,
+			);
+			path = GenreModel;
+			sourceTree = "<group>";
+		};
+		52CF272E21B9531F0048D201 /* GenreClient */ = {
+			isa = PBXGroup;
+			children = (
+				52CF272921B940D90048D201 /* GenreClient.swift */,
+			);
+			path = GenreClient;
+			sourceTree = "<group>";
+		};
+		52CF273121B95E200048D201 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				52CF273221B95E520048D201 /* Genres.json */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		C40B971C21B16B010067A565 = {
@@ -302,10 +339,12 @@
 		C40B973C21B16B030067A565 /* TheMovsAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				52CF273121B95E200048D201 /* JSON */,
 				C40B973F21B16B030067A565 /* Info.plist */,
 				C4BE2A3A21B18BFB00DDA163 /* NetworkLayerTest.swift */,
 				52014C0C21B6A8B8005B1481 /* HomeViewControllerSpec.swift */,
 				52CF272321B7F6430048D201 /* CoreDataWorkerSpec.swift */,
+				52CF272F21B957250048D201 /* GenreClientSpec.swift */,
 				C4BE2A8521B97DA500DDA163 /* TMDBConfigurationClientSpec.swift */,
 			);
 			path = TheMovsAppTests;
@@ -499,6 +538,7 @@
 				C40B973321B16B020067A565 /* LaunchScreen.storyboard in Resources */,
 				C40B973021B16B020067A565 /* Assets.xcassets in Resources */,
 				C40B972E21B16B010067A565 /* Main.storyboard in Resources */,
+				52CF273321B95E520048D201 /* Genres.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,9 +692,12 @@
 				52A218DC21B1724C00825CFB /* CodeView.swift in Sources */,
 				C4BE2A8821B97EC500DDA163 /* HTTPServicesProtocol.swift in Sources */,
 				52014C0B21B59B68005B1481 /* UIColor+Extension.swift in Sources */,
+				52CF273521B97DA70048D201 /* GenreResponseModel.swift in Sources */,
 				52014BFF21B588B6005B1481 /* HomeViewProtocol.swift in Sources */,
 				52CF272021B7F0990048D201 /* MovieMO.swift in Sources */,
+				52CF272C21B941E10048D201 /* GenreModel.swift in Sources */,
 				52014C0821B59ADC005B1481 /* ThemeInitializer.swift in Sources */,
+				52CF272A21B940D90048D201 /* GenreClient.swift in Sources */,
 				52A218DF21B1796900825CFB /* HomeViewController.swift in Sources */,
 				52CF271D21B7EEF30048D201 /* CoreDataWorker.swift in Sources */,
 				52CF26D421B6DE970048D201 /* MovsDataModel.xcdatamodeld in Sources */,
@@ -677,6 +720,7 @@
 				52014C0D21B6A8B8005B1481 /* HomeViewControllerSpec.swift in Sources */,
 				C4BE2A3B21B18BFB00DDA163 /* NetworkLayerTest.swift in Sources */,
 				52CF272421B7F6430048D201 /* CoreDataWorkerSpec.swift in Sources */,
+				52CF273021B957250048D201 /* GenreClientSpec.swift in Sources */,
 				C4BE2A8621B97DA500DDA163 /* TMDBConfigurationClientSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

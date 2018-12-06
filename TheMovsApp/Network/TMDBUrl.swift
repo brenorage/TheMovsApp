@@ -32,6 +32,7 @@ enum TMDBEndpoint {
     
     case popularMovies(page: Int)
     case configuration
+    case genreList
     
     var endpoint: URL? {
         switch self {
@@ -44,6 +45,9 @@ enum TMDBEndpoint {
         case .configuration:
             let tmdbURL = TMDBUrl()
             return tmdbURL.getAPIURL(route: self.rawValue)?.url
+        case .genreList:
+            let tmdbURL = TMDBUrl()
+            return tmdbURL.getAPIURL(route: self.rawValue)?.url
         }
     }
     
@@ -53,6 +57,8 @@ enum TMDBEndpoint {
             return "movie/popular"
         case .configuration:
             return "configuration"
+        case .genreList:
+            return "genre/movie/list"
         }
     }
 }
