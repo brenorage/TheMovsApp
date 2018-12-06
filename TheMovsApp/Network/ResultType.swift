@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum RequestResultType<T> {
+enum ResultType<T> {
     case success(T)
     case failure
 }
