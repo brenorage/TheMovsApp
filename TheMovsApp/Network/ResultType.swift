@@ -1,5 +1,5 @@
 //
-//  RequestResultType.swift
+//  ResultType.swift
 //  TheMovsApp
 //
 //  Created by Breno Rage Aboud on 30/11/2018.
