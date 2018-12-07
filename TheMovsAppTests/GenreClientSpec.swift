@@ -12,9 +12,9 @@ import CoreData
 
 final class GenreClientSpec: XCTestCase {
     
-    var sut: GenreClient!
-    var workerStub: CoreDataWorkerStub!
-    var serviceStub: ServiceStub!
+    private var sut: GenreClient!
+    private var workerStub: CoreDataWorkerStub!
+    private var serviceStub: ServiceStub!
     
     override func setUp() {
         serviceStub = ServiceStub()
@@ -34,13 +34,13 @@ final class GenreClientSpec: XCTestCase {
 
 }
 
-final class ServiceStub: HTTPServicesProtocol {
+private final class ServiceStub: HTTPServicesProtocol {
     
     var injectedURL: URL!
     
     func get<T: Decodable>(url: URL, completion: @escaping (ResultType<T>) -> ()) {
         
-        let bundle = Bundle.main
+        let bundle = Bundle(for: GenreClientSpec.self)
         let url = bundle.url(forResource: "Genres", withExtension: "json")!
         let jsonData = try! Data(contentsOf: url)
         let response = try! JSONDecoder().decode(GenreResponseModel.self, from: jsonData)
@@ -51,7 +51,7 @@ final class ServiceStub: HTTPServicesProtocol {
     
 }
 
-final class CoreDataWorkerStub: CoreDataWorkerProtocol {
+private final class CoreDataWorkerStub: CoreDataWorkerProtocol {
     
     init() {
         
