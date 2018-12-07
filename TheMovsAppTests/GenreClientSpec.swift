@@ -10,17 +10,19 @@ import XCTest
 import CoreData
 @testable import TheMovsApp
 
-class GenreClientSpec: XCTestCase {
+final class GenreClientSpec: XCTestCase {
     
     var sut: GenreClient!
+    var workerStub: CoreDataWorkerStub!
+    var serviceStub: ServiceStub!
     
     override func setUp() {
-        let serviceStub = ServiceStub()
-        let workerStub = GenreDataWorkerStub()
+        serviceStub = ServiceStub()
+        workerStub = CoreDataWorkerStub()
         sut = GenreClient(httpService: serviceStub, coreDataWorker: workerStub)
     }
     
-    func testGenreClientShouldSaveGenresAfter() {
+    func testGenreClientShouldSaveGenresAfterRequest() {
         sut.getGenres(completion: { result in
             if case let .success(isSaved) = result {
                 XCTAssertTrue(isSaved)
@@ -32,7 +34,7 @@ class GenreClientSpec: XCTestCase {
 
 }
 
-private class ServiceStub: HTTPServicesProtocol {
+final class ServiceStub: HTTPServicesProtocol {
     
     var injectedURL: URL!
     
@@ -49,12 +51,27 @@ private class ServiceStub: HTTPServicesProtocol {
     
 }
 
-private class GenreDataWorkerStub: CoreDataWorkerProtocol {
+final class CoreDataWorkerStub: CoreDataWorkerProtocol {
     
-    func fetchAll<T>(completion: @escaping (ResultType<Array<T>>) -> ()) where T : NSManagedObject { }
+    init() {
+        
+    }
     
-    func save() throws { }
+    init(persistentContainer: NSPersistentContainer) {
+        
+    }
     
-    func delete(enity: NSManagedObject) { }
+    func fetchAll<T>(completion: @escaping (ResultType<Array<T>>) -> ()) where T : NSManagedObject {
+        
+    }
+    
+    func save() throws {
+        
+    }
+    
+    func delete(enity: NSManagedObject, completion: @escaping (ResultType<Bool>) -> ()) {
+        
+    }
+
     
 }

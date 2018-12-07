@@ -10,15 +10,15 @@ import XCTest
 import Nimble
 @testable import TheMovsApp
 
-class CoreDataWorkerSpec: XCTestCase {
+final class CoreDataWorkerSpec: XCTestCase {
     
-    var sut: CoreDataWorker!
+    var sut: CoreDataWorkerStub!
     
     override func setUp() {
-        sut = CoreDataWorker()
+        sut = CoreDataWorkerStub()
     }
     
-    func testSaveAnInstanceOfMovieMOShouldNotThrowsAnException() {
+    func testSaveDatabaseShouldNotThrowsAnException() {
         expect { try self.sut.save() }.toNot( throwError() )
     }
 
