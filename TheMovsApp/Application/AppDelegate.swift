@@ -18,8 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let initializers: [Initializable] = [ThemeInitializer()]
         initializers.forEach { $0.performInitialization() }
         
+        let moviesVC = MoviesGridViewController()
+        let moviesTab = TabBarModel(title: "Filmes", icon: UIImage(named: "moviesIcon") ?? UIImage(), viewController: moviesVC)
+        
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = UINavigationController(rootViewController: HomeViewController(tabs: []))
+        window.rootViewController = UINavigationController(rootViewController: HomeViewController(tabs: [moviesTab]))
         self.window = window
         window.makeKeyAndVisible()
         

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCell" id="gTV-IL-0wX" customClass="MovieCell" customModule="TheMovsApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="210" height="280"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="210" height="280"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dur-no-4SO">
+                        <rect key="frame" x="5" y="235" width="200" height="40"/>
+                        <accessibility key="accessibilityConfiguration" hint="Mostra o titulo do filme" label="Titulo do filme"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="yNg-Yx-5l1"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" name="lightYellow"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cyi-65-anm">
+                        <rect key="frame" x="0.0" y="0.0" width="210" height="220"/>
+                        <accessibility key="accessibilityConfiguration" hint="Mostra a imagem oficial do filme" label="Imagem do filme">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" name="darkBlue"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Dur-no-4SO" secondAttribute="bottom" constant="5" id="6px-Gw-YYT"/>
+                <constraint firstAttribute="trailing" secondItem="Cyi-65-anm" secondAttribute="trailing" id="IS9-gw-idN"/>
+                <constraint firstItem="Cyi-65-anm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hGr-1j-2OC"/>
+                <constraint firstAttribute="trailing" secondItem="Dur-no-4SO" secondAttribute="trailing" constant="5" id="o5l-ms-jzd"/>
+                <constraint firstItem="Dur-no-4SO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="vHx-Ik-xwf"/>
+                <constraint firstItem="Cyi-65-anm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="vIk-7e-hkN"/>
+                <constraint firstItem="Dur-no-4SO" firstAttribute="top" secondItem="Cyi-65-anm" secondAttribute="bottom" constant="15" id="xya-dr-ha5"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="213" height="282"/>
+            <connections>
+                <outlet property="imageView" destination="Cyi-65-anm" id="RNb-IQ-yPa"/>
+                <outlet property="movieTitleLabel" destination="Dur-no-4SO" id="BdV-7t-JmJ"/>
+            </connections>
+            <point key="canvasLocation" x="267.19999999999999" y="117.84107946026987"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="darkBlue">
+            <color red="0.17647058823529413" green="0.18823529411764706" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lightYellow">
+            <color red="0.96862745098039216" green="0.80784313725490198" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

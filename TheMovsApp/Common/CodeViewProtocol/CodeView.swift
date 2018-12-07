@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SnapKit
 
 protocol CodeView {
     func buildViewHierarchy()
