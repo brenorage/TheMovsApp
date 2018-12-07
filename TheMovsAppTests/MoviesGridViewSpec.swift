@@ -47,6 +47,13 @@ class MoviesGridViewSpec: QuickSpec {
                 expect(moviesGridViewSUT).toEventually(haveValidSnapshot(named: "MoviesGridViewControllerWithTwoPages"))
 
             }
+            
+            it("should show error view in movies grid") {
+                presenter.getListWithError()
+//                                                expect(moviesGridViewSUT).toEventually(recordSnapshot(named: "MoviesGridViewControllerWithError"))
+                expect(moviesGridViewSUT).toEventually(haveValidSnapshot(named: "MoviesGridViewControllerWithError"))
+                
+            }
         }
     }
 }
@@ -64,6 +71,11 @@ class MockMoviesListPresenter: MoviesListPresenterProtocol {
         let object = try! JSONDecoder().decode(MoviesListModel.self, from: data)
         moviesPages.append(object.results)
         viewProtocol?.showMoviesGrid()
+    }
+    
+    func getListWithError() {
+        viewProtocol?.hideMoviesGrid()
+        viewProtocol?.showError()
     }
     
     func getMoreMovies() {
