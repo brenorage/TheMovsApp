@@ -42,8 +42,6 @@
 		7B826C0221BD97D600B201AC /* CoreDataWorkerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B826C0121BD97D600B201AC /* CoreDataWorkerSpec.swift */; };
 		7B826C0421BDCC9D00B201AC /* MovieDetailViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B826C0321BDCC9D00B201AC /* MovieDetailViewControllerSpec.swift */; };
 		C40B972921B16B010067A565 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40B972821B16B010067A565 /* AppDelegate.swift */; };
-		C40B972B21B16B010067A565 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40B972A21B16B010067A565 /* ViewController.swift */; };
-		C40B972E21B16B010067A565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C40B972C21B16B010067A565 /* Main.storyboard */; };
 		C40B973021B16B020067A565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C40B972F21B16B020067A565 /* Assets.xcassets */; };
 		C40B973321B16B020067A565 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C40B973121B16B020067A565 /* LaunchScreen.storyboard */; };
 		C4BE2A3521B1759900DDA163 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A3421B1759900DDA163 /* ResultType.swift */; };
@@ -138,8 +136,6 @@
 		BF39B3B5D5F614B1EA86B8A9 /* Pods-TheMovsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovsApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheMovsApp/Pods-TheMovsApp.release.xcconfig"; sourceTree = "<group>"; };
 		C40B972521B16B010067A565 /* TheMovsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMovsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C40B972821B16B010067A565 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C40B972A21B16B010067A565 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C40B972D21B16B010067A565 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C40B972F21B16B020067A565 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C40B973221B16B020067A565 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C40B973421B16B020067A565 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -440,8 +436,6 @@
 				52A218D521B16C4D00825CFB /* Common */,
 				52A218D321B16C3B00825CFB /* Resources */,
 				52A218D221B16C2400825CFB /* SupportingFiles */,
-				C40B972A21B16B010067A565 /* ViewController.swift */,
-				C40B972C21B16B010067A565 /* Main.storyboard */,
 			);
 			path = TheMovsApp;
 			sourceTree = "<group>";
@@ -758,7 +752,6 @@
 				52E9C02021BAAC0C00DA228B /* MovieDetailViewController.xib in Resources */,
 				C40B973321B16B020067A565 /* LaunchScreen.storyboard in Resources */,
 				C40B973021B16B020067A565 /* Assets.xcassets in Resources */,
-				C40B972E21B16B010067A565 /* Main.storyboard in Resources */,
 				C4BE2A6F21B7112400DDA163 /* MovieCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -969,7 +962,6 @@
 				52CF271D21B7EEF30048D201 /* CoreDataWorker.swift in Sources */,
 				52CF272221B7F1C90048D201 /* GenreMO.swift in Sources */,
 				C4BE2A4C21B5C16400DDA163 /* MovieModel.swift in Sources */,
-				C40B972B21B16B010067A565 /* ViewController.swift in Sources */,
 				52B2FF7521B186D90043052C /* TabBarModel.swift in Sources */,
 				C4BE2A7E21B95F5F00DDA163 /* TMDBConfigurationClient.swift in Sources */,
 				52CF271B21B7EEB10048D201 /* NSObject+Extension.swift in Sources */,
@@ -1034,14 +1026,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C40B972C21B16B010067A565 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C40B972D21B16B010067A565 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C40B973121B16B020067A565 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
