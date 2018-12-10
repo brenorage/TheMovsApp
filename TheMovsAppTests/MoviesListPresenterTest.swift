@@ -74,6 +74,9 @@ class MockMoviesListView: MoviesGridViewProtocol {
     
     func hideError() {
     }
+    
+    func pushDetailViewController(with movie: MovieModel) {
+    }
 }
 
 class MockMoviesClient: MoviesListClientProtocol {

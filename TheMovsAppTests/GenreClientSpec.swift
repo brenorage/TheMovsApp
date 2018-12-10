@@ -10,35 +10,35 @@ import XCTest
 import CoreData
 @testable import TheMovsApp
 
-class GenreClientSpec: XCTestCase {
+final class GenreClientSpec: XCTestCase {
     
-    var sut: GenreClient!
+    private var sut: GenreClient!
+    private var workerStub: CoreDataWorkerStub!
+    private var serviceStub: ServiceStub!
     
     override func setUp() {
-        let serviceStub = ServiceStub()
-        let workerStub = GenreDataWorkerStub()
+        serviceStub = ServiceStub()
+        workerStub = CoreDataWorkerStub()
         sut = GenreClient(httpService: serviceStub, coreDataWorker: workerStub)
     }
     
-    func testGenreClientShouldSaveGenresAfter() {
+    func testGenreClientShouldSaveGenresAfterASuccessRequest() {
+        let expectation = XCTestExpectation(description: "Test if GenreClient will save the downloaded genre list")
         sut.getGenres(completion: { result in
-            if case let .success(isSaved) = result {
-                XCTAssertTrue(isSaved)
-            } else {
-                XCTFail()
-            }
+            expectation.fulfill()
         })
+        wait(for: [expectation], timeout: 2.0)
     }
 
 }
 
-private class ServiceStub: HTTPServicesProtocol {
+private final class ServiceStub: HTTPServicesProtocol {
     
     var injectedURL: URL!
     
     func get<T: Decodable>(url: URL, completion: @escaping (ResultType<T>) -> ()) {
         
-        let bundle = Bundle.main
+        let bundle = Bundle(for: GenreClientSpec.self)
         let url = bundle.url(forResource: "Genres", withExtension: "json")!
         let jsonData = try! Data(contentsOf: url)
         let response = try! JSONDecoder().decode(GenreResponseModel.self, from: jsonData)
@@ -49,12 +49,12 @@ private class ServiceStub: HTTPServicesProtocol {
     
 }
 
-private class GenreDataWorkerStub: CoreDataWorkerProtocol {
-    
+private final class CoreDataWorkerStub: CoreDataWorkerProtocol {
+    init() { }
+    init(context: NSManagedObjectContext) { }
     func fetchAll<T>(completion: @escaping (ResultType<Array<T>>) -> ()) where T : NSManagedObject { }
-    
-    func save() throws { }
-    
-    func delete(enity: NSManagedObject) { }
-    
+    func save() throws {
+        XCTAssertTrue(true)
+    }
+    func delete(enity: NSManagedObject, completion: @escaping (ResultType<Bool>) -> ()) { }
 }

@@ -35,4 +35,10 @@ extension MoviesCollectionViewDelegate: UICollectionViewDelegate, UICollectionVi
             presenter.getMoreMovies()
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let model = presenter.moviesPages[indexPath.section][indexPath.item]
+        presenter.viewProtocol?.pushDetailViewController(with: model)
+    }
+    
 }

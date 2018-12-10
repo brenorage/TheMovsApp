@@ -9,7 +9,7 @@
 import XCTest
 @testable import TheMovsApp
 
-class HomeViewControllerSpec: XCTestCase {
+final class HomeViewControllerSpec: XCTestCase {
     
     func testCustomInitWithTabBarModelShouldAddViewControllers() {
         
