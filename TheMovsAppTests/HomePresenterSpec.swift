@@ -34,7 +34,7 @@ final class HomePresenterSpec: XCTestCase {
 }
 
 
-private final class HomeViewControllerStub: ViewController, HomeViewProtocol {
+private final class HomeViewControllerStub: UIViewController, HomeViewProtocol {
     
     var presenter: HomePresenterProtocol!
     

@@ -19,22 +19,15 @@ final class MovieDetailViewControllerSpec: QuickSpec {
         
         describe("a 'MovieDetailViewController'") {
             
-            var presenter: MovieDetailPresenter!
+            var presenterStub: MovieDetailPresenterProtocol!
             var sut: MovieDetailViewController!
-            var coreDataWorkerStub: CoreDataWorkerStub!
-            var genreClienStub: GenreClientStub!
             var movieStub: MovieModel!
             
             beforeEach {
                 movieStub = self.getMovie()
-                coreDataWorkerStub = CoreDataWorkerStub()
-                genreClienStub = GenreClientStub(httpService: HTTPServices(), coreDataWorker: coreDataWorkerStub)
-                
-                presenter = MovieDetailPresenter(with: movieStub,
-                                                     coreDataWorker: coreDataWorkerStub,
-                                                     genreClient: genreClienStub)
-                
-                sut = MovieDetailViewController(presenter: presenter)
+                presenterStub = PresenterStub(with: movieStub)
+                sut = MovieDetailViewController(presenter: presenterStub)
+                presenterStub.attachView(sut)
             }
             
             it("should have the expected look and feel with movie mock") {
@@ -57,31 +50,29 @@ final class MovieDetailViewControllerSpec: QuickSpec {
 }
 
 
-private final class CoreDataWorkerStub: CoreDataWorkerProtocol {
+private final class PresenterStub: MovieDetailPresenterProtocol {
     
-    var shouldReturnEmptyList = true
+    weak var view: MovieDetailViewProtocol?
+    let movie: MovieModel
     
-    init() { }
-    init(context: NSManagedObjectContext) { }
-    func fetchAll<T>(completion: @escaping (ResultType<Array<T>>) -> ()) where T : NSManagedObject {
-        if shouldReturnEmptyList {
-            completion(.success([]))
-        } else {
-            let genre1 = GenreMO()
-            genre1.name = "Adventure"
-            genre1.genreId = Int32(12)
-            let genre2 = GenreMO()
-            genre2.name = "Horror"
-            genre2.genreId = Int32(27)
-            completion(.success([genre1, genre2] as! [T]))
-        }
+    init(with movie: MovieModel,
+         coreDataWorker: CoreDataWorkerProtocol = CoreDataWorker(),
+         genreClient: GenreClientProtocol = GenreClient()) {
+        self.movie = movie
     }
-    func save() throws { }
-    func delete(enity: NSManagedObject, completion: @escaping (ResultType<Bool>) -> ()) { }
-}
-
-
-private final class GenreClientStub: GenreClientProtocol {
-    init(httpService: HTTPServicesProtocol, coreDataWorker: CoreDataWorkerProtocol) { }
-    func getGenres(completion: @escaping RequestCallback<Bool>) { }
+    
+    func attachView(_ view: MovieDetailViewProtocol?) {
+        self.view = view
+    }
+    
+    func viewDidLoad() {
+        view?.setScreenTitle("Movie")
+        view?.fillMovieTitle(with: movie.title)
+        view?.fillMovieYear(with: movie.releaseYear)
+        view?.fillMoviePlot(with: movie.overview)
+        view?.fillMovieBackdrop(with: movie.getBackdropURL())
+        view?.fillMovieGenre(with: "Adventure, Horror")
+        view?.setGenreInfoHidden(false)
+    }
+    
 }
