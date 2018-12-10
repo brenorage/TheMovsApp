@@ -82,6 +82,18 @@ extension MoviesGridViewController: MoviesGridViewProtocol {
         }
     }
     
+    func showError() {
+        DispatchQueue.main.async {
+            self.moviesGridView.setErrorView()
+        }
+    }
+    
+    func hideError() {
+        DispatchQueue.main.async {
+            self.moviesGridView.removeErrorView()
+        }
+    }
+    
     func pushDetailViewController(with movie: MovieModel) {
         let movieDetail = MovieDetailViewController(with: movie)
         navigationController?.pushViewController(movieDetail, animated: true)
