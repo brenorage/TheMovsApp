@@ -33,8 +33,9 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
         view?.setScreenTitle("Movie")
         view?.fillMovieTitle(with: movie.title)
         view?.fillMovieYear(with: movie.releaseYear)
+        view?.fillMoviePlot(with: movie.overview)
         view?.fillMovieBackdrop(with: movie.getBackdropURL())
-        getSavedGenres()
+        getSavedGenres(downloadIfEmpty: true)
     }
     
 }
@@ -44,10 +45,14 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
 extension MovieDetailPresenter {
     
     // Pega o array de generos salvos no Core Data
-    private func getSavedGenres() {
+    private func getSavedGenres(downloadIfEmpty: Bool) {
         coreDataWorker.fetchAll() { [weak self] (result: ResultType<[GenreMO]>) in
             if case let .success(genres) = result {
-               self?.handleSavedGenres(with: genres)
+                if genres.count > 0 {
+                    self?.handleSavedGenres(with: genres)
+                } else if downloadIfEmpty {
+                    self?.downloadGenres()
+                }
             }
         }
     }
@@ -56,7 +61,7 @@ extension MovieDetailPresenter {
     private func downloadGenres() {
         genreClient.getGenres() { [weak self] (result: ResultType<Bool>) in
             if case .success(_) = result {
-//                self?.getSavedGenres()
+                self?.getSavedGenres(downloadIfEmpty: false)
             }
         }
     }
@@ -64,15 +69,12 @@ extension MovieDetailPresenter {
     //Faz o tratamento do array filtrado para retornar os generos
     //no formato "xxx, xxx, xxx"
     private func handleSavedGenres(with savedGenres: [GenreMO]) {
-        if savedGenres.count > 0 { // Possui generos salvos
-            let filteredGenres = savedGenres.filter({ movie.genreIds.contains(Int($0.genreId)) }).map({ $0.name })
-            let genresString = filteredGenres.joined(separator: ", ")
-            DispatchQueue.main.async { [weak self] in
-                self?.view?.fillMovieGenre(with: genresString)
-                self?.view?.setGenreInfoHidden(false)
-            }
-        } else {
-            downloadGenres()
+         // Possui generos salvos
+        let filteredGenres = savedGenres.filter({ movie.genreIds.contains(Int($0.genreId)) }).map({ $0.name })
+        let genresString = filteredGenres.joined(separator: ", ")
+        DispatchQueue.main.async { [weak self] in
+            self?.view?.fillMovieGenre(with: genresString)
+            self?.view?.setGenreInfoHidden(false)
         }
     }
     

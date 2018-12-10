@@ -54,6 +54,9 @@ class MockMoviesListView: MoviesGridViewProtocol {
     func reloadMoviesGrid() {
         calledReloadMovies = true
     }
+    
+    func pushDetailViewController(with movie: MovieModel) {
+    }
 }
 
 class MockMoviesClient: MoviesListClientProtocol {

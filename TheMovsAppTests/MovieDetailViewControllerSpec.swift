@@ -37,9 +37,9 @@ final class MovieDetailViewControllerSpec: QuickSpec {
                 sut = MovieDetailViewController(presenter: presenter)
             }
             
-            it("should have the expected look with movie mock") {
-                expect(sut).toEventually(recordSnapshot(named: "MovieDetailViewController"))
-//                expect(sut).toEventually(haveValidSnapshot(named: "MovieDetailViewController"))
+            it("should have the expected look and feel with movie mock") {
+//                expect(sut).toEventually(recordSnapshot(named: "MovieDetailViewController"))
+                expect(sut).toEventually(haveValidSnapshot(named: "MovieDetailViewController"))
             }
             
             

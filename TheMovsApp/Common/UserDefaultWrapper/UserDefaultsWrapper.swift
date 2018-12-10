@@ -20,6 +20,7 @@ protocol UserDefaultWrapperProtocol {
 class UserDefaultWrapper: UserDefaultWrapperProtocol {
     static let tmdbFavsKey = "TMDBFavsKey"
     static let configModelKey = "ConfigModelKey"
+    static let genresDownloadKey = "GenresDownloadKey"
     
     private let defaults = UserDefaults.standard
     

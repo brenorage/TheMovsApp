@@ -15,6 +15,7 @@
 		52014C0821B59ADC005B1481 /* ThemeInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52014C0721B59ADC005B1481 /* ThemeInitializer.swift */; };
 		52014C0B21B59B68005B1481 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52014C0A21B59B68005B1481 /* UIColor+Extension.swift */; };
 		52014C0D21B6A8B8005B1481 /* HomeViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52014C0C21B6A8B8005B1481 /* HomeViewControllerSpec.swift */; };
+		52324E1321BE916800D0F0D6 /* HomePresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52324E1221BE916800D0F0D6 /* HomePresenterSpec.swift */; };
 		52A218DC21B1724C00825CFB /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A218DB21B1724C00825CFB /* CodeView.swift */; };
 		52A218DF21B1796900825CFB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A218DE21B1796900825CFB /* HomeViewController.swift */; };
 		52B2FF7521B186D90043052C /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2FF7421B186D90043052C /* TabBarModel.swift */; };
@@ -103,6 +104,7 @@
 		52014C0721B59ADC005B1481 /* ThemeInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeInitializer.swift; sourceTree = "<group>"; };
 		52014C0A21B59B68005B1481 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		52014C0C21B6A8B8005B1481 /* HomeViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerSpec.swift; sourceTree = "<group>"; };
+		52324E1221BE916800D0F0D6 /* HomePresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterSpec.swift; sourceTree = "<group>"; };
 		52A218DB21B1724C00825CFB /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		52A218DE21B1796900825CFB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		52B2FF7421B186D90043052C /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				C4BE2A7621B830D200DDA163 /* MoviesGridViewSpec.swift */,
 				C4BE2A3A21B18BFB00DDA163 /* NetworkLayerTest.swift */,
 				52014C0C21B6A8B8005B1481 /* HomeViewControllerSpec.swift */,
+				52324E1221BE916800D0F0D6 /* HomePresenterSpec.swift */,
 				52CF272F21B957250048D201 /* GenreClientSpec.swift */,
 				C4BE2A8521B97DA500DDA163 /* TMDBConfigurationClientSpec.swift */,
 				C4BE2A5121B5C87200DDA163 /* MovieTests.swift */,
@@ -967,6 +970,7 @@
 				C4BE2A7521B829D600DDA163 /* MoviesListPresenterTest.swift in Sources */,
 				C4BE2A3B21B18BFB00DDA163 /* NetworkLayerTest.swift in Sources */,
 				52CF273021B957250048D201 /* GenreClientSpec.swift in Sources */,
+				52324E1321BE916800D0F0D6 /* HomePresenterSpec.swift in Sources */,
 				C4BE2A8621B97DA500DDA163 /* TMDBConfigurationClientSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
