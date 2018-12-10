@@ -72,9 +72,9 @@ extension MovieDetailPresenter {
          // Possui generos salvos
         let filteredGenres = savedGenres.filter({ movie.genreIds.contains(Int($0.genreId)) }).map({ $0.name })
         let genresString = filteredGenres.joined(separator: ", ")
-        DispatchQueue.main.async { [weak self] in
-            self?.view?.fillMovieGenre(with: genresString)
-            self?.view?.setGenreInfoHidden(false)
+        DispatchQueue.main.async {
+            self.view?.fillMovieGenre(with: genresString)
+            self.view?.setGenreInfoHidden(false)
         }
     }
     

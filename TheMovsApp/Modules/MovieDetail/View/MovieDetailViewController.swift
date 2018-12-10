@@ -43,6 +43,7 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
+        setupAccessibility()
     }
     
 
@@ -83,6 +84,25 @@ extension MovieDetailViewController: MovieDetailViewProtocol {
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
             self?.genreViewContainer.isHidden = isHidden
         })
+    }
+    
+}
+
+// MARK: Funcs
+
+extension MovieDetailViewController {
+    
+    private func setupAccessibility() {
+        backdropImageView.accessibilityIdentifier = "Backdrop do filme"
+        backdropImageView.accessibilityHint = "Imagem promocional do filme"
+        titleLabel.accessibilityIdentifier = "Título do filme"
+        titleLabel.accessibilityHint = "\(titleLabel.text ?? "Sem título")"
+        yearLabel.accessibilityIdentifier = "Ano do filme"
+        yearLabel.accessibilityHint = "\(yearLabel.text ?? "Sem dados")"
+        genreLabel.accessibilityIdentifier = "Genero do filme"
+        genreLabel.accessibilityHint = "\(genreLabel.text ?? "Sem dados")"
+        plotLabel.accessibilityIdentifier = "Plot do filme"
+        plotLabel.accessibilityHint = "\(plotLabel.text ?? "Sem dados")"
     }
     
 }
