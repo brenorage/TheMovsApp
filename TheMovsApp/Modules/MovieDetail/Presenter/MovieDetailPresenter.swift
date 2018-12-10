@@ -34,7 +34,6 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
         view?.fillMovieTitle(with: movie.title)
         view?.fillMovieYear(with: movie.releaseYear)
         view?.fillMovieBackdrop(with: movie.getBackdropURL())
-        view?.setGenreInfoHidden(true)
         getSavedGenres()
     }
     
@@ -57,7 +56,7 @@ extension MovieDetailPresenter {
     private func downloadGenres() {
         genreClient.getGenres() { [weak self] (result: ResultType<Bool>) in
             if case .success(_) = result {
-                self?.getSavedGenres()
+//                self?.getSavedGenres()
             }
         }
     }

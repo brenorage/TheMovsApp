@@ -14,4 +14,5 @@ protocol MoviesGridViewProtocol: class {
     func showMoviesGrid()
     func hideMoviesGrid()
     func reloadMoviesGrid()
+    func pushDetailViewController(with movie: MovieModel)
 }

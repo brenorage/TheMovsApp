@@ -23,7 +23,7 @@ final class CoreDataWorker: CoreDataWorkerProtocol {
     private let context: NSManagedObjectContext
     
     convenience init() {
-        self.init(context: CoreDataManager.shared.persistentContainer.newBackgroundContext())
+        self.init(context: CoreDataManager.shared.persistentContainer.viewContext)
     }
     
     required init(context: NSManagedObjectContext) {

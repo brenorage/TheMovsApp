@@ -81,4 +81,9 @@ extension MoviesGridViewController: MoviesGridViewProtocol {
             self.moviesGridView.moviesCollectionView.reloadData()
         }
     }
+    
+    func pushDetailViewController(with movie: MovieModel) {
+        let movieDetail = MovieDetailViewController(with: movie)
+        navigationController?.pushViewController(movieDetail, animated: true)
+    }
 }
