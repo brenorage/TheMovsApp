@@ -12,7 +12,7 @@ import CoreData
 public class GenreMO: NSManagedObject {
 
     @NSManaged public var genreId: Int32
-    @NSManaged public var name: String?
+    @NSManaged public var name: String
     @NSManaged public var movies: NSSet?
     
     convenience init() {

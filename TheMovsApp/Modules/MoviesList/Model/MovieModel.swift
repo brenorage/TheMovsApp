@@ -14,6 +14,7 @@ class MovieModel: Codable {
     let overview: String
     private let releaseDate: String
     let posterPath: String
+    let backdropPath: String?
     let genreIds: [Int]
     var userDefaultWrapper: UserDefaultWrapperProtocol = UserDefaultWrapper()
     
@@ -30,6 +31,7 @@ class MovieModel: Codable {
         case overview
         case releaseDate = "release_date"
         case posterPath = "poster_path"
+        case backdropPath = "backdrop_path"
         case genreIds = "genre_ids"
     }
 }
@@ -41,6 +43,16 @@ extension MovieModel {
         var url = URL(string: baseURL)
         url?.appendPathComponent("w185")
         url?.appendPathComponent(self.posterPath)
+        return url
+    }
+    
+    func getBackdropURL() -> URL? {
+        guard let backdropPath = self.backdropPath else { return nil }
+        let configModel: TMDBConfigurationModel? = userDefaultWrapper.getObjectFromJSON(with: UserDefaultWrapper.configModelKey)
+        guard let baseURL = configModel?.baseURL else { return nil }
+        var url = URL(string: baseURL)
+        url?.appendPathComponent("w500")
+        url?.appendPathComponent(backdropPath)
         return url
     }
 }

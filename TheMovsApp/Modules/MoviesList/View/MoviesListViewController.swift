@@ -93,4 +93,9 @@ extension MoviesGridViewController: MoviesGridViewProtocol {
             self.moviesGridView.removeErrorView()
         }
     }
+    
+    func pushDetailViewController(with movie: MovieModel) {
+        let movieDetail = MovieDetailViewController(with: movie)
+        navigationController?.pushViewController(movieDetail, animated: true)
+    }
 }

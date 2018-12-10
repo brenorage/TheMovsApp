@@ -9,5 +9,6 @@
 import Foundation
 
 protocol HomePresenterProtocol {
-    init(view: HomeViewProtocol)
+    init(view: HomeViewProtocol, genreClient: GenreClientProtocol, userDefault: UserDefaultWrapperProtocol)
+    func viewDidLoad()
 }

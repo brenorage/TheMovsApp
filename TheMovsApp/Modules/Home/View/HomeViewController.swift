@@ -17,7 +17,7 @@ class HomeViewController: UITabBarController {
         return presenter
     }()
     
-    init(tabs: [TabBarModel]) {
+    required init(tabs: [TabBarModel]) {
         homeTabs = tabs
         super.init(nibName: nil, bundle: nil)
     }
@@ -33,6 +33,7 @@ class HomeViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Movs"
+        presenter.viewDidLoad()
         setupAdditionalConfiguration()
     }
 

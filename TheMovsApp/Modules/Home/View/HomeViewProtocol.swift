@@ -8,4 +8,6 @@
 
 import UIKit
 
-protocol HomeViewProtocol: class { }
+protocol HomeViewProtocol: class {
+    init(tabs: [TabBarModel])
+}

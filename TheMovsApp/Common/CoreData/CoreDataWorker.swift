@@ -12,14 +12,27 @@ protocol CoreDataWorkerProtocol {
     typealias CompletionCallback<T> = (ResultType<T>) -> Void
     func fetchAll<T: NSManagedObject>(completion: @escaping CompletionCallback<[T]>)
     func save() throws
-    func delete(enity: NSManagedObject)
+    func delete(enity: NSManagedObject, completion: @escaping CompletionCallback<Bool>)
+    init(context: NSManagedObjectContext)
+    init()
 }
 
-class CoreDataWorker: CoreDataWorkerProtocol {
+
+final class CoreDataWorker: CoreDataWorkerProtocol {
+    
+    private let context: NSManagedObjectContext
+    
+    convenience init() {
+        self.init(context: CoreDataManager.shared.persistentContainer.viewContext)
+    }
+    
+    required init(context: NSManagedObjectContext) {
+        self.context = context
+    }
     
     func fetchAll<T>(completion: @escaping (ResultType<[T]>) -> Void) where T : NSManagedObject {
         let fetchRequest = NSFetchRequest<T>(entityName: T.identifier)
-        CoreDataManager.shared.persistentContainer.performBackgroundTask ({ (context) in
+        context.performAndWait {
             do {
                 let array = try context.fetch(fetchRequest) as [T]
                 completion(.success(array))
@@ -27,17 +40,20 @@ class CoreDataWorker: CoreDataWorkerProtocol {
                 print("error FetchRequest \(error)")
                 completion(.failure)
             }
-        })
+        }
     }
     
     func save() throws {
-        try CoreDataManager.shared.persistentContainer.viewContext.save()
+        if context.hasChanges {
+            try context.save()
+        }
     }
     
-    func delete(enity: NSManagedObject) {
-        CoreDataManager.shared.persistentContainer.performBackgroundTask ({ (context) in
+    func delete(enity: NSManagedObject, completion: @escaping (ResultType<Bool>) -> Void) {
+        context.performAndWait {
             context.delete(enity)
-        })
+            completion(.success(true))
+        }
     }
 
 }
