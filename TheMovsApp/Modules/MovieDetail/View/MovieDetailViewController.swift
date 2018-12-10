@@ -75,14 +75,14 @@ extension MovieDetailViewController: MovieDetailViewProtocol {
     }
     
     func fillMovieBackdrop(with url: URL?) {
-        DispatchQueue.main.async { [weak self] in
-            self?.backdropImageView.kf.setImage(with: url)
+        DispatchQueue.main.async {
+            self.backdropImageView.kf.setImage(with: url)
         }
     }
     
     func setGenreInfoHidden(_ isHidden: Bool) {
-        UIView.animate(withDuration: 0.3, animations: { [weak self] in
-            self?.genreViewContainer.isHidden = isHidden
+        UIView.animate(withDuration: 0.3, animations: {
+            self.genreViewContainer.isHidden = isHidden
         })
     }
     
