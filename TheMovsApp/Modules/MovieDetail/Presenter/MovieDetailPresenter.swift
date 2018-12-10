@@ -33,7 +33,8 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
         view?.setScreenTitle("Movie")
         view?.fillMovieTitle(with: movie.title)
         view?.fillMovieYear(with: movie.releaseYear)
-        view?.fillMovieBackdrop(with: "")
+        view?.fillMovieBackdrop(with: movie.getBackdropURL())
+        view?.setGenreInfoHidden(true)
         getSavedGenres()
     }
     
@@ -67,8 +68,9 @@ extension MovieDetailPresenter {
         if savedGenres.count > 0 { // Possui generos salvos
             let filteredGenres = savedGenres.filter({ movie.genreIds.contains(Int($0.genreId)) }).map({ $0.name })
             let genresString = filteredGenres.joined(separator: ", ")
-            DispatchQueue.main.async {
-                self.view?.fillMovieGenre(with: genresString)
+            DispatchQueue.main.async { [weak self] in
+                self?.view?.fillMovieGenre(with: genresString)
+                self?.view?.setGenreInfoHidden(false)
             }
         } else {
             downloadGenres()

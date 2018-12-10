@@ -7,19 +7,27 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MovieDetailViewController: UIViewController {
     
-    @IBOutlet weak var backdropImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var yearLabel: UILabel!
-    @IBOutlet weak var genreLabel: UILabel!
-    @IBOutlet weak var plotLabel: UILabel!
+    @IBOutlet private weak var backdropImageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var yearLabel: UILabel!
+    @IBOutlet private weak var genreLabel: UILabel!
+    @IBOutlet private weak var genreViewContainer: UIView!
+    @IBOutlet private weak var plotLabel: UILabel!
     
     private var presenter: MovieDetailPresenterProtocol
     
     required init(with movie: MovieModel) {
         presenter = MovieDetailPresenter(with: movie)
+        super.init(nibName: MovieDetailViewController.identifier, bundle: .main)
+        presenter.attachView(self)
+    }
+    
+    required init(presenter: MovieDetailPresenterProtocol) {
+        self.presenter = presenter
         super.init(nibName: MovieDetailViewController.identifier, bundle: .main)
         presenter.attachView(self)
     }
@@ -48,10 +56,6 @@ extension MovieDetailViewController: MovieDetailViewProtocol {
         self.title = title
     }
     
-    func setFavoriteMovie(_ isFavorite: Bool) {
-        //TODO
-    }
-    
     func fillMovieTitle(with title: String?) {
         titleLabel.text = title
     }
@@ -60,16 +64,25 @@ extension MovieDetailViewController: MovieDetailViewProtocol {
         yearLabel.text = year
     }
     
-    func fillMovieGenre(with genre: String?) {
+    func fillMovieGenre(with genre: String) {
         genreLabel.text = genre
+        
     }
     
     func fillMoviePlot(with plot: String?) {
         plotLabel.text = plot
     }
     
-    func fillMovieBackdrop(with url: String?) {
-        //TODO
+    func fillMovieBackdrop(with url: URL?) {
+        DispatchQueue.main.async { [weak self] in
+            self?.backdropImageView.kf.setImage(with: url)
+        }
+    }
+    
+    func setGenreInfoHidden(_ isHidden: Bool) {
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.genreViewContainer.isHidden = isHidden
+        })
     }
     
 }

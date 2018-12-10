@@ -17,9 +17,6 @@ final class MovieDetailPresenterSpec: XCTestCase {
     private var coreDataWorkerStub: CoreDataWorkerStub!
     private var genreClienStub: GenreClientStub!
     private var detailVewController: ViewControllerStub!
-    private var serviceStub: ServiceStub!
-    
-    private let bundle = Bundle(for: MovieDetailPresenterSpec.self)
     
     override func setUp() {
         
@@ -29,8 +26,7 @@ final class MovieDetailPresenterSpec: XCTestCase {
         
         modelStub = try! JSONDecoder().decode(MovieModel.self, from: jsonData)
         coreDataWorkerStub = CoreDataWorkerStub()
-        serviceStub = ServiceStub()
-        genreClienStub = GenreClientStub(httpService: serviceStub, coreDataWorker: coreDataWorkerStub)
+        genreClienStub = GenreClientStub(httpService: HTTPServices(), coreDataWorker: coreDataWorkerStub)
         
         sut = MovieDetailPresenter(with: modelStub,
                                    coreDataWorker: coreDataWorkerStub,
@@ -42,28 +38,33 @@ final class MovieDetailPresenterSpec: XCTestCase {
         
     }
     
-    func testGenreInfoShouldBeTreatedInAGoodFormat() {
-        coreDataWorkerStub.shouldReturnEmptyList = false
-        sut.viewDidLoad()
-        wait(for: 1)
-        XCTAssertEqual("Adventure, Horror", detailVewController.genreString)
-    }
-    
-    func testShouldDownloadGenresInCaseTheyAreEmpty() {
+    func testShouldCallDownloadGenresInCaseTheyAreEmptyInDatabase() {
+        let expectation = XCTestExpectation(description: "Test if the list of genres will be downloaded in case they are empty")
         coreDataWorkerStub.shouldReturnEmptyList = true
         sut.viewDidLoad()
-        wait(for: 1)
-        XCTAssertEqual("Adventure, Horror", detailVewController.genreString)
+        expectation.fulfill()
+        wait(for: [expectation], timeout: 2.0)
+    }
+    
+    func testGenreInfoShouldBeTreatedInAGoodFormat() {
+        let expectation = XCTestExpectation(description: "Test if movie genre will be treated in the correct format with previously saved list of genres")
+        coreDataWorkerStub.shouldReturnEmptyList = false
+        sut.viewDidLoad()
+        expectation.fulfill()
+        wait(for: [expectation], timeout: 2.0)
     }
     
 }
 
 private final class ViewControllerStub: UIViewController, MovieDetailViewProtocol {
     
-    var genreString: String?
     var presenter: MovieDetailPresenterProtocol!
     
     required init(with movie: MovieModel) {
+        super.init(nibName: MovieDetailViewController.identifier, bundle: .main)
+    }
+    
+    required init(presenter: MovieDetailPresenterProtocol) {
         super.init(nibName: MovieDetailViewController.identifier, bundle: .main)
     }
     
@@ -75,11 +76,12 @@ private final class ViewControllerStub: UIViewController, MovieDetailViewProtoco
     func setFavoriteMovie(_ isFavorite: Bool) { }
     func fillMovieTitle(with title: String?) { }
     func fillMovieYear(with year: String?) { }
-    func fillMovieGenre(with genre: String?) {
-        genreString = genre
+    func fillMovieGenre(with genre: String) {
+        XCTAssertEqual("Adventure, Horror", genre)
     }
     func fillMoviePlot(with plot: String?) { }
-    func fillMovieBackdrop(with url: String?) { }
+    func fillMovieBackdrop(with url: URL?) { }
+    func setGenreInfoHidden(_ isHidden: Bool) { }
     
 }
 
@@ -88,7 +90,7 @@ private final class CoreDataWorkerStub: CoreDataWorkerProtocol {
     var shouldReturnEmptyList = true
     
     init() { }
-    init(persistentContainer: NSPersistentContainer) { }
+    init(context: NSManagedObjectContext) { }
     func fetchAll<T>(completion: @escaping (ResultType<Array<T>>) -> ()) where T : NSManagedObject {
         if shouldReturnEmptyList {
             completion(.success([]))
@@ -116,43 +118,11 @@ private final class GenreClientStub: GenreClientProtocol {
         self.httpService = httpService
         self.coreDataWorkerStub = coreDataWorker as! CoreDataWorkerStub
     }
+    
     func getGenres(completion: @escaping RequestCallback<Bool>) {
         
         httpService.get(url: injectedURL, completion: { (result: ResultType<GenreResponseModel>) in
-            self.coreDataWorkerStub.shouldReturnEmptyList = false
-            completion(.success(true))
+            XCTAssert(true)
         })
-    }
-}
-
-private final class ServiceStub: HTTPServicesProtocol {
-    
-    var injectedURL: URL!
-    
-    func get<T: Decodable>(url: URL, completion: @escaping (ResultType<T>) -> ()) {
-        
-        let bundle = Bundle(for: ServiceStub.self)
-        let url = bundle.url(forResource: "Genres", withExtension: "json")!
-        let jsonData = try! Data(contentsOf: url)
-        let response = try! JSONDecoder().decode(GenreResponseModel.self, from: jsonData)
-        
-        let genreResponse = response as! T
-        completion(.success(genreResponse))
-    }
-    
-}
-
-extension XCTestCase {
-    
-    func wait(for duration: TimeInterval) {
-        let waitExpectation = expectation(description: "Waiting")
-        
-        let when = DispatchTime.now() + duration
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            waitExpectation.fulfill()
-        }
-        
-        // We use a buffer here to avoid flakiness with Timer on CI
-        waitForExpectations(timeout: duration + 0.5)
     }
 }

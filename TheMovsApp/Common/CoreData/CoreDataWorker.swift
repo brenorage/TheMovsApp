@@ -13,26 +13,26 @@ protocol CoreDataWorkerProtocol {
     func fetchAll<T: NSManagedObject>(completion: @escaping CompletionCallback<[T]>)
     func save() throws
     func delete(enity: NSManagedObject, completion: @escaping CompletionCallback<Bool>)
-    init(persistentContainer: NSPersistentContainer)
+    init(context: NSManagedObjectContext)
     init()
 }
 
 
 final class CoreDataWorker: CoreDataWorkerProtocol {
     
-    private let persistentContainer: NSPersistentContainer
+    private let context: NSManagedObjectContext
     
     convenience init() {
-        self.init(persistentContainer: CoreDataManager.shared.persistentContainer)
+        self.init(context: CoreDataManager.shared.persistentContainer.newBackgroundContext())
     }
     
-    required init(persistentContainer: NSPersistentContainer) {
-        self.persistentContainer = persistentContainer
+    required init(context: NSManagedObjectContext) {
+        self.context = context
     }
     
     func fetchAll<T>(completion: @escaping (ResultType<[T]>) -> Void) where T : NSManagedObject {
         let fetchRequest = NSFetchRequest<T>(entityName: T.identifier)
-        persistentContainer.performBackgroundTask ({ (context) in
+        context.performAndWait {
             do {
                 let array = try context.fetch(fetchRequest) as [T]
                 completion(.success(array))
@@ -40,18 +40,20 @@ final class CoreDataWorker: CoreDataWorkerProtocol {
                 print("error FetchRequest \(error)")
                 completion(.failure)
             }
-        })
+        }
     }
     
     func save() throws {
-        try persistentContainer.viewContext.save()
+        if context.hasChanges {
+            try context.save()
+        }
     }
     
     func delete(enity: NSManagedObject, completion: @escaping (ResultType<Bool>) -> Void) {
-        persistentContainer.performBackgroundTask ({ (context) in
+        context.performAndWait {
             context.delete(enity)
             completion(.success(true))
-        })
+        }
     }
 
 }
