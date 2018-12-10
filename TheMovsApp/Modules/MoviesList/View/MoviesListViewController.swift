@@ -81,4 +81,16 @@ extension MoviesGridViewController: MoviesGridViewProtocol {
             self.moviesGridView.moviesCollectionView.reloadData()
         }
     }
+    
+    func showError() {
+        DispatchQueue.main.async {
+            self.moviesGridView.setErrorView()
+        }
+    }
+    
+    func hideError() {
+        DispatchQueue.main.async {
+            self.moviesGridView.removeErrorView()
+        }
+    }
 }

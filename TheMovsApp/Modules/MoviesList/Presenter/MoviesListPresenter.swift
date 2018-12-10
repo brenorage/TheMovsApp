@@ -34,7 +34,7 @@ extension MoviesListPresenter {
             case .success(_):
                 self?.viewProtocol?.showMoviesGrid()
             case .failure:
-                break
+                self?.treatError()
             }
         }
     }
@@ -57,5 +57,10 @@ extension MoviesListPresenter {
     
     private func getConfigModel() {
         tmdbConfigClient.getConfigurationModel(completion: nil)
+    }
+    
+    private func treatError() {
+        viewProtocol?.hideMoviesGrid()
+        viewProtocol?.showError()
     }
 }

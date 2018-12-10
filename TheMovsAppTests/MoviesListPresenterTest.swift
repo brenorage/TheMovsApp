@@ -34,12 +34,25 @@ class MoviesListPresenterTest: XCTestCase {
         presenter.getMoreMovies()
         XCTAssert(viewMock.calledReloadMovies)
     }
+    
+    func testIfPresenterCallErrorInFirstTimeOfDownloadList() {
+        clientMock.result = .failure
+        presenter.getList()
+        XCTAssert(viewMock.calledShowError)
+    }
+    
+    func testIfPresenterNotCallErrorInGetMoreMovies() {
+        clientMock.result = .failure
+        presenter.getMoreMovies()
+        XCTAssert(!viewMock.calledShowError)
+    }
 }
 
 class MockMoviesListView: MoviesGridViewProtocol {
     
     var calledShowMovies = false
     var calledReloadMovies = false
+    var calledShowError = false
     
     func showLoading() {}
     
@@ -54,14 +67,23 @@ class MockMoviesListView: MoviesGridViewProtocol {
     func reloadMoviesGrid() {
         calledReloadMovies = true
     }
+    
+    func showError() {
+        calledShowError = true
+    }
+    
+    func hideError() {
+    }
 }
 
 class MockMoviesClient: MoviesListClientProtocol {
     var movies: [MoviesPage] = []
     
+    var result: ResultType<Int> = .success(2)
+    
     required init(httpService: HTTPServicesProtocol = HTTPServices()) { }
     
     func getMovies(completion: @escaping ((ResultType<Int>) -> Void)) {
-        completion(.success(2))
+        completion(result)
     }
 }
