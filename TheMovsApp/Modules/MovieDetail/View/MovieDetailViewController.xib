@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailViewController" customModule="TheMovsApp" customModuleProvider="target">
             <connections>
                 <outlet property="backdropImageView" destination="HrN-wg-XdT" id="I8u-Kz-JwQ"/>
+                <outlet property="favoriteButton" destination="ecW-WI-RR5" id="0li-sW-qyu"/>
                 <outlet property="genreLabel" destination="oKu-R0-YUV" id="76F-ge-aUV"/>
                 <outlet property="genreViewContainer" destination="vjc-cm-sho" id="2hb-57-3aR"/>
                 <outlet property="plotLabel" destination="JqL-df-bxi" id="xg7-dM-mrj"/>
@@ -44,12 +45,23 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wOS-YR-cRC">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZA-g7-CTE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZA-g7-CTE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecW-WI-RR5">
+                                                    <rect key="frame" x="298" y="0.0" width="45" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="45" id="NZi-8Z-g0S"/>
+                                                    </constraints>
+                                                    <state key="normal" image="ic_favorite_off"/>
+                                                    <state key="selected" image="ic_favorite_on"/>
+                                                    <connections>
+                                                        <action selector="didTouchFavorite:" destination="-1" eventType="touchUpInside" id="Lkn-Vm-TwP"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </stackView>
                                         <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6vu-hV-yT4">
@@ -141,4 +153,8 @@
             <point key="canvasLocation" x="138.40000000000001" y="120.98950524737631"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_favorite_off" width="17" height="16"/>
+        <image name="ic_favorite_on" width="18" height="16"/>
+    </resources>
 </document>

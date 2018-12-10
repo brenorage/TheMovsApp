@@ -17,5 +17,6 @@ protocol MovieDetailViewProtocol: class {
     func fillMovieGenre(with genre: String)
     func fillMoviePlot(with plot: String?)
     func fillMovieBackdrop(with url: URL?)
-    func setGenreInfoHidden(_ isHidden: Bool) 
+    func setFavorite(_ isFavorite: Bool)
+    func setGenreInfoHidden(_ isHidden: Bool)
 }

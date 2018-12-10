@@ -11,6 +11,7 @@ import CoreData
 protocol CoreDataWorkerProtocol {
     typealias CompletionCallback<T> = (ResultType<T>) -> Void
     func fetchAll<T: NSManagedObject>(completion: @escaping CompletionCallback<[T]>)
+    func fetch<T: NSManagedObject>(with predicate: NSPredicate, completion: @escaping CompletionCallback<[T]>)
     func save() throws
     func delete(enity: NSManagedObject, completion: @escaping CompletionCallback<Bool>)
     init(context: NSManagedObjectContext)
@@ -32,6 +33,20 @@ final class CoreDataWorker: CoreDataWorkerProtocol {
     
     func fetchAll<T>(completion: @escaping (ResultType<[T]>) -> Void) where T : NSManagedObject {
         let fetchRequest = NSFetchRequest<T>(entityName: T.identifier)
+        context.performAndWait {
+            do {
+                let array = try context.fetch(fetchRequest) as [T]
+                completion(.success(array))
+            } catch let error {
+                print("error FetchRequest \(error)")
+                completion(.failure)
+            }
+        }
+    }
+    
+    func fetch<T>(with predicate: NSPredicate, completion: @escaping (ResultType<[T]>) -> Void) where T : NSManagedObject {
+        let fetchRequest = NSFetchRequest<T>(entityName: T.identifier)
+        fetchRequest.predicate = predicate
         context.performAndWait {
             do {
                 let array = try context.fetch(fetchRequest) as [T]

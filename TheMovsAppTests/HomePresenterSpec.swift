@@ -95,7 +95,7 @@ private final class CoreDataWorkerStub: CoreDataWorkerProtocol {
     init() { }
     init(context: NSManagedObjectContext) { }
     func fetchAll<T>(completion: @escaping (ResultType<Array<T>>) -> ()) where T : NSManagedObject { }
-    func save() throws {
-    }
+    func fetch<T>(with predicate: NSPredicate, completion: @escaping (ResultType<Array<T>>) -> ()) where T : NSManagedObject { }
+    func save() throws { }
     func delete(enity: NSManagedObject, completion: @escaping (ResultType<Bool>) -> ()) { }
 }

@@ -17,6 +17,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet private weak var genreLabel: UILabel!
     @IBOutlet private weak var genreViewContainer: UIView!
     @IBOutlet private weak var plotLabel: UILabel!
+    @IBOutlet private weak var favoriteButton: UIButton!
     
     private var presenter: MovieDetailPresenterProtocol
     
@@ -46,7 +47,10 @@ class MovieDetailViewController: UIViewController {
         setupAccessibility()
     }
     
-
+    @IBAction func didTouchFavorite(_ sender: Any) {
+        presenter.didTouchFavoriteMovie()
+    }
+    
 }
 
 // MARK: - MovieDetailViewProtocol
@@ -78,6 +82,10 @@ extension MovieDetailViewController: MovieDetailViewProtocol {
         DispatchQueue.main.async {
             self.backdropImageView.kf.setImage(with: url)
         }
+    }
+    
+    func setFavorite(_ isFavorite: Bool) {
+        favoriteButton.isSelected = isFavorite
     }
     
     func setGenreInfoHidden(_ isHidden: Bool) {

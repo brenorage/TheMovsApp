@@ -56,5 +56,6 @@ private final class CoreDataWorkerStub: CoreDataWorkerProtocol {
     func save() throws {
         XCTAssertTrue(true)
     }
+    func fetch<T>(with predicate: NSPredicate, completion: @escaping (ResultType<Array<T>>) -> ()) where T : NSManagedObject { }
     func delete(enity: NSManagedObject, completion: @escaping (ResultType<Bool>) -> ()) { }
 }
