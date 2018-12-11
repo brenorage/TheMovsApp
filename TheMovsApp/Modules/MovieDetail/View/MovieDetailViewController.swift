@@ -17,8 +17,10 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet private weak var genreLabel: UILabel!
     @IBOutlet private weak var genreViewContainer: UIView!
     @IBOutlet private weak var plotLabel: UILabel!
+    @IBOutlet private weak var favoriteButton: UIButton!
     
     private var presenter: MovieDetailPresenterProtocol
+    var favoriteDelegate: FavoriteMovieDelegate?
     
     required init(with movie: MovieModel) {
         presenter = MovieDetailPresenter(with: movie)
@@ -26,7 +28,7 @@ class MovieDetailViewController: UIViewController {
         presenter.attachView(self)
     }
     
-    required init(presenter: MovieDetailPresenterProtocol) {
+    init(presenter: MovieDetailPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: MovieDetailViewController.identifier, bundle: .main)
         presenter.attachView(self)
@@ -46,7 +48,10 @@ class MovieDetailViewController: UIViewController {
         setupAccessibility()
     }
     
-
+    @IBAction func didTouchFavorite(_ sender: Any) {
+        presenter.didTouchFavoriteMovie()
+    }
+    
 }
 
 // MARK: - MovieDetailViewProtocol
@@ -66,8 +71,9 @@ extension MovieDetailViewController: MovieDetailViewProtocol {
     }
     
     func fillMovieGenre(with genre: String) {
-        genreLabel.text = genre
-        
+        DispatchQueue.main.async {
+            self.genreLabel.text = genre
+        }
     }
     
     func fillMoviePlot(with plot: String?) {
@@ -80,10 +86,16 @@ extension MovieDetailViewController: MovieDetailViewProtocol {
         }
     }
     
+    func setFavorite(_ isFavorite: Bool) {
+        favoriteButton.isSelected = isFavorite
+    }
+    
     func setGenreInfoHidden(_ isHidden: Bool) {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.genreViewContainer.isHidden = isHidden
-        })
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.genreViewContainer.isHidden = isHidden
+            })
+        }
     }
     
 }

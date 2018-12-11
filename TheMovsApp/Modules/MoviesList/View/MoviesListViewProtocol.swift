@@ -17,4 +17,5 @@ protocol MoviesGridViewProtocol: class {
     func showError()
     func hideError()
     func pushDetailViewController(with movie: MovieModel)
+    func reloadRow(at indexPath: IndexPath)
 }

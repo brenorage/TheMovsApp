@@ -17,10 +17,11 @@ class MoviesListPresenter: MoviesListPresenterProtocol {
     var moviesPages: [MoviesPage] {
         return moviesClient.movies
     }
-    
+ 
     init(moviesClient: MoviesListClientProtocol = MoviesListClient()) {
         self.moviesClient = moviesClient
     }
+
 }
 
 //MARK: List methods
@@ -63,4 +64,23 @@ extension MoviesListPresenter {
         viewProtocol?.hideMoviesGrid()
         viewProtocol?.showError()
     }
+
+}
+
+// MARK: - FavoriteMovieDelegate
+
+extension MoviesListPresenter: FavoriteMovieDelegate {
+    
+    func didFavoriteMovie(_ movieId: Int) {
+        let allMoviesArray = moviesPages.flatMap({ $0 })
+        if let indexPath = allMoviesArray
+                                .enumerated()
+                                    .filter({ $1.movieId == movieId })
+                                      .map({ return IndexPath(item: $0.offset, section: 0) })
+                                        .first {
+            
+            viewProtocol?.reloadRow(at: indexPath)
+        }
+    }
+    
 }

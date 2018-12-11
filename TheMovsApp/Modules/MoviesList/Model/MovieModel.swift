@@ -10,18 +10,22 @@ import Foundation
 
 class MovieModel: Codable {
     
-    let title: String
-    let overview: String
-    private let releaseDate: String
-    let posterPath: String
+    let movieId: Int?
+    let title: String?
+    let overview: String?
+    private let releaseDate: String?
+    let posterPath: String?
     let backdropPath: String?
-    let genreIds: [Int]
+    let genreIds: [Int]?
     var userDefaultWrapper: UserDefaultWrapperProtocol = UserDefaultWrapper()
+    var isFavorite: Bool = false
+    var cachedGenres: [GenreMO] = []
     
     var releaseYear: String? {
+        guard let releaseDate = self.releaseDate else { return nil }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        guard let date = dateFormatter.date(from: self.releaseDate) else { return nil }
+        guard let date = dateFormatter.date(from: releaseDate) else { return nil }
         let year = Calendar.current.component(.year, from: date)
         return "\(year)"
     }
@@ -29,6 +33,7 @@ class MovieModel: Codable {
     enum CodingKeys: String, CodingKey {
         case title
         case overview
+        case movieId = "id"
         case releaseDate = "release_date"
         case posterPath = "poster_path"
         case backdropPath = "backdrop_path"
@@ -38,11 +43,12 @@ class MovieModel: Codable {
 
 extension MovieModel {
     func getPosterURL() -> URL? {
+        guard let posterPath = self.posterPath else { return nil }
         let configModel: TMDBConfigurationModel? = userDefaultWrapper.getObjectFromJSON(with: UserDefaultWrapper.configModelKey)
         guard let baseURL = configModel?.baseURL else { return nil }
         var url = URL(string: baseURL)
         url?.appendPathComponent("w185")
-        url?.appendPathComponent(self.posterPath)
+        url?.appendPathComponent(posterPath)
         return url
     }
     

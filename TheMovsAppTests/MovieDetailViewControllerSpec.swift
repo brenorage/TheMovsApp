@@ -51,7 +51,7 @@ final class MovieDetailViewControllerSpec: QuickSpec {
 
 
 private final class PresenterStub: MovieDetailPresenterProtocol {
-    
+ 
     weak var view: MovieDetailViewProtocol?
     let movie: MovieModel
     
@@ -65,6 +65,8 @@ private final class PresenterStub: MovieDetailPresenterProtocol {
         self.view = view
     }
     
+    func didTouchFavoriteMovie() { }
+    
     func viewDidLoad() {
         view?.setScreenTitle("Movie")
         view?.fillMovieTitle(with: movie.title)
@@ -72,6 +74,7 @@ private final class PresenterStub: MovieDetailPresenterProtocol {
         view?.fillMoviePlot(with: movie.overview)
         view?.fillMovieBackdrop(with: movie.getBackdropURL())
         view?.fillMovieGenre(with: "Adventure, Horror")
+        view?.setFavorite(movie.isFavorite)
         view?.setGenreInfoHidden(false)
     }
     
