@@ -10,7 +10,6 @@ import Foundation
 
 protocol MovieDetailViewProtocol: class {
     init(with movie: MovieModel)
-    init(presenter: MovieDetailPresenterProtocol)
     func setScreenTitle(_ title: String)
     func fillMovieTitle(with title: String?)
     func fillMovieYear(with year: String?)
@@ -19,4 +18,5 @@ protocol MovieDetailViewProtocol: class {
     func fillMovieBackdrop(with url: URL?)
     func setFavorite(_ isFavorite: Bool)
     func setGenreInfoHidden(_ isHidden: Bool)
+    var favoriteDelegate: FavoriteMovieDelegate? { get set }
 }

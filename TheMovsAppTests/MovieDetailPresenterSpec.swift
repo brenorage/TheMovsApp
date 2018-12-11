@@ -80,6 +80,7 @@ private final class ViewControllerStub: UIViewController, MovieDetailViewProtoco
     var presenter: MovieDetailPresenterProtocol!
     var expectation: XCTestExpectation?
     var treatedGenre: String?
+    var favoriteDelegate: FavoriteMovieDelegate?
     
     required init(with movie: MovieModel) {
         super.init(nibName: MovieDetailViewController.identifier, bundle: .main)

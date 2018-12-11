@@ -7,16 +7,19 @@
 //
 
 import XCTest
+import CoreData
 @testable import TheMovsApp
 
-class MoviesClientTest: XCTestCase {
+final class MoviesClientTest: XCTestCase {
     
-    var httpServices: HTTPServiceMock!
-    var moviesClient: MoviesListClient!
+    private var httpServices: HTTPServiceMock!
+    private var moviesClient: MoviesListClient!
+    private var coreDataWorkerStub: CoreDataWorkerStub!
     
     override func setUp() {
         httpServices = HTTPServiceMock()
-        moviesClient = MoviesListClient(httpService: httpServices)
+        coreDataWorkerStub = CoreDataWorkerStub()
+        moviesClient = MoviesListClient(httpService: httpServices, coreDataWorker: coreDataWorkerStub)
     }
 
     override func tearDown() {
@@ -42,10 +45,30 @@ class MoviesClientTest: XCTestCase {
         
         wait(for: [expectation], timeout: 1.0)
     }
+    
+    func testIfMovieListContainsFavoritedMovieBasedOnMoviesSavedInDatabase() {
+        let expectation = XCTestExpectation(description: "Test if contains favorite movies")
+        let filePath = Bundle(for: MoviesClientTest.self).path(forResource: "MoviesListPage1", ofType: ".json")!
+        httpServices.injectedURL = URL(fileURLWithPath: filePath)
+        moviesClient.getMovies { result in
+            switch result {
+            case .success(_):
+                let firstMovie = self.moviesClient.movies.first!.first!
+                XCTAssertTrue(firstMovie.isFavorite)
+            case .failure:
+                XCTFail()
+            }
+            
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
 }
 
 
-class HTTPServiceMock: HTTPServicesProtocol {
+private final class HTTPServiceMock: HTTPServicesProtocol {
     
     var injectedURL: URL!
     
@@ -54,4 +77,18 @@ class HTTPServiceMock: HTTPServicesProtocol {
         let object = try! JSONDecoder().decode(T.self, from: data)
         completion(.success(object))
     }
+}
+
+private final class CoreDataWorkerStub: CoreDataWorkerProtocol {
+    init() { }
+    init(context: NSManagedObjectContext) { }
+    func fetchAll<T>(completion: @escaping (ResultType<Array<T>>) -> ()) where T : NSManagedObject {
+        let movie = MovieMO()
+        movie.title = "Venom"
+        movie.movieId = Int32(335983)
+        completion(.success([movie] as! [T]))
+    }
+    func fetch<T>(with predicate: NSPredicate, completion: @escaping (ResultType<Array<T>>) -> ()) where T : NSManagedObject { }
+    func save() throws { }
+    func delete(enity: NSManagedObject, completion: @escaping (ResultType<Bool>) -> ()) { }
 }

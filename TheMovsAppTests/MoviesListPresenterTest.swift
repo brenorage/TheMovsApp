@@ -46,6 +46,11 @@ class MoviesListPresenterTest: XCTestCase {
         presenter.getMoreMovies()
         XCTAssert(!viewMock.calledShowError)
     }
+    
+    func testIfFavoriteMovieActionWillReloadTheCorretRowIndexPath() {
+        presenter.didFavoriteMovie(335983)
+        XCTAssertEqual(viewMock.calledIndexPath, IndexPath(item: 0, section: 0))
+    }
 }
 
 class MockMoviesListView: MoviesGridViewProtocol {
@@ -53,6 +58,7 @@ class MockMoviesListView: MoviesGridViewProtocol {
     var calledShowMovies = false
     var calledReloadMovies = false
     var calledShowError = false
+    var calledIndexPath: IndexPath?
     
     func showLoading() {}
     
@@ -77,14 +83,26 @@ class MockMoviesListView: MoviesGridViewProtocol {
     
     func pushDetailViewController(with movie: MovieModel) {
     }
+    
+    func reloadRow(at indexPath: IndexPath) {
+        calledIndexPath = indexPath
+    }
 }
 
 class MockMoviesClient: MoviesListClientProtocol {
-    var movies: [MoviesPage] = []
+    
+    var movies: [MoviesPage] = {
+        let bundle = Bundle(for: MoviesListPresenterTest.self)
+        let url = bundle.url(forResource: "MoviesListPage1", withExtension: "json")!
+        let jsonData = try! Data(contentsOf: url)
+        let object = try! JSONDecoder().decode(MoviesListModel.self, from: jsonData)
+        return [object.results]
+    }()
     
     var result: ResultType<Int> = .success(2)
     
-    required init(httpService: HTTPServicesProtocol = HTTPServices()) { }
+    required init(httpService: HTTPServicesProtocol = HTTPServices(),
+                  coreDataWorker: CoreDataWorkerProtocol = CoreDataWorker()) { }
     
     func getMovies(completion: @escaping ((ResultType<Int>) -> Void)) {
         completion(result)

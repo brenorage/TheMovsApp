@@ -58,7 +58,7 @@ class MoviesGridViewSpec: QuickSpec {
     }
 }
 
-class MockMoviesListPresenter: MoviesListPresenterProtocol {
+class MockMoviesListPresenter: MoviesListPresenterProtocol, FavoriteMovieDelegate {
     
     weak var viewProtocol: MoviesGridViewProtocol?
     
@@ -85,5 +85,9 @@ class MockMoviesListPresenter: MoviesListPresenterProtocol {
         let object = try! JSONDecoder().decode(MoviesListModel.self, from: data)
         moviesPages.append(object.results)
         viewProtocol?.reloadMoviesGrid()
+    }
+    
+    func didFavoriteMovie(_ movieId: Int) {
+        
     }
 }

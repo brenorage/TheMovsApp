@@ -14,3 +14,4 @@ protocol MoviesListPresenterProtocol: class {
     func getList()
     func getMoreMovies()
 }
+
