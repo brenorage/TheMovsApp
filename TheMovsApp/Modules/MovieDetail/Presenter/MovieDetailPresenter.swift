@@ -35,14 +35,8 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
         view?.fillMovieYear(with: movie.releaseYear)
         view?.fillMoviePlot(with: movie.overview)
         view?.setFavorite(movie.isFavorite)
-        if let backdropUrl = movie.getBackdropURL() {
-            view?.fillMovieBackdrop(with: backdropUrl)
-        }
-        if movie.cachedGenres.isEmpty {
-            getSavedGenres(downloadIfEmpty: true)
-        } else {
-            handleSavedGenres(with: movie.cachedGenres)
-        }
+        setupBackdrop()
+        setupGenres()
     }
     
     func didTouchFavoriteMovie() {
@@ -59,14 +53,26 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
 
 extension MovieDetailPresenter {
     
+    private func setupBackdrop() {
+        if let backdropUrl = movie.getBackdropURL() {
+            view?.fillMovieBackdrop(with: backdropUrl)
+        }
+    }
+    
+    private func setupGenres() {
+        if movie.cachedGenres.isEmpty {
+            getSavedGenres(downloadIfEmpty: true)
+        } else {
+            handleSavedGenres(with: movie.cachedGenres)
+        }
+    }
+    
     // Pega o array de generos salvos no Core Data
     private func getSavedGenres(downloadIfEmpty: Bool) {
         coreDataWorker.fetchAll() { [weak self] (result: ResultType<[GenreMO]>) in
             if case let .success(genres) = result {
                 if !genres.isEmpty {
-                    DispatchQueue.main.async {
-                        self?.handleSavedGenres(with: genres)
-                    }
+                    self?.handleSavedGenres(with: genres)
                 } else if downloadIfEmpty {
                     self?.downloadGenres()
                 }
@@ -123,9 +129,7 @@ extension MovieDetailPresenter {
     private func deleteMovie(_ movieMO: MovieMO) {
         coreDataWorker.delete(enity: movieMO) { result in
             if case .success(_) = result {
-                DispatchQueue.main.async {
-                    self.saveCoreDataChanges()
-                }
+                self.saveCoreDataChanges()
             }
         }
     }

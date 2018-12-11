@@ -71,8 +71,9 @@ extension MovieDetailViewController: MovieDetailViewProtocol {
     }
     
     func fillMovieGenre(with genre: String) {
-        genreLabel.text = genre
-        
+        DispatchQueue.main.async {
+            self.genreLabel.text = genre
+        }
     }
     
     func fillMoviePlot(with plot: String?) {
@@ -90,9 +91,11 @@ extension MovieDetailViewController: MovieDetailViewProtocol {
     }
     
     func setGenreInfoHidden(_ isHidden: Bool) {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.genreViewContainer.isHidden = isHidden
-        })
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.genreViewContainer.isHidden = isHidden
+            })
+        }
     }
     
 }
