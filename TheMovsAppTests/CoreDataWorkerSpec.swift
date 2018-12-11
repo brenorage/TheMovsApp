@@ -36,16 +36,16 @@ final class CoreDataWorkerSpec: XCTestCase {
     
     func testSaveShouldNotCallContextSaveIfThereIsNoChanges() {
         try! sut.save()
-        XCTAssertFalse(contextStub.calledSave)
+        XCTAssertFalse(contextStub.didCallSave)
     }
-    
+
     
 }
 
 private final class ManagedObjectContextStub: NSManagedObjectContext {
     
-    var calledSave = false
-    var calledDelete = false
+    var didCallSave = false
+    var didCallDelete = false
     
     override func fetch(_ request: NSFetchRequest<NSFetchRequestResult>) throws -> [Any] {
         let genre1 = GenreMO()
@@ -54,15 +54,17 @@ private final class ManagedObjectContextStub: NSManagedObjectContext {
         let genre2 = GenreMO()
         genre2.name = "Horror"
         genre2.genreId = Int32(27)
+        
+
         return [genre1, genre2]
     }
     
     override func save() throws {
-        calledSave = true
+        didCallSave = true
     }
     
     override func delete(_ object: NSManagedObject) {
-        calledDelete = true
+        didCallDelete = true
     }
     
 }
