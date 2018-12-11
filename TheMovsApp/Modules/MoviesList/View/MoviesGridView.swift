@@ -29,6 +29,11 @@ class MoviesGridView: UIView {
         return activityIndicator
     }()
     
+    let genericView: GenericErrorView = {
+        let view = GenericErrorView()
+        return view
+    }()
+    
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         setupView()
@@ -43,6 +48,7 @@ extension MoviesGridView: CodeView {
     func buildViewHierarchy() {
         addSubview(activityIndicator)
         addSubview(moviesCollectionView)
+        addSubview(genericView)
     }
     
     func setupConstraints() {
@@ -53,14 +59,7 @@ extension MoviesGridView: CodeView {
         activityIndicator.snp.makeConstraints { maker in
             maker.centerX.centerY.equalToSuperview()
         }
-    }
-    
-    func setupAdditionalConfiguration() {
-        self.backgroundColor = UIColor.lightYellow
-    }
-    
-    func setStateView(with genericView: GenericErrorView) {
-        addSubview(genericView)
+        
         genericView.snp.makeConstraints { maker in
             maker.top.equalTo(safeAreaLayoutGuide.snp.top).offset(5)
             maker.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(5)
@@ -69,7 +68,11 @@ extension MoviesGridView: CodeView {
         }
     }
     
-    func removeErrorView() {
-        errorView.removeFromSuperview()
+    func setupAdditionalConfiguration() {
+        self.backgroundColor = UIColor.lightYellow
+    }
+    
+    func setStateView(with model: GenericErrorModel) {
+        genericView.model = model
     }
 }

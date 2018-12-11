@@ -10,13 +10,17 @@ import UIKit
 
 final class GenericErrorView: UIView {
     
-    private var model: GenericErrorModel
+    var model: GenericErrorModel? {
+        didSet {
+            errorImage.image = model?.image
+            errorImage.tintColor = model?.imageColor
+            errorMessage.text = model?.message
+        }
+    }
     
     private lazy var errorImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = model.image
-        imageView.tintColor = model.imageColor
         return imageView
     }()
     
@@ -25,10 +29,9 @@ final class GenericErrorView: UIView {
         label.font = label.font.withSize(28)
         label.textAlignment = .center
         label.textColor = .black
-        label.accessibilityHint = model.message
+        label.accessibilityHint = model?.message
         label.accessibilityLabel = "Campo da mensagem de erro"
         label.numberOfLines = 0
-        label.text = model.message
         return label
     }()
     
@@ -40,8 +43,7 @@ final class GenericErrorView: UIView {
         return stackView
     }()
     
-    init(frame: CGRect = .zero, model: GenericErrorModel) {
-        self.model = model
+    override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         setupView()
     }

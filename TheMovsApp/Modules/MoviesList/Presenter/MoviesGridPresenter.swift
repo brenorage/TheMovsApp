@@ -52,17 +52,26 @@ extension MoviesGridPresenter {
     }
     
     func filterSearch(with text: String?) {
-        if  let searchText = text,
-            searchText.count >= 3 {
-            var moviesFromSearch = getMoviesFromSearch(with: searchText)
-            moviesFromSearch = moviesFromSearch.filter { movie in
-                !filteredMovies.contains { $0.title == movie.title } }
-            filteredMovies.append(contentsOf: moviesFromSearch)
-        } else {
-            filteredMovies = []
-        }
+        guard let searchText = text else { return }
+        if searchText.count >= 3 {
+            let moviesFromSearch = getMoviesFromSearch(with: searchText)
+            viewProtocol?.changeDataSourceState(with: .search)
+            if moviesFromSearch.isEmpty {
+                showEmptySearch(with: searchText)
+            } else {
+                filteredMovies = moviesFromSearch
+                viewProtocol?.hideError()
+                viewProtocol?.showMoviesGrid()
+                viewProtocol?.reloadMoviesGrid()
+            }
         
-        viewProtocol?.reloadMoviesGrid()
+        } else if searchText.isEmpty {
+            filteredMovies = []
+            viewProtocol?.changeDataSourceState(with: .normal)
+            viewProtocol?.hideError()
+            viewProtocol?.showMoviesGrid()
+            viewProtocol?.reloadMoviesGrid()
+        }
     }
     
     private func getMoviesFromSearch(with text: String) -> MoviesPage {
@@ -86,5 +95,11 @@ extension MoviesGridPresenter {
         let errorModel = GenericErrorModel(imageName: "errorImage", imageColor: .red, message: "Um error ocorreu. Por favor, tente novamente mais tarde.")
         viewProtocol?.hideMoviesGrid()
         viewProtocol?.showError(with: errorModel)
+    }
+    
+    private func showEmptySearch(with text: String) {
+        let emptyState = GenericErrorModel(imageName: "searchIcon", imageColor: .black, message: "Sua busca por \(text) não resultou em nenhum resultado.")
+        viewProtocol?.hideMoviesGrid()
+        viewProtocol?.showError(with: emptyState)
     }
 }

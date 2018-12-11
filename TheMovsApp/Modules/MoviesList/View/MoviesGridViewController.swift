@@ -99,14 +99,16 @@ extension MoviesGridViewController: MoviesGridViewProtocol {
     
     func showError(with errorModel: GenericErrorModel) {
         DispatchQueue.main.async {
-            let errorView = GenericErrorView(frame: .zero, model: errorModel)
-            self.moviesGridView.setStateView(with: errorView)
+            self.moviesGridView.setStateView(with: errorModel)
+            self.moviesGridView.genericView.isHidden = false
+            self.moviesGridView.layoutIfNeeded()
         }
     }
     
     func hideError() {
         DispatchQueue.main.async {
-            self.moviesGridView.removeErrorView()
+            self.moviesGridView.genericView.isHidden = true
+            self.moviesGridView.layoutIfNeeded()
         }
     }
     
@@ -114,20 +116,15 @@ extension MoviesGridViewController: MoviesGridViewProtocol {
         let movieDetail = MovieDetailViewController(with: movie)
         navigationController?.pushViewController(movieDetail, animated: true)
     }
+    
+    func changeDataSourceState(with state: MoviesCollectionViewDataSource.State) {
+        dataSource.state = state
+    }
 }
 
 //MARK: - Search controller methods -
 extension MoviesGridViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        changeDataSourceState()
         presenter.filterSearch(with: searchController.searchBar.text)
-    }
-    
-    private func changeDataSourceState() {
-        if searchController.isActive {
-            dataSource.state = .search
-        } else {
-            dataSource.state = .normal
-        }
     }
 }

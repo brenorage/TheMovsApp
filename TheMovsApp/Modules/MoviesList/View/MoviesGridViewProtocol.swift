@@ -17,4 +17,5 @@ protocol MoviesGridViewProtocol: class {
     func showError(with errorModel: GenericErrorModel)
     func hideError()
     func pushDetailViewController(with movie: MovieModel)
+    func changeDataSourceState(with state: MoviesCollectionViewDataSource.State)
 }

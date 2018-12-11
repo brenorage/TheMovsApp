@@ -56,7 +56,7 @@ class MoviesGridPresenterTest: XCTestCase {
     func testIfPresenterClearFilteredMoviesWhenUserInputLessThanThreeCaracthers() {
         presenter.getList()
         presenter.filterSearch(with: "Venom")
-        presenter.filterSearch(with: "Ve")
+        presenter.filterSearch(with: "")
         XCTAssert(presenter.filteredMovies.isEmpty)
     }
     
@@ -66,6 +66,12 @@ class MoviesGridPresenterTest: XCTestCase {
         presenter.filterSearch(with: "Ven")
         XCTAssert(presenter.filteredMovies.count == 1)
     }
+    
+    func testIfPresenterCallEmptyStateWithEmptySearch() {
+        presenter.getList()
+        presenter.filterSearch(with: "Vazio")
+        XCTAssert(viewMock.calledShowEmptyState)
+    }
 }
 
 class MockMoviesListView: MoviesGridViewProtocol {
@@ -73,6 +79,7 @@ class MockMoviesListView: MoviesGridViewProtocol {
     var calledShowMovies = false
     var calledReloadMovies = false
     var calledShowError = false
+    var calledShowEmptyState = false
     
     func showLoading() {}
     
@@ -88,8 +95,12 @@ class MockMoviesListView: MoviesGridViewProtocol {
         calledReloadMovies = true
     }
     
-    func showError() {
-        calledShowError = true
+    func showError(with errorModel: GenericErrorModel) {
+        if errorModel.imageName == "errorImage" {
+            calledShowError = true
+        } else if errorModel.imageName == "searchIcon" {
+            calledShowEmptyState = true
+        }
     }
     
     func hideError() {
@@ -97,6 +108,8 @@ class MockMoviesListView: MoviesGridViewProtocol {
     
     func pushDetailViewController(with movie: MovieModel) {
     }
+    
+    func changeDataSourceState(with state: MoviesCollectionViewDataSource.State) {}
 }
 
 class MockMoviesClient: MoviesGridClientProtocol {

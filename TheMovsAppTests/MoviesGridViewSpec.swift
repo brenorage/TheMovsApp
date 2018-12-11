@@ -76,7 +76,8 @@ class MockMoviesGridPresenter: MoviesGridPresenterProtocol {
     
     func getListWithError() {
         viewProtocol?.hideMoviesGrid()
-        viewProtocol?.showError()
+        let errorModel = GenericErrorModel(imageName: "errorImage", imageColor: .red, message: "Um error ocorreu. Por favor, tente novamente mais tarde.")
+        viewProtocol?.showError(with: errorModel)
     }
     
     func getMoreMovies() {
@@ -85,6 +86,7 @@ class MockMoviesGridPresenter: MoviesGridPresenterProtocol {
         let data = try! Data(contentsOf: fileUrl, options: .alwaysMapped)
         let object = try! JSONDecoder().decode(MoviesListModel.self, from: data)
         moviesPages.append(object.results)
+        viewProtocol?.showMoviesGrid()
         viewProtocol?.reloadMoviesGrid()
     }
 }
