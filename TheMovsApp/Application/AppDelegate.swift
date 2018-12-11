@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initializers.forEach { $0.performInitialization() }
         
         let moviesVC = MoviesGridViewController()
-        let moviesTab = TabBarModel(title: "Filmes", icon: UIImage(named: "moviesIcon") ?? UIImage(), viewController: moviesVC)
+        let moviesNavController = UINavigationController()
+        moviesNavController.viewControllers.append(moviesVC)
+        let moviesTab = TabBarModel(title: "Filmes", icon: UIImage(named: "moviesIcon") ?? UIImage(), viewController: moviesNavController)
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = UINavigationController(rootViewController: HomeViewController(tabs: [moviesTab]))

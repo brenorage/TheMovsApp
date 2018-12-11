@@ -12,11 +12,11 @@ import XCTest
 class MoviesClientTest: XCTestCase {
     
     var httpServices: HTTPServiceMock!
-    var moviesClient: MoviesListClient!
+    var moviesClient: MoviesGridClient!
     
     override func setUp() {
         httpServices = HTTPServiceMock()
-        moviesClient = MoviesListClient(httpService: httpServices)
+        moviesClient = MoviesGridClient(httpService: httpServices)
     }
 
     override func tearDown() {

@@ -1,5 +1,5 @@
 //
-//  MoviesListClient.swift
+//  MoviesGridClient.swift
 //  TheMovsApp
 //
 //  Created by Breno Rage Aboud on 03/12/2018.
@@ -10,13 +10,13 @@ import Foundation
 
 internal typealias MoviesPage = [MovieModel]
 
-protocol MoviesListClientProtocol {
+protocol MoviesGridClientProtocol {
     var movies: [MoviesPage] { get }
     init(httpService: HTTPServicesProtocol)
     func getMovies(completion: @escaping ((ResultType<Int>) -> Void))
 }
 
-class MoviesListClient: MoviesListClientProtocol {
+class MoviesGridClient: MoviesGridClientProtocol {
     
     private let httpService: HTTPServicesProtocol
     var movies: [MoviesPage] = []

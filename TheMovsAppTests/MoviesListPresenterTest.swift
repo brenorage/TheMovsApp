@@ -1,5 +1,5 @@
 //
-//  MoviesListPresenterTest.swift
+//  MoviesGridPresenterTest.swift
 //  TheMovsAppTests
 //
 //  Created by Breno Rage Aboud on 05/12/2018.
@@ -10,14 +10,14 @@ import XCTest
 
 @testable import TheMovsApp
 
-class MoviesListPresenterTest: XCTestCase {
+class MoviesGridPresenterTest: XCTestCase {
 
-    var presenter: MoviesListPresenter!
+    var presenter: MoviesGridPresenter!
     var viewMock = MockMoviesListView()
     var clientMock = MockMoviesClient()
     
     override func setUp() {
-        presenter = MoviesListPresenter(moviesClient: clientMock)
+        presenter = MoviesGridPresenter(moviesClient: clientMock)
         presenter.viewProtocol = viewMock
     }
 
@@ -45,6 +45,26 @@ class MoviesListPresenterTest: XCTestCase {
         clientMock.result = .failure
         presenter.getMoreMovies()
         XCTAssert(!viewMock.calledShowError)
+    }
+    
+    func testIfPresenterCanSearchAMovie() {
+        presenter.getList()
+        presenter.filterSearch(with: "Venom")
+        XCTAssert(presenter.filteredMovies.contains { $0.title == "Venom" })
+    }
+    
+    func testIfPresenterClearFilteredMoviesWhenUserInputLessThanThreeCaracthers() {
+        presenter.getList()
+        presenter.filterSearch(with: "Venom")
+        presenter.filterSearch(with: "Ve")
+        XCTAssert(presenter.filteredMovies.isEmpty)
+    }
+    
+    func testIfPresenterManipulatesListCorrectlyWhenUserClearSearchText() {
+        presenter.getList()
+        presenter.filterSearch(with: "Venom")
+        presenter.filterSearch(with: "Ven")
+        XCTAssert(presenter.filteredMovies.count == 1)
     }
 }
 
@@ -79,7 +99,8 @@ class MockMoviesListView: MoviesGridViewProtocol {
     }
 }
 
-class MockMoviesClient: MoviesListClientProtocol {
+class MockMoviesClient: MoviesGridClientProtocol {
+    
     var movies: [MoviesPage] = []
     
     var result: ResultType<Int> = .success(2)
@@ -87,6 +108,11 @@ class MockMoviesClient: MoviesListClientProtocol {
     required init(httpService: HTTPServicesProtocol = HTTPServices()) { }
     
     func getMovies(completion: @escaping ((ResultType<Int>) -> Void)) {
+        let filePath = Bundle(for: MoviesGridViewSpec.self).path(forResource: "MoviesListPage1", ofType: ".json")!
+        let fileUrl = URL(fileURLWithPath: filePath)
+        let data = try! Data(contentsOf: fileUrl, options: .alwaysMapped)
+        let object = try! JSONDecoder().decode(MoviesListModel.self, from: data)
+        movies.append(object.results)
         completion(result)
     }
 }

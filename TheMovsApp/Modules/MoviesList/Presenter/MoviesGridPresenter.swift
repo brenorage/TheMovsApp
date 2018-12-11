@@ -1,5 +1,5 @@
 //
-//  MoviesListPresenter.swift
+//  MoviesGridPresenter.swift
 //  TheMovsApp
 //
 //  Created by Breno Rage Aboud on 03/12/2018.
@@ -8,23 +8,24 @@
 
 import Foundation
 
-class MoviesListPresenter: MoviesListPresenterProtocol {
+class MoviesGridPresenter: MoviesGridPresenterProtocol {
     
     weak var viewProtocol: MoviesGridViewProtocol?
-    private var moviesClient: MoviesListClientProtocol
+    private var moviesClient: MoviesGridClientProtocol
     private var tmdbConfigClient = TMDBConfigurationClient()
+    var filteredMovies: MoviesPage = []
     
     var moviesPages: [MoviesPage] {
         return moviesClient.movies
     }
     
-    init(moviesClient: MoviesListClientProtocol = MoviesListClient()) {
+    init(moviesClient: MoviesGridClientProtocol = MoviesGridClient()) {
         self.moviesClient = moviesClient
     }
 }
 
 //MARK: List methods
-extension MoviesListPresenter {
+extension MoviesGridPresenter {
     func getList() {
         viewProtocol?.showLoading()
         getConfigModel()
@@ -48,6 +49,28 @@ extension MoviesListPresenter {
                 break
             }
         }
+    }
+    
+    func filterSearch(with text: String?) {
+        if  let searchText = text,
+            searchText.count >= 3 {
+            var moviesFromSearch = getMoviesFromSearch(with: searchText)
+            moviesFromSearch = moviesFromSearch.filter { movie in
+                !filteredMovies.contains { $0.title == movie.title } }
+            filteredMovies.append(contentsOf: moviesFromSearch)
+        } else {
+            filteredMovies = []
+        }
+        
+        viewProtocol?.reloadMoviesGrid()
+    }
+    
+    private func getMoviesFromSearch(with text: String) -> MoviesPage {
+        var movies: MoviesPage = []
+        moviesPages.forEach {
+            movies.append(contentsOf: $0.filter { $0.title.contains(text) })
+        }
+        return movies
     }
     
     private func treatSuccess() {

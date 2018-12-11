@@ -18,11 +18,11 @@ class MoviesGridViewSpec: QuickSpec {
     override func spec() {
         describe("a 'MoviesGridViewController'") {
             
-            var presenter: MockMoviesListPresenter!
+            var presenter: MockMoviesGridPresenter!
             var moviesGridViewSUT: MoviesGridViewController!
             
             beforeEach {
-                presenter = MockMoviesListPresenter()
+                presenter = MockMoviesGridPresenter()
                 moviesGridViewSUT = MoviesGridViewController(presenter: presenter)
                 moviesGridViewSUT.view.frame = UIScreen.main.bounds
                 _ = moviesGridViewSUT.view
@@ -58,7 +58,8 @@ class MoviesGridViewSpec: QuickSpec {
     }
 }
 
-class MockMoviesListPresenter: MoviesListPresenterProtocol {
+class MockMoviesGridPresenter: MoviesGridPresenterProtocol {
+    var filteredMovies: MoviesPage = []
     
     weak var viewProtocol: MoviesGridViewProtocol?
     
