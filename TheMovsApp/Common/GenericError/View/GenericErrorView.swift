@@ -67,6 +67,6 @@ extension GenericErrorView: CodeView {
     }
 
     func setupAdditionalConfiguration() {
-        self.backgroundColor = .white
+        self.backgroundColor = .clear
     }
 }

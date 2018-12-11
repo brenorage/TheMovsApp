@@ -83,7 +83,8 @@ extension MoviesGridPresenter {
     }
     
     private func treatError() {
+        let errorModel = GenericErrorModel(imageName: "errorImage", imageColor: .red, message: "Um error ocorreu. Por favor, tente novamente mais tarde.")
         viewProtocol?.hideMoviesGrid()
-        viewProtocol?.showError()
+        viewProtocol?.showError(with: errorModel)
     }
 }

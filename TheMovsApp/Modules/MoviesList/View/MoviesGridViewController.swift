@@ -55,9 +55,10 @@ extension MoviesGridViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.sizeToFit()
-        navigationItem.searchController = searchController
+        parent?.navigationItem.searchController = searchController
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
+        
     }
 }
 
@@ -96,9 +97,10 @@ extension MoviesGridViewController: MoviesGridViewProtocol {
         }
     }
     
-    func showError() {
+    func showError(with errorModel: GenericErrorModel) {
         DispatchQueue.main.async {
-            self.moviesGridView.setErrorView()
+            let errorView = GenericErrorView(frame: .zero, model: errorModel)
+            self.moviesGridView.setStateView(with: errorView)
         }
     }
     
