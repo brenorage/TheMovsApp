@@ -78,8 +78,10 @@ extension MoviesGridViewController: MoviesGridViewProtocol {
     }
     
     func hideMoviesGrid() {
-        moviesGridView.moviesCollectionView.isHidden = true
-        moviesGridView.layoutIfNeeded()
+        DispatchQueue.main.async {
+            self.moviesGridView.moviesCollectionView.isHidden = true
+            self.moviesGridView.layoutIfNeeded()
+        }
     }
     
     func reloadMoviesGrid() {
