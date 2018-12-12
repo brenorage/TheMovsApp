@@ -10,9 +10,9 @@ import UIKit
 
 class MoviesCollectionViewDelegate: NSObject {
     private let collectionViewPadding: CGFloat = 10
-    private var presenter: MoviesListPresenterProtocol
+    private var presenter: MoviesGridPresenterProtocol
     
-    init(presenter: MoviesListPresenterProtocol) {
+    init(presenter: MoviesGridPresenterProtocol) {
         self.presenter = presenter
     }
 }

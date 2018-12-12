@@ -21,8 +21,10 @@ class ErrorViewSpec: QuickSpec {
             
             it("should show the generic view look with the model passed") {
                 let genericModel = GenericErrorModel(imageName: "errorImage", imageColor: .red, message: "Erro generico Erro generico v Erro generic Erro generico Erro generico")
-                genericView = GenericErrorView.init(frame: UIScreen.main.bounds, model: genericModel)
+                genericView = GenericErrorView(frame: UIScreen.main.bounds)
+                genericView.model = genericModel
                 expect(genericView) == snapshot("GenericErrorView")
+//                expect(genericView) == recordSnapshot("GenericErrorView")
             }
         }
     }

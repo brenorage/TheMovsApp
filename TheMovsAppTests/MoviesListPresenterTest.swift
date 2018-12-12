@@ -1,5 +1,5 @@
 //
-//  MoviesListPresenterTest.swift
+//  MoviesGridPresenterTest.swift
 //  TheMovsAppTests
 //
 //  Created by Breno Rage Aboud on 05/12/2018.
@@ -10,14 +10,14 @@ import XCTest
 
 @testable import TheMovsApp
 
-class MoviesListPresenterTest: XCTestCase {
+class MoviesGridPresenterTest: XCTestCase {
 
-    var presenter: MoviesListPresenter!
+    var presenter: MoviesGridPresenter!
     var viewMock = MockMoviesListView()
     var clientMock = MockMoviesClient()
     
     override func setUp() {
-        presenter = MoviesListPresenter(moviesClient: clientMock)
+        presenter = MoviesGridPresenter(moviesClient: clientMock)
         presenter.viewProtocol = viewMock
     }
 
@@ -47,7 +47,34 @@ class MoviesListPresenterTest: XCTestCase {
         XCTAssert(!viewMock.calledShowError)
     }
     
+    func testIfPresenterCanSearchAMovie() {
+        presenter.getList()
+        presenter.filterSearch(with: "Venom")
+        XCTAssert(presenter.filteredMovies.contains { $0.title == "Venom" })
+    }
+    
+    func testIfPresenterClearFilteredMoviesWhenUserInputLessThanThreeCaracthers() {
+        presenter.getList()
+        presenter.filterSearch(with: "Venom")
+        presenter.filterSearch(with: "")
+        XCTAssert(presenter.filteredMovies.isEmpty)
+    }
+    
+    func testIfPresenterManipulatesListCorrectlyWhenUserClearSearchText() {
+        presenter.getList()
+        presenter.filterSearch(with: "Venom")
+        presenter.filterSearch(with: "Ven")
+        XCTAssert(presenter.filteredMovies.count == 1)
+    }
+    
+    func testIfPresenterCallEmptyStateWithEmptySearch() {
+        presenter.getList()
+        presenter.filterSearch(with: "Vazio")
+        XCTAssert(viewMock.calledShowEmptyState)
+    }
+    
     func testIfFavoriteMovieActionWillReloadTheCorretRowIndexPath() {
+        presenter.getList()
         presenter.didFavoriteMovie(335983)
         XCTAssertEqual(viewMock.calledIndexPath, IndexPath(item: 0, section: 0))
     }
@@ -58,6 +85,7 @@ class MockMoviesListView: MoviesGridViewProtocol {
     var calledShowMovies = false
     var calledReloadMovies = false
     var calledShowError = false
+    var calledShowEmptyState = false
     var calledIndexPath: IndexPath?
     
     func showLoading() {}
@@ -74,8 +102,12 @@ class MockMoviesListView: MoviesGridViewProtocol {
         calledReloadMovies = true
     }
     
-    func showError() {
-        calledShowError = true
+    func showError(with errorModel: GenericErrorModel) {
+        if errorModel.imageName == "errorImage" {
+            calledShowError = true
+        } else if errorModel.imageName == "searchIcon" {
+            calledShowEmptyState = true
+        }
     }
     
     func hideError() {
@@ -84,20 +116,16 @@ class MockMoviesListView: MoviesGridViewProtocol {
     func pushDetailViewController(with movie: MovieModel) {
     }
     
+    func changeDataSourceState(with state: MoviesCollectionViewDataSource.State) {}
+    
     func reloadRow(at indexPath: IndexPath) {
         calledIndexPath = indexPath
     }
 }
 
-class MockMoviesClient: MoviesListClientProtocol {
+class MockMoviesClient: MoviesGridClientProtocol {
     
-    var movies: [MoviesPage] = {
-        let bundle = Bundle(for: MoviesListPresenterTest.self)
-        let url = bundle.url(forResource: "MoviesListPage1", withExtension: "json")!
-        let jsonData = try! Data(contentsOf: url)
-        let object = try! JSONDecoder().decode(MoviesListModel.self, from: jsonData)
-        return [object.results]
-    }()
+    var movies: [MoviesPage] = []
     
     var result: ResultType<Int> = .success(2)
     
@@ -105,6 +133,11 @@ class MockMoviesClient: MoviesListClientProtocol {
                   coreDataWorker: CoreDataWorkerProtocol = CoreDataWorker()) { }
     
     func getMovies(completion: @escaping ((ResultType<Int>) -> Void)) {
+        let filePath = Bundle(for: MoviesGridViewSpec.self).path(forResource: "MoviesListPage1", ofType: ".json")!
+        let fileUrl = URL(fileURLWithPath: filePath)
+        let data = try! Data(contentsOf: fileUrl, options: .alwaysMapped)
+        let object = try! JSONDecoder().decode(MoviesListModel.self, from: data)
+        movies.append(object.results)
         completion(result)
     }
 }

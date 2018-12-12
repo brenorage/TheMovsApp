@@ -48,20 +48,20 @@
 		C4BE2A3521B1759900DDA163 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A3421B1759900DDA163 /* ResultType.swift */; };
 		C4BE2A3921B1763F00DDA163 /* HTTPServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A3821B1763F00DDA163 /* HTTPServices.swift */; };
 		C4BE2A3B21B18BFB00DDA163 /* NetworkLayerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A3A21B18BFB00DDA163 /* NetworkLayerTest.swift */; };
-		C4BE2A3E21B5A5E000DDA163 /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A3D21B5A5E000DDA163 /* MoviesListViewController.swift */; };
-		C4BE2A4521B5A62D00DDA163 /* MoviesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A4421B5A62D00DDA163 /* MoviesListPresenter.swift */; };
-		C4BE2A4721B5A63800DDA163 /* MoviesListPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A4621B5A63800DDA163 /* MoviesListPresenterProtocol.swift */; };
-		C4BE2A4A21B5B93F00DDA163 /* MoviesListClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A4921B5B93F00DDA163 /* MoviesListClient.swift */; };
+		C4BE2A3E21B5A5E000DDA163 /* MoviesGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A3D21B5A5E000DDA163 /* MoviesGridViewController.swift */; };
+		C4BE2A4521B5A62D00DDA163 /* MoviesGridPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A4421B5A62D00DDA163 /* MoviesGridPresenter.swift */; };
+		C4BE2A4721B5A63800DDA163 /* MoviesGridPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A4621B5A63800DDA163 /* MoviesGridPresenterProtocol.swift */; };
+		C4BE2A4A21B5B93F00DDA163 /* MoviesGridClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A4921B5B93F00DDA163 /* MoviesGridClient.swift */; };
 		C4BE2A4C21B5C16400DDA163 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A4B21B5C16400DDA163 /* MovieModel.swift */; };
 		C4BE2A4E21B5C19400DDA163 /* MoviesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A4D21B5C19400DDA163 /* MoviesListModel.swift */; };
 		C4BE2A5221B5C87200DDA163 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A5121B5C87200DDA163 /* MovieTests.swift */; };
 		C4BE2A5621B6B66600DDA163 /* MoviesClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A5521B6B66600DDA163 /* MoviesClientTest.swift */; };
 		C4BE2A5821B6B85C00DDA163 /* MoviesListPage1.json in Resources */ = {isa = PBXBuildFile; fileRef = C4BE2A5721B6B85C00DDA163 /* MoviesListPage1.json */; };
 		C4BE2A5A21B6B86F00DDA163 /* MoviesListPage2.json in Resources */ = {isa = PBXBuildFile; fileRef = C4BE2A5921B6B86F00DDA163 /* MoviesListPage2.json */; };
-		C4BE2A5E21B6F97300DDA163 /* MoviesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A5D21B6F97300DDA163 /* MoviesListView.swift */; };
+		C4BE2A5E21B6F97300DDA163 /* MoviesGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A5D21B6F97300DDA163 /* MoviesGridView.swift */; };
 		C4BE2A6121B6FA6000DDA163 /* MoviesTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A6021B6FA6000DDA163 /* MoviesTableViewDelegate.swift */; };
 		C4BE2A6421B6FAA500DDA163 /* MoviesTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A6321B6FAA500DDA163 /* MoviesTableViewDataSource.swift */; };
-		C4BE2A6621B700ED00DDA163 /* MoviesListViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A6521B700ED00DDA163 /* MoviesListViewProtocol.swift */; };
+		C4BE2A6621B700ED00DDA163 /* MoviesGridViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A6521B700ED00DDA163 /* MoviesGridViewProtocol.swift */; };
 		C4BE2A6E21B7112400DDA163 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A6C21B7112400DDA163 /* MovieCell.swift */; };
 		C4BE2A6F21B7112400DDA163 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4BE2A6D21B7112400DDA163 /* MovieCell.xib */; };
 		C4BE2A7121B7135B00DDA163 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A7021B7135B00DDA163 /* UICollectionView+Extension.swift */; };
@@ -147,20 +147,20 @@
 		C4BE2A3421B1759900DDA163 /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		C4BE2A3821B1763F00DDA163 /* HTTPServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPServices.swift; sourceTree = "<group>"; };
 		C4BE2A3A21B18BFB00DDA163 /* NetworkLayerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayerTest.swift; sourceTree = "<group>"; };
-		C4BE2A3D21B5A5E000DDA163 /* MoviesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewController.swift; sourceTree = "<group>"; };
-		C4BE2A4421B5A62D00DDA163 /* MoviesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListPresenter.swift; sourceTree = "<group>"; };
-		C4BE2A4621B5A63800DDA163 /* MoviesListPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListPresenterProtocol.swift; sourceTree = "<group>"; };
-		C4BE2A4921B5B93F00DDA163 /* MoviesListClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListClient.swift; sourceTree = "<group>"; };
+		C4BE2A3D21B5A5E000DDA163 /* MoviesGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesGridViewController.swift; sourceTree = "<group>"; };
+		C4BE2A4421B5A62D00DDA163 /* MoviesGridPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesGridPresenter.swift; sourceTree = "<group>"; };
+		C4BE2A4621B5A63800DDA163 /* MoviesGridPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesGridPresenterProtocol.swift; sourceTree = "<group>"; };
+		C4BE2A4921B5B93F00DDA163 /* MoviesGridClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesGridClient.swift; sourceTree = "<group>"; };
 		C4BE2A4B21B5C16400DDA163 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		C4BE2A4D21B5C19400DDA163 /* MoviesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListModel.swift; sourceTree = "<group>"; };
 		C4BE2A5121B5C87200DDA163 /* MovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTests.swift; sourceTree = "<group>"; };
 		C4BE2A5521B6B66600DDA163 /* MoviesClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesClientTest.swift; sourceTree = "<group>"; };
 		C4BE2A5721B6B85C00DDA163 /* MoviesListPage1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MoviesListPage1.json; sourceTree = "<group>"; };
 		C4BE2A5921B6B86F00DDA163 /* MoviesListPage2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MoviesListPage2.json; sourceTree = "<group>"; };
-		C4BE2A5D21B6F97300DDA163 /* MoviesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListView.swift; sourceTree = "<group>"; };
+		C4BE2A5D21B6F97300DDA163 /* MoviesGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesGridView.swift; sourceTree = "<group>"; };
 		C4BE2A6021B6FA6000DDA163 /* MoviesTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewDelegate.swift; sourceTree = "<group>"; };
 		C4BE2A6321B6FAA500DDA163 /* MoviesTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewDataSource.swift; sourceTree = "<group>"; };
-		C4BE2A6521B700ED00DDA163 /* MoviesListViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewProtocol.swift; sourceTree = "<group>"; };
+		C4BE2A6521B700ED00DDA163 /* MoviesGridViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesGridViewProtocol.swift; sourceTree = "<group>"; };
 		C4BE2A6C21B7112400DDA163 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		C4BE2A6D21B7112400DDA163 /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 		C4BE2A7021B7135B00DDA163 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
@@ -519,9 +519,9 @@
 			children = (
 				C4BE2A6721B70D4C00DDA163 /* MovieCell */,
 				C4BE2A5F21B6FA4800DDA163 /* CollectionViewClasses */,
-				C4BE2A3D21B5A5E000DDA163 /* MoviesListViewController.swift */,
-				C4BE2A5D21B6F97300DDA163 /* MoviesListView.swift */,
-				C4BE2A6521B700ED00DDA163 /* MoviesListViewProtocol.swift */,
+				C4BE2A3D21B5A5E000DDA163 /* MoviesGridViewController.swift */,
+				C4BE2A5D21B6F97300DDA163 /* MoviesGridView.swift */,
+				C4BE2A6521B700ED00DDA163 /* MoviesGridViewProtocol.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -529,8 +529,8 @@
 		C4BE2A4121B5A5F500DDA163 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				C4BE2A4421B5A62D00DDA163 /* MoviesListPresenter.swift */,
-				C4BE2A4621B5A63800DDA163 /* MoviesListPresenterProtocol.swift */,
+				C4BE2A4421B5A62D00DDA163 /* MoviesGridPresenter.swift */,
+				C4BE2A4621B5A63800DDA163 /* MoviesGridPresenterProtocol.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -538,7 +538,7 @@
 		C4BE2A4821B5B93000DDA163 /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				C4BE2A4921B5B93F00DDA163 /* MoviesListClient.swift */,
+				C4BE2A4921B5B93F00DDA163 /* MoviesGridClient.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -955,7 +955,7 @@
 				C4BE2A9921B9AF5900DDA163 /* UserDefaultsWrapper.swift in Sources */,
 				52CF271921B7EE840048D201 /* DescribeProtocol.swift in Sources */,
 				C4BE2A8021B9601400DDA163 /* TMDBConfigurationModel.swift in Sources */,
-				C4BE2A5E21B6F97300DDA163 /* MoviesListView.swift in Sources */,
+				C4BE2A5E21B6F97300DDA163 /* MoviesGridView.swift in Sources */,
 				C4BE2A9121B9934B00DDA163 /* TMDBUrl.swift in Sources */,
 				52A218DC21B1724C00825CFB /* CodeView.swift in Sources */,
 				52014C0B21B59B68005B1481 /* UIColor+Extension.swift in Sources */,
@@ -978,20 +978,20 @@
 				52CF271B21B7EEB10048D201 /* NSObject+Extension.swift in Sources */,
 				C4BE2A6E21B7112400DDA163 /* MovieCell.swift in Sources */,
 				52014C0621B59AB3005B1481 /* Initializable.swift in Sources */,
-				C4BE2A4521B5A62D00DDA163 /* MoviesListPresenter.swift in Sources */,
+				C4BE2A4521B5A62D00DDA163 /* MoviesGridPresenter.swift in Sources */,
 				C40B972921B16B010067A565 /* AppDelegate.swift in Sources */,
 				C4BE2A9321B9AB5400DDA163 /* TMDBConfigurationModelResponse.swift in Sources */,
 				523FE33F21C0284C00399E58 /* FavoriteMovieDelegate.swift in Sources */,
 				C4BE2A6121B6FA6000DDA163 /* MoviesTableViewDelegate.swift in Sources */,
 				C4BE2A7121B7135B00DDA163 /* UICollectionView+Extension.swift in Sources */,
-				C4BE2A4A21B5B93F00DDA163 /* MoviesListClient.swift in Sources */,
-				C4BE2A6621B700ED00DDA163 /* MoviesListViewProtocol.swift in Sources */,
-				C4BE2A4721B5A63800DDA163 /* MoviesListPresenterProtocol.swift in Sources */,
+				C4BE2A4A21B5B93F00DDA163 /* MoviesGridClient.swift in Sources */,
+				C4BE2A6621B700ED00DDA163 /* MoviesGridViewProtocol.swift in Sources */,
+				C4BE2A4721B5A63800DDA163 /* MoviesGridPresenterProtocol.swift in Sources */,
 				C4BE2AA021BAA72B00DDA163 /* GenericErrorView.swift in Sources */,
 				C4BE2A6421B6FAA500DDA163 /* MoviesTableViewDataSource.swift in Sources */,
 				C4BE2A3921B1763F00DDA163 /* HTTPServices.swift in Sources */,
 				C4BE2A4E21B5C19400DDA163 /* MoviesListModel.swift in Sources */,
-				C4BE2A3E21B5A5E000DDA163 /* MoviesListViewController.swift in Sources */,
+				C4BE2A3E21B5A5E000DDA163 /* MoviesGridViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
