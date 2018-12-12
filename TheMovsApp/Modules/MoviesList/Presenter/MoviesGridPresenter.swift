@@ -77,7 +77,10 @@ extension MoviesGridPresenter {
     private func getMoviesFromSearch(with text: String) -> MoviesPage {
         var movies: MoviesPage = []
         moviesPages.forEach {
-            movies.append(contentsOf: $0.filter { $0.title.contains(text) })
+            movies.append(contentsOf: $0.filter {
+                guard let title = $0.title else { return false }
+                return title.contains(text)
+            })
         }
         return movies
     }
@@ -101,5 +104,20 @@ extension MoviesGridPresenter {
         let emptyState = GenericErrorModel(imageName: "searchIcon", imageColor: .black, message: "Sua busca por \(text) não resultou em nenhum resultado.")
         viewProtocol?.hideMoviesGrid()
         viewProtocol?.showError(with: emptyState)
+    }
+}
+
+// MARK: - FavoriteMovieDelegate
+extension MoviesGridPresenter: FavoriteMovieDelegate {
+    func didFavoriteMovie(_ movieId: Int) {
+        let allMoviesArray = moviesPages.flatMap({ $0 })
+        if let indexPath = allMoviesArray
+            .enumerated()
+            .filter({ $1.movieId == movieId })
+            .map({ return IndexPath(item: $0.offset, section: 0) })
+            .first {
+            
+            viewProtocol?.reloadRow(at: indexPath)
+        }
     }
 }

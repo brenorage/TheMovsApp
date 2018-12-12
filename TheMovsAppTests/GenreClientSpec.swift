@@ -22,11 +22,12 @@ final class GenreClientSpec: XCTestCase {
         sut = GenreClient(httpService: serviceStub, coreDataWorker: workerStub)
     }
     
-    func testGenreClientShouldSaveGenresAfterASuccessRequest() {
+    func testGenreClientShouldSaveGenresAfterASuccessfulRequest() {
         let expectation = XCTestExpectation(description: "Test if GenreClient will save the downloaded genre list")
         sut.getGenres(completion: { result in
             expectation.fulfill()
         })
+        XCTAssertTrue(workerStub.didCallSave)
         wait(for: [expectation], timeout: 2.0)
     }
 
@@ -50,11 +51,15 @@ private final class ServiceStub: HTTPServicesProtocol {
 }
 
 private final class CoreDataWorkerStub: CoreDataWorkerProtocol {
+    
+    var didCallSave = false
+    
     init() { }
     init(context: NSManagedObjectContext) { }
     func fetchAll<T>(completion: @escaping (ResultType<Array<T>>) -> ()) where T : NSManagedObject { }
     func save() throws {
-        XCTAssertTrue(true)
+        didCallSave = true
     }
+    func fetch<T>(with predicate: NSPredicate, completion: @escaping (ResultType<Array<T>>) -> ()) where T : NSManagedObject { }
     func delete(enity: NSManagedObject, completion: @escaping (ResultType<Bool>) -> ()) { }
 }

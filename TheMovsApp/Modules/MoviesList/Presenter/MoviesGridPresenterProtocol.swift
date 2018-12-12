@@ -20,3 +20,4 @@ protocol MoviesGridPresenterProtocol: class {
 extension MoviesGridPresenterProtocol {
     func filterSearch(with text: String?) {}
 }
+

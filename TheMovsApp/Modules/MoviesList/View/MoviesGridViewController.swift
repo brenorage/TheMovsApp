@@ -15,9 +15,9 @@ class MoviesGridViewController: UIViewController {
     
     private var delegate: MoviesCollectionViewDelegate
     private var dataSource: MoviesCollectionViewDataSource
-    private var presenter: MoviesGridPresenterProtocol
+    private var presenter: (MoviesGridPresenterProtocol & FavoriteMovieDelegate)
     
-    init(presenter: MoviesGridPresenterProtocol = MoviesGridPresenter()) {
+    init(presenter: (MoviesGridPresenterProtocol & FavoriteMovieDelegate) = MoviesGridPresenter()) {
         self.presenter = presenter
         dataSource = MoviesCollectionViewDataSource(presenter: presenter)
         delegate = MoviesCollectionViewDelegate(presenter: presenter)
@@ -64,6 +64,12 @@ extension MoviesGridViewController {
 
 //MARK: - View protocol methods -
 extension MoviesGridViewController: MoviesGridViewProtocol {
+    
+    func reloadRow(at indexPath: IndexPath) {
+        DispatchQueue.main.async {
+            self.moviesGridView.moviesCollectionView.reloadItems(at: [indexPath])
+        }
+    }
     
     func showLoading() {
         moviesGridView.activityIndicator.startAnimating()
@@ -114,6 +120,7 @@ extension MoviesGridViewController: MoviesGridViewProtocol {
     
     func pushDetailViewController(with movie: MovieModel) {
         let movieDetail = MovieDetailViewController(with: movie)
+        movieDetail.favoriteDelegate = presenter
         navigationController?.pushViewController(movieDetail, animated: true)
     }
     
@@ -128,3 +135,4 @@ extension MoviesGridViewController: UISearchResultsUpdating {
         presenter.filterSearch(with: searchController.searchBar.text)
     }
 }
+

@@ -13,7 +13,7 @@ public class GenreMO: NSManagedObject {
 
     @NSManaged public var genreId: Int32
     @NSManaged public var name: String
-    @NSManaged public var movies: NSSet?
+    @NSManaged public var movies: Set<MovieMO>?
     
     convenience init() {
         self.init(context: CoreDataManager.shared.persistentContainer.viewContext)
@@ -32,9 +32,9 @@ extension GenreMO {
     @NSManaged public func removeFromMovies(_ value: MovieMO)
     
     @objc(addMovies:)
-    @NSManaged public func addToMovies(_ values: NSSet)
+    @NSManaged public func addToMovies(_ values: Set<MovieMO>)
     
     @objc(removeMovies:)
-    @NSManaged public func removeFromMovies(_ values: NSSet)
+    @NSManaged public func removeFromMovies(_ values: Set<MovieMO>)
     
 }

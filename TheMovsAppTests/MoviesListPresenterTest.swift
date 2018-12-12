@@ -72,6 +72,12 @@ class MoviesGridPresenterTest: XCTestCase {
         presenter.filterSearch(with: "Vazio")
         XCTAssert(viewMock.calledShowEmptyState)
     }
+    
+    func testIfFavoriteMovieActionWillReloadTheCorretRowIndexPath() {
+        presenter.getList()
+        presenter.didFavoriteMovie(335983)
+        XCTAssertEqual(viewMock.calledIndexPath, IndexPath(item: 0, section: 0))
+    }
 }
 
 class MockMoviesListView: MoviesGridViewProtocol {
@@ -80,6 +86,7 @@ class MockMoviesListView: MoviesGridViewProtocol {
     var calledReloadMovies = false
     var calledShowError = false
     var calledShowEmptyState = false
+    var calledIndexPath: IndexPath?
     
     func showLoading() {}
     
@@ -110,6 +117,10 @@ class MockMoviesListView: MoviesGridViewProtocol {
     }
     
     func changeDataSourceState(with state: MoviesCollectionViewDataSource.State) {}
+    
+    func reloadRow(at indexPath: IndexPath) {
+        calledIndexPath = indexPath
+    }
 }
 
 class MockMoviesClient: MoviesGridClientProtocol {
@@ -118,7 +129,8 @@ class MockMoviesClient: MoviesGridClientProtocol {
     
     var result: ResultType<Int> = .success(2)
     
-    required init(httpService: HTTPServicesProtocol = HTTPServices()) { }
+    required init(httpService: HTTPServicesProtocol = HTTPServices(),
+                  coreDataWorker: CoreDataWorkerProtocol = CoreDataWorker()) { }
     
     func getMovies(completion: @escaping ((ResultType<Int>) -> Void)) {
         let filePath = Bundle(for: MoviesGridViewSpec.self).path(forResource: "MoviesListPage1", ofType: ".json")!

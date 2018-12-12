@@ -12,4 +12,5 @@ protocol MovieDetailPresenterProtocol: class {
     init(with movie: MovieModel, coreDataWorker: CoreDataWorkerProtocol, genreClient: GenreClientProtocol)
     func attachView(_ view: MovieDetailViewProtocol?)
     func viewDidLoad()
+    func didTouchFavoriteMovie()
 }

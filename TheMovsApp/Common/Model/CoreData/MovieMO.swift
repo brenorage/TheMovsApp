@@ -13,10 +13,11 @@ public class MovieMO: NSManagedObject {
     
     @NSManaged public var movieId: Int32
     @NSManaged public var overview: String?
-    @NSManaged public var poster: Data?
+    @NSManaged public var posterPath: String?
+    @NSManaged public var backdropPath: String?
     @NSManaged public var title: String?
     @NSManaged public var year: String?
-    @NSManaged public var genres: NSSet?
+    @NSManaged public var genres: Set<GenreMO>?
     
     convenience init() {
         self.init(context: CoreDataManager.shared.persistentContainer.viewContext)
@@ -36,9 +37,9 @@ extension MovieMO {
     @NSManaged public func removeFromGenres(_ value: GenreMO)
     
     @objc(addGenres:)
-    @NSManaged public func addToGenres(_ values: NSSet)
+    @NSManaged public func addToGenres(_ values: Set<GenreMO>)
     
     @objc(removeGenres:)
-    @NSManaged public func removeFromGenres(_ values: NSSet)
+    @NSManaged public func removeFromGenres(_ values: Set<GenreMO>)
     
 }
