@@ -29,9 +29,8 @@ class MoviesGridView: UIView {
         return activityIndicator
     }()
     
-    let errorView: GenericErrorView = {
-        let errorModel = GenericErrorModel(imageName: "errorImage", imageColor: .red, message: "Um error ocorreu. Por favor, tente novamente mais tarde.")
-        let view = GenericErrorView(frame: .zero, model: errorModel)
+    let genericView: GenericErrorView = {
+        let view = GenericErrorView()
         return view
     }()
     
@@ -49,6 +48,7 @@ extension MoviesGridView: CodeView {
     func buildViewHierarchy() {
         addSubview(activityIndicator)
         addSubview(moviesCollectionView)
+        addSubview(genericView)
     }
     
     func setupConstraints() {
@@ -59,15 +59,8 @@ extension MoviesGridView: CodeView {
         activityIndicator.snp.makeConstraints { maker in
             maker.centerX.centerY.equalToSuperview()
         }
-    }
-    
-    func setupAdditionalConfiguration() {
-        self.backgroundColor = UIColor.lightYellow
-    }
-    
-    func setErrorView() {
-        addSubview(errorView)
-        errorView.snp.makeConstraints { maker in
+        
+        genericView.snp.makeConstraints { maker in
             maker.top.equalTo(safeAreaLayoutGuide.snp.top).offset(5)
             maker.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(5)
             maker.left.equalTo(safeAreaLayoutGuide.snp.left).offset(5)
@@ -75,7 +68,11 @@ extension MoviesGridView: CodeView {
         }
     }
     
-    func removeErrorView() {
-        errorView.removeFromSuperview()
+    func setupAdditionalConfiguration() {
+        self.backgroundColor = UIColor.lightYellow
+    }
+    
+    func setStateView(with model: GenericErrorModel) {
+        genericView.model = model
     }
 }

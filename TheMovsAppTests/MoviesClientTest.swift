@@ -13,13 +13,13 @@ import CoreData
 final class MoviesClientTest: XCTestCase {
     
     private var httpServices: HTTPServiceMock!
-    private var moviesClient: MoviesListClient!
+    private var moviesClient: MoviesGridClient!
     private var coreDataWorkerStub: CoreDataWorkerStub!
     
     override func setUp() {
         httpServices = HTTPServiceMock()
         coreDataWorkerStub = CoreDataWorkerStub()
-        moviesClient = MoviesListClient(httpService: httpServices, coreDataWorker: coreDataWorkerStub)
+        moviesClient = MoviesGridClient(httpService: httpServices, coreDataWorker: coreDataWorkerStub)
     }
 
     override func tearDown() {

@@ -18,11 +18,11 @@ class MoviesGridViewSpec: QuickSpec {
     override func spec() {
         describe("a 'MoviesGridViewController'") {
             
-            var presenter: MockMoviesListPresenter!
+            var presenter: MockMoviesGridPresenter!
             var moviesGridViewSUT: MoviesGridViewController!
             
             beforeEach {
-                presenter = MockMoviesListPresenter()
+                presenter = MockMoviesGridPresenter()
                 moviesGridViewSUT = MoviesGridViewController(presenter: presenter)
                 moviesGridViewSUT.view.frame = UIScreen.main.bounds
                 _ = moviesGridViewSUT.view
@@ -58,7 +58,8 @@ class MoviesGridViewSpec: QuickSpec {
     }
 }
 
-class MockMoviesListPresenter: MoviesListPresenterProtocol, FavoriteMovieDelegate {
+class MockMoviesGridPresenter: MoviesGridPresenterProtocol, FavoriteMovieDelegate {
+    var filteredMovies: MoviesPage = []
     
     weak var viewProtocol: MoviesGridViewProtocol?
     
@@ -75,7 +76,8 @@ class MockMoviesListPresenter: MoviesListPresenterProtocol, FavoriteMovieDelegat
     
     func getListWithError() {
         viewProtocol?.hideMoviesGrid()
-        viewProtocol?.showError()
+        let errorModel = GenericErrorModel(imageName: "errorImage", imageColor: .red, message: "Um error ocorreu. Por favor, tente novamente mais tarde.")
+        viewProtocol?.showError(with: errorModel)
     }
     
     func getMoreMovies() {
@@ -84,6 +86,7 @@ class MockMoviesListPresenter: MoviesListPresenterProtocol, FavoriteMovieDelegat
         let data = try! Data(contentsOf: fileUrl, options: .alwaysMapped)
         let object = try! JSONDecoder().decode(MoviesListModel.self, from: data)
         moviesPages.append(object.results)
+        viewProtocol?.showMoviesGrid()
         viewProtocol?.reloadMoviesGrid()
     }
     

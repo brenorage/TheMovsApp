@@ -11,12 +11,13 @@ import UIKit
 class MoviesGridViewController: UIViewController {
     
     private let moviesGridView = MoviesGridView()
+    private let searchController = UISearchController(searchResultsController: nil)
     
     private var delegate: MoviesCollectionViewDelegate
     private var dataSource: MoviesCollectionViewDataSource
-    private var presenter: (MoviesListPresenterProtocol & FavoriteMovieDelegate)
+    private var presenter: (MoviesGridPresenterProtocol & FavoriteMovieDelegate)
     
-    init(presenter: (MoviesListPresenterProtocol & FavoriteMovieDelegate) = MoviesListPresenter()) {
+    init(presenter: (MoviesGridPresenterProtocol & FavoriteMovieDelegate) = MoviesGridPresenter()) {
         self.presenter = presenter
         dataSource = MoviesCollectionViewDataSource(presenter: presenter)
         delegate = MoviesCollectionViewDelegate(presenter: presenter)
@@ -37,6 +38,7 @@ class MoviesGridViewController: UIViewController {
         hideMoviesGrid()
         setupGridView()
         presenter.getList()
+        setupSearchController()
     }
 }
 
@@ -46,6 +48,17 @@ extension MoviesGridViewController {
         moviesGridView.moviesCollectionView.register(cellType: MovieCell.self)
         moviesGridView.moviesCollectionView.delegate = delegate
         moviesGridView.moviesCollectionView.dataSource = dataSource
+    }
+    
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.sizeToFit()
+        parent?.navigationItem.searchController = searchController
+        definesPresentationContext = true
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
     }
 }
 
@@ -90,15 +103,18 @@ extension MoviesGridViewController: MoviesGridViewProtocol {
         }
     }
     
-    func showError() {
+    func showError(with errorModel: GenericErrorModel) {
         DispatchQueue.main.async {
-            self.moviesGridView.setErrorView()
+            self.moviesGridView.setStateView(with: errorModel)
+            self.moviesGridView.genericView.isHidden = false
+            self.moviesGridView.layoutIfNeeded()
         }
     }
     
     func hideError() {
         DispatchQueue.main.async {
-            self.moviesGridView.removeErrorView()
+            self.moviesGridView.genericView.isHidden = true
+            self.moviesGridView.layoutIfNeeded()
         }
     }
     
@@ -106,6 +122,17 @@ extension MoviesGridViewController: MoviesGridViewProtocol {
         let movieDetail = MovieDetailViewController(with: movie)
         movieDetail.favoriteDelegate = presenter
         navigationController?.pushViewController(movieDetail, animated: true)
+    }
+    
+    func changeDataSourceState(with state: MoviesCollectionViewDataSource.State) {
+        dataSource.state = state
+    }
+}
+
+//MARK: - Search controller methods -
+extension MoviesGridViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        presenter.filterSearch(with: searchController.searchBar.text)
     }
 }
 
