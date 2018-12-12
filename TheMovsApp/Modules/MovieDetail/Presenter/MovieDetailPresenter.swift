@@ -143,8 +143,6 @@ extension MovieDetailPresenter {
             try coreDataWorker.save()
             movie.isFavorite.toggle()
             view?.setFavorite(movie.isFavorite)
-            guard let movieId = movie.movieId else { return }
-            view?.favoriteDelegate?.didFavoriteMovie(movieId)
         } catch {
             debugPrint("MovieDetailPresenter: Save context error: \(error)")
         }

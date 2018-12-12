@@ -16,7 +16,7 @@
 		52014C0B21B59B68005B1481 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52014C0A21B59B68005B1481 /* UIColor+Extension.swift */; };
 		52014C0D21B6A8B8005B1481 /* HomeViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52014C0C21B6A8B8005B1481 /* HomeViewControllerSpec.swift */; };
 		52324E1321BE916800D0F0D6 /* HomePresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52324E1221BE916800D0F0D6 /* HomePresenterSpec.swift */; };
-		523FE33F21C0284C00399E58 /* FavoriteMovieDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523FE33E21C0284C00399E58 /* FavoriteMovieDelegate.swift */; };
+		5242E7D721C1A8BB0009DD7C /* MoviesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242E7D621C1A8BB0009DD7C /* MoviesListModel.swift */; };
 		527A28D421C046010099235D /* FavoviteMovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A28D321C046010099235D /* FavoviteMovieListViewController.swift */; };
 		527A28D921C046570099235D /* FavoviteMovieListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A28D821C046570099235D /* FavoviteMovieListPresenter.swift */; };
 		527A28DB21C1284A0099235D /* FavoviteMovieListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A28DA21C1284A0099235D /* FavoviteMovieListScreen.swift */; };
@@ -64,7 +64,6 @@
 		C4BE2A4721B5A63800DDA163 /* MoviesGridPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A4621B5A63800DDA163 /* MoviesGridPresenterProtocol.swift */; };
 		C4BE2A4A21B5B93F00DDA163 /* MoviesGridClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A4921B5B93F00DDA163 /* MoviesGridClient.swift */; };
 		C4BE2A4C21B5C16400DDA163 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A4B21B5C16400DDA163 /* MovieModel.swift */; };
-		C4BE2A4E21B5C19400DDA163 /* MoviesListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A4D21B5C19400DDA163 /* MoviesListModel.swift */; };
 		C4BE2A5221B5C87200DDA163 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A5121B5C87200DDA163 /* MovieTests.swift */; };
 		C4BE2A5621B6B66600DDA163 /* MoviesClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A5521B6B66600DDA163 /* MoviesClientTest.swift */; };
 		C4BE2A5821B6B85C00DDA163 /* MoviesListPage1.json in Resources */ = {isa = PBXBuildFile; fileRef = C4BE2A5721B6B85C00DDA163 /* MoviesListPage1.json */; };
@@ -118,7 +117,7 @@
 		52014C0A21B59B68005B1481 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		52014C0C21B6A8B8005B1481 /* HomeViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerSpec.swift; sourceTree = "<group>"; };
 		52324E1221BE916800D0F0D6 /* HomePresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterSpec.swift; sourceTree = "<group>"; };
-		523FE33E21C0284C00399E58 /* FavoriteMovieDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieDelegate.swift; sourceTree = "<group>"; };
+		5242E7D621C1A8BB0009DD7C /* MoviesListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesListModel.swift; sourceTree = "<group>"; };
 		527A28D321C046010099235D /* FavoviteMovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoviteMovieListViewController.swift; path = TheMovsApp/Modules/MovieFavoriteList/View/FavoviteMovieListViewController.swift; sourceTree = SOURCE_ROOT; };
 		527A28D821C046570099235D /* FavoviteMovieListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoviteMovieListPresenter.swift; sourceTree = "<group>"; };
 		527A28DA21C1284A0099235D /* FavoviteMovieListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoviteMovieListScreen.swift; sourceTree = "<group>"; };
@@ -174,7 +173,6 @@
 		C4BE2A4621B5A63800DDA163 /* MoviesGridPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesGridPresenterProtocol.swift; sourceTree = "<group>"; };
 		C4BE2A4921B5B93F00DDA163 /* MoviesGridClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesGridClient.swift; sourceTree = "<group>"; };
 		C4BE2A4B21B5C16400DDA163 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
-		C4BE2A4D21B5C19400DDA163 /* MoviesListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListModel.swift; sourceTree = "<group>"; };
 		C4BE2A5121B5C87200DDA163 /* MovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTests.swift; sourceTree = "<group>"; };
 		C4BE2A5521B6B66600DDA163 /* MoviesClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesClientTest.swift; sourceTree = "<group>"; };
 		C4BE2A5721B6B85C00DDA163 /* MoviesListPage1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MoviesListPage1.json; sourceTree = "<group>"; };
@@ -250,14 +248,6 @@
 				527A28E121C12DE50099235D /* UITableView+Extension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		523FE34021C02A4800399E58 /* FavoriteMovieDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				523FE33E21C0284C00399E58 /* FavoriteMovieDelegate.swift */,
-			);
-			path = FavoriteMovieDelegate;
 			sourceTree = "<group>";
 		};
 		527A28D521C046160099235D /* MovieFavoriteList */ = {
@@ -470,7 +460,6 @@
 		52E9C01A21BAABC400DA228B /* MovieDetail */ = {
 			isa = PBXGroup;
 			children = (
-				523FE34021C02A4800399E58 /* FavoriteMovieDelegate */,
 				52E9C01C21BAABE700DA228B /* View */,
 				52E9C01B21BAABE000DA228B /* Presenter */,
 			);
@@ -589,8 +578,8 @@
 		C4BE2A3F21B5A5E400DDA163 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5242E7D621C1A8BB0009DD7C /* MoviesListModel.swift */,
 				C4BE2A4B21B5C16400DDA163 /* MovieModel.swift */,
-				C4BE2A4D21B5C19400DDA163 /* MoviesListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1070,12 +1059,12 @@
 				C4BE2A4521B5A62D00DDA163 /* MoviesGridPresenter.swift in Sources */,
 				C40B972921B16B010067A565 /* AppDelegate.swift in Sources */,
 				C4BE2A9321B9AB5400DDA163 /* TMDBConfigurationModelResponse.swift in Sources */,
-				523FE33F21C0284C00399E58 /* FavoriteMovieDelegate.swift in Sources */,
 				C4BE2A6121B6FA6000DDA163 /* MoviesTableViewDelegate.swift in Sources */,
 				C4BE2A7121B7135B00DDA163 /* UICollectionView+Extension.swift in Sources */,
 				C4BE2A4A21B5B93F00DDA163 /* MoviesGridClient.swift in Sources */,
 				C4BE2A6621B700ED00DDA163 /* MoviesGridViewProtocol.swift in Sources */,
 				C4BE2A4721B5A63800DDA163 /* MoviesGridPresenterProtocol.swift in Sources */,
+				5242E7D721C1A8BB0009DD7C /* MoviesListModel.swift in Sources */,
 				C4BE2AA021BAA72B00DDA163 /* GenericErrorView.swift in Sources */,
 				C4BE2A6421B6FAA500DDA163 /* MoviesTableViewDataSource.swift in Sources */,
 				C4BE2A3921B1763F00DDA163 /* HTTPServices.swift in Sources */,

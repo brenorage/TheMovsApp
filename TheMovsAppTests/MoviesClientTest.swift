@@ -46,20 +46,16 @@ final class MoviesClientTest: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
-    func testIfMovieListContainsFavoritedMovieBasedOnMoviesSavedInDatabase() {
+    func testSetupFavoritesShouldFavoriteMoviesBasedOnSavedInDatabase() {
         let expectation = XCTestExpectation(description: "Test if contains favorite movies")
         let filePath = Bundle(for: MoviesClientTest.self).path(forResource: "MoviesListPage1", ofType: ".json")!
         httpServices.injectedURL = URL(fileURLWithPath: filePath)
-        moviesClient.getMovies { result in
-            switch result {
-            case .success(_):
-                let firstMovie = self.moviesClient.movies.first!.first!
-                XCTAssertTrue(firstMovie.isFavorite)
-            case .failure:
-                XCTFail()
-            }
-            
+        moviesClient.getMovies { _ in
             expectation.fulfill()
+        }
+        moviesClient.setupFavoriteMovies {
+            let firstMovie = self.moviesClient.movies.first!.first!
+            XCTAssertTrue(firstMovie.isFavorite)
         }
         
         wait(for: [expectation], timeout: 1.0)

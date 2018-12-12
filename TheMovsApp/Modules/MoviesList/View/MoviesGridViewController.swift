@@ -15,9 +15,9 @@ class MoviesGridViewController: UIViewController {
     
     private var delegate: MoviesCollectionViewDelegate
     private var dataSource: MoviesCollectionViewDataSource
-    private var presenter: (MoviesGridPresenterProtocol & FavoriteMovieDelegate)
+    private var presenter: MoviesGridPresenterProtocol
     
-    init(presenter: (MoviesGridPresenterProtocol & FavoriteMovieDelegate) = MoviesGridPresenter()) {
+    init(presenter: MoviesGridPresenterProtocol = MoviesGridPresenter()) {
         self.presenter = presenter
         dataSource = MoviesCollectionViewDataSource(presenter: presenter)
         delegate = MoviesCollectionViewDelegate(presenter: presenter)
@@ -39,6 +39,11 @@ class MoviesGridViewController: UIViewController {
         setupGridView()
         presenter.getList()
         setupSearchController()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenter.viewDidAppear()
     }
 }
 
@@ -120,7 +125,6 @@ extension MoviesGridViewController: MoviesGridViewProtocol {
     
     func pushDetailViewController(with movie: MovieModel) {
         let movieDetail = MovieDetailViewController(with: movie)
-        movieDetail.favoriteDelegate = presenter
         navigationController?.pushViewController(movieDetail, animated: true)
     }
     

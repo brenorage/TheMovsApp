@@ -14,6 +14,7 @@ protocol MoviesGridClientProtocol {
     var movies: [MoviesPage] { get }
     init(httpService: HTTPServicesProtocol, coreDataWorker: CoreDataWorkerProtocol)
     func getMovies(completion: @escaping ((ResultType<Int>) -> Void))
+    func setupFavoriteMovies(completion: @escaping(() -> Void))
 }
 
 class MoviesGridClient: MoviesGridClientProtocol {
@@ -41,11 +42,20 @@ class MoviesGridClient: MoviesGridClientProtocol {
         httpService.get(url: moviesURL) { [weak self] (result: ResultType<MoviesListModel>) in
             switch result {
             case let .success(moviesListModel):
-                self?.setupFavoriteMovies(with: moviesListModel.results)
                 self?.addMoviesPage(with: moviesListModel)
                 completion(.success(moviesListModel.page))
             case .failure:
                 completion(.failure)
+            }
+        }
+    }
+    
+    func setupFavoriteMovies(completion: @escaping(() -> Void)) {
+        coreDataWorker.fetchAll() { [weak self] (result: ResultType<[MovieMO]>) in
+            if case let .success(savedMovies) = result {
+                self?.favoriteMoviesId = savedMovies.map({ Int($0.movieId) })
+                self?.updateFavoriteMovies()
+                completion()
             }
         }
     }
@@ -56,22 +66,11 @@ class MoviesGridClient: MoviesGridClientProtocol {
         totalPages = listModel.totalPages
     }
     
-    private func setupFavoriteMovies(with movies: [MovieModel]) {
-        if favoriteMoviesId.isEmpty {
-            coreDataWorker.fetchAll() { [weak self] (result: ResultType<[MovieMO]>) in
-                if case let .success(savedMovies) = result {
-                    self?.favoriteMoviesId = savedMovies.map({ Int($0.movieId) })
-                    self?.favoriteMovies(movies)
-                }
-            }
-        } else {
-            favoriteMovies(movies)
+    private func updateFavoriteMovies() {
+        let allMovies = movies.flatMap({ $0 })
+        allMovies.forEach { movie in
+            movie.isFavorite = favoriteMoviesId.contains(movie.movieId ?? 0)
         }
-    }
-    
-    private func favoriteMovies(_ movies: [MovieModel]) {
-        let favoriteMovies = movies.filter({ self.favoriteMoviesId.contains($0.movieId ?? 0) })
-        favoriteMovies.forEach { $0.isFavorite = true }
     }
     
 }
