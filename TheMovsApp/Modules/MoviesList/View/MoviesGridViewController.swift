@@ -39,6 +39,7 @@ class MoviesGridViewController: UIViewController {
         setupGridView()
         presenter.getList()
         setupSearchController()
+        hideError()
     }
 }
 
@@ -52,12 +53,11 @@ extension MoviesGridViewController {
     
     private func setupSearchController() {
         searchController.searchResultsUpdater = self
+        searchController.delegate = self
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.sizeToFit()
         parent?.navigationItem.searchController = searchController
         definesPresentationContext = true
-        navigationItem.hidesSearchBarWhenScrolling = false
         
     }
 }
@@ -130,7 +130,7 @@ extension MoviesGridViewController: MoviesGridViewProtocol {
 }
 
 //MARK: - Search controller methods -
-extension MoviesGridViewController: UISearchResultsUpdating {
+extension MoviesGridViewController: UISearchResultsUpdating, UISearchControllerDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         presenter.filterSearch(with: searchController.searchBar.text)
     }
