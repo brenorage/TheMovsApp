@@ -10,10 +10,11 @@ import CoreData
 
 protocol CoreDataWorkerProtocol {
     typealias CompletionCallback<T> = (ResultType<T>) -> Void
+    func createObject<T: NSManagedObject>() -> T
     func fetchAll<T: NSManagedObject>(completion: @escaping CompletionCallback<[T]>)
     func fetch<T: NSManagedObject>(with predicate: NSPredicate, completion: @escaping CompletionCallback<[T]>)
-    func save() throws
-    func delete(enity: NSManagedObject, completion: @escaping CompletionCallback<Bool>)
+    func save(_ enity: NSManagedObject,completion: @escaping CompletionCallback<Bool>)
+    func delete(_ enity: NSManagedObject, completion: @escaping CompletionCallback<Bool>)
     init(context: NSManagedObjectContext)
     init()
 }
@@ -24,11 +25,15 @@ final class CoreDataWorker: CoreDataWorkerProtocol {
     private let context: NSManagedObjectContext
     
     convenience init() {
-        self.init(context: CoreDataManager.shared.persistentContainer.viewContext)
+        self.init(context: CoreDataManager.shared.persistentContainer.newBackgroundContext())
     }
     
     required init(context: NSManagedObjectContext) {
         self.context = context
+    }
+    
+    func createObject<T>() -> T where T : NSManagedObject {
+        <#code#>
     }
     
     func fetchAll<T>(completion: @escaping (ResultType<[T]>) -> Void) where T : NSManagedObject {
