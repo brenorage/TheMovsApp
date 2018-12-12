@@ -63,7 +63,7 @@ extension MovieDetailPresenter {
         if movie.cachedGenres.isEmpty {
             getSavedGenres(downloadIfEmpty: true)
         } else {
-            handleSavedGenres(with: movie.cachedGenres)
+            treatGenreInfo()
         }
     }
     
@@ -96,9 +96,13 @@ extension MovieDetailPresenter {
          // Possui generos salvos
         let filteredGenres = savedGenres.filter({ genreIds.contains(Int($0.genreId)) })
         movie.cachedGenres = filteredGenres
-        let genresString = filteredGenres.map({ $0.name }).joined(separator: ", ")
-        self.view?.fillMovieGenre(with: genresString)
-        self.view?.setGenreInfoHidden(false)
+        treatGenreInfo()
+    }
+    
+    private func treatGenreInfo() {
+        let genresString = movie.cachedGenres.map({ $0.name }).joined(separator: ", ")
+        view?.fillMovieGenre(with: genresString)
+        view?.setGenreInfoHidden(false)
     }
     
     private func saveMovie() {
@@ -107,7 +111,7 @@ extension MovieDetailPresenter {
         let movieMO = MovieMO()
         movieMO.movieId = Int32(movieId)
         movieMO.title = movie.title
-        movieMO.year = movie.releaseYear
+        movieMO.year = movie.releaseDate
         movieMO.overview = movie.overview
         movieMO.posterPath = movie.posterPath
         movieMO.backdropPath = movie.backdropPath

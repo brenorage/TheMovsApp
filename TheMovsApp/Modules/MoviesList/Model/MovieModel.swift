@@ -13,7 +13,7 @@ class MovieModel: Codable {
     let movieId: Int?
     let title: String?
     let overview: String?
-    private let releaseDate: String?
+    let releaseDate: String?
     let posterPath: String?
     let backdropPath: String?
     let genreIds: [Int]?
@@ -28,6 +28,20 @@ class MovieModel: Codable {
         guard let date = dateFormatter.date(from: releaseDate) else { return nil }
         let year = Calendar.current.component(.year, from: date)
         return "\(year)"
+    }
+    
+    init(movieId: Int?, title: String?, overview: String?, releaseDate: String?, posterPath: String?,
+         backdropPath: String?, genreIds: [Int]? = nil, isFavorite: Bool = false) {
+
+        self.movieId = movieId
+        self.title = title
+        self.overview = overview
+        self.releaseDate = releaseDate
+        self.posterPath = posterPath
+        self.backdropPath = backdropPath
+        self.genreIds = genreIds
+        self.isFavorite = isFavorite
+        
     }
     
     enum CodingKeys: String, CodingKey {
@@ -61,4 +75,6 @@ extension MovieModel {
         url?.appendPathComponent(backdropPath)
         return url
     }
+    
+    
 }
