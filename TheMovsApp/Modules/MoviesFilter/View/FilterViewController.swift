@@ -39,7 +39,27 @@ class FilterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+        showDismissButton()
         setTableType()
+    }
+    
+    private func setupView() {
+        filterView.buttonCallback = { [weak self] in
+            self?.buttonAction()
+        }
+    }
+    
+    private func showDismissButton() {
+        let dismissButton = UIBarButtonItem(image: UIImage(named: "dismissIcon"), style: .plain, target: self, action: #selector(dismissNavController))
+        navigationItem.rightBarButtonItem = dismissButton
+    }
+    
+    private func buttonAction() {
+        if !filterParams.isEmpty {
+            filterCallback?(self.filterParams)
+            dismissFromButton()
+        }
     }
     
     private func setTableType() {
@@ -52,6 +72,7 @@ class FilterViewController: UIViewController {
     }
     
     private func setFilterTypeState() {
+        title = "Filtro"
         filterView.setButtonTitle(with: "Aplicar")
         delegate = FilterTypeTableViewDelegate(modelList: model, view: self)
         dataSource = FilterTypeTableViewDataSource(modelList: model)
@@ -61,6 +82,7 @@ class FilterViewController: UIViewController {
     }
     
     private func setFilterOptionsState() {
+        title = model.first?.filterType
         filterView.setButtonTitle(with: "Escolher")
         delegate = FilterOptionsTableViewDelegate(modelList: model, view: self)
         dataSource = FilterOptionsTableViewDataSource(modelList: model)
@@ -68,11 +90,24 @@ class FilterViewController: UIViewController {
         filterView.setupTableView(delegate, dataSource)
         filterView.reloadTableView()
     }
+    
+    private func dismissFromButton() {
+        switch filterState {
+        case .filterType:
+            dismissNavController()
+        case .selectParams:
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    @objc private func dismissNavController() {
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension FilterViewController: FilterTypeViewProtocol {
     func openVC(with vc: UIViewController) {
-        self.present(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func fillFilterParams(with key: String, and value: String) {

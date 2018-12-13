@@ -35,6 +35,16 @@ final class FavoviteMovieListPresenter: FavoviteMovieListPresenterProtocol {
         viewProtocol?.setRemoveFilterButtonHidden(true)
     }
     
+    func openFilterVC() {
+        let yearFilterModel = FilterModel(filterType: "Data", options: getDateFilters())
+        let genreFilterModel = FilterModel(filterType: "Genero", options: getGenreFilters())
+        
+        let filterVC = FilterViewController(with: [yearFilterModel, genreFilterModel], filterState: .filterType)
+        filterVC.filterCallback = { params in
+            print(params)
+        }
+        viewProtocol?.openNavigation(with: filterVC)
+    }
 }
 
 // MARK: - Funcs
@@ -62,12 +72,14 @@ extension FavoviteMovieListPresenter {
     
     private func getDateFilters() -> [String] {
         let allDates = favoriteMovieList.compactMap({ $0.releaseYear })
-        return allDates
+        let allDatesWithoutDuplicates = Array(Set(allDates))
+        return allDatesWithoutDuplicates
     }
     
     private func getGenreFilters() -> [String] {
         let allGenres = favoriteMovieList.flatMap{ $0.cachedGenres.map({ $0.name }) }
-        return allGenres
+        let allGenresWithoutDuplicates = Array(Set(allGenres))
+        return allGenresWithoutDuplicates
     }
     
 }

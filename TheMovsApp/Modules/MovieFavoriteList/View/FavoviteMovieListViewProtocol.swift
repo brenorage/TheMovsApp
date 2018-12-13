@@ -6,10 +6,11 @@
 //  Copyright © 2018 Breno Rage Aboud. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol FavoviteMovieListViewProtocol: class {
     func reloadData()
     func pushDetailViewController(with movie: MovieModel)
     func setRemoveFilterButtonHidden(_ isHidden: Bool)
+    func openNavigation(with vc: UIViewController)
 }

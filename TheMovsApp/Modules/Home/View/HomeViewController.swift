@@ -8,9 +8,10 @@
 
 import UIKit
 
-class HomeViewController: UITabBarController {
+class HomeViewController: UITabBarController, UITabBarControllerDelegate {
     
     private var homeTabs: [TabBarModel]
+    private let searchController = UISearchController(searchResultsController: nil)
     
     private lazy var presenter: HomePresenterProtocol = {
         let presenter = HomePresenter(view: self)
@@ -33,8 +34,13 @@ class HomeViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Movs"
+        self.delegate = self
         presenter.viewDidLoad()
-        setupAdditionalConfiguration()
+        initialSetup()
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        tabBarChanged(with: viewController)
     }
 
 }
@@ -43,9 +49,11 @@ class HomeViewController: UITabBarController {
 
 extension HomeViewController {
     
-    private func setupAdditionalConfiguration() {
+    private func initialSetup() {
         view.backgroundColor = .white
         setupTabs()
+        setupSearchController()
+        tabBarChanged(with: self.selectedViewController)
     }
     
     private func setupTabs() {
@@ -56,6 +64,23 @@ extension HomeViewController {
             return viewController
         }
         setViewControllers(tabControllers, animated: true)
+    }
+    
+    private func tabBarChanged(with viewController: UIViewController?) {
+        if let vc = viewController as? HomeTabBarChildProtocol {
+            navigationItem.rightBarButtonItem = vc.rightBarButtonItem
+            searchController.searchResultsUpdater = vc.searchResultsUpdating
+            searchController.searchBar.text = ""
+        }
+    }
+    
+    private func setupSearchController() {
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.sizeToFit()
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
 }

@@ -15,4 +15,5 @@ protocol FavoviteMovieListPresenterProtocol: class {
     func attachView(_ view: FavoviteMovieListViewProtocol)
     func viewDidAppear()
     func didTouchRemoveFilterButton()
+    func openFilterVC()
 }

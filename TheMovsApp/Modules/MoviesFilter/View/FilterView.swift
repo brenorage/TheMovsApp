@@ -17,13 +17,20 @@ class FilterView: UIView {
         return tableView
     }()
     
-    private let applyButton: UIButton = {
+    private lazy var applyButton: UIButton = {
         let button = UIButton.init(frame: .zero)
-        button.backgroundColor = .darkYellow
+        button.backgroundColor = .yellow
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         return button
     }()
+    
+    var buttonCallback: (() -> Void)?
+    
+    @objc private func buttonAction() {
+        buttonCallback?()
+    }
     
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -37,7 +44,7 @@ class FilterView: UIView {
 
 extension FilterView {
     func register<T: UITableViewCell>(cellType: T.Type) {
-        filterTableView.register(cellType: cellType)
+        filterTableView.register(cellType)
     }
     
     func setupTableView(_ delegate: UITableViewDelegate?, _ dataSource: UITableViewDataSource?) {
@@ -73,6 +80,6 @@ extension FilterView: CodeView {
     }
     
     func setupAdditionalConfiguration() {
-        backgroundColor = .clear
+        backgroundColor = .white
     }
 }

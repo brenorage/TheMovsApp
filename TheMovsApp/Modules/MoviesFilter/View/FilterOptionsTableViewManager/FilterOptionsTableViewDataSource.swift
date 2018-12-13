@@ -28,7 +28,7 @@ extension FilterOptionsTableViewDataSource: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(FilterOptionCell.self, for: indexPath)
+        let cell: FilterOptionCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
         let option = modelList[indexPath.section].options[indexPath.row]
         cell.setOption(with: option)
         return cell

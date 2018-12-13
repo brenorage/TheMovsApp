@@ -28,7 +28,7 @@ extension FilterTypeTableViewDataSource: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(FilterTypeCell.self, for: indexPath)
+        let cell: FilterTypeCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
         cell.setFilterTypeLabel(with: modelList[indexPath.row].filterType)
         return cell
     }

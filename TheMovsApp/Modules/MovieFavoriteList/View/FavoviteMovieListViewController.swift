@@ -8,12 +8,15 @@
 
 import UIKit
 
-class FavoviteMovieListViewController: UIViewController {
+class FavoviteMovieListViewController: UIViewController, HomeTabBarChildProtocol {
     
     private let screen = FavoviteMovieListScreen()
     private var presenter: FavoviteMovieListPresenterProtocol
     private var dataSource: FavoriteMoviesTableViewDataSource
     private var delegate: FavoriteMoviesTableViewDelegate
+    
+    var rightBarButtonItem: UIBarButtonItem?
+    var searchResultsUpdating: UISearchResultsUpdating?
     
     init(presenter: FavoviteMovieListPresenterProtocol = FavoviteMovieListPresenter()) {
         self.delegate = FavoriteMoviesTableViewDelegate(presenter: presenter)
@@ -34,6 +37,7 @@ class FavoviteMovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupListView()
+        setupFilterButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,6 +56,14 @@ extension FavoviteMovieListViewController {
         screen.tableView.delegate = delegate
     }
     
+    private func setupFilterButton() {
+        let filterButton = UIBarButtonItem(image: UIImage(named: "filterIcon"), style: .plain, target: self, action: #selector(openFilterVC))
+        rightBarButtonItem = filterButton
+    }
+    
+    @objc private func openFilterVC() {
+        presenter.openFilterVC()
+    }
 }
 
 // MARK: - FavoviteMovieListViewProtocol
@@ -73,6 +85,10 @@ extension FavoviteMovieListViewController: FavoviteMovieListViewProtocol {
         screen.setRemoveFilterButtonHidden(true)
     }
     
+    func openNavigation(with vc: UIViewController) {
+        let navController = UINavigationController(rootViewController: vc)
+        present(navController, animated: true, completion: nil)
+    }
 }
 
 // MARK: - FavoviteMovieRemoveFilterDelegate
