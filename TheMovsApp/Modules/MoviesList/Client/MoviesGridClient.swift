@@ -69,7 +69,9 @@ class MoviesGridClient: MoviesGridClientProtocol {
     private func updateFavoriteMovies() {
         let allMovies = movies.flatMap({ $0 })
         allMovies.forEach { movie in
-            movie.isFavorite = favoriteMoviesId.contains(movie.movieId ?? 0)
+            if let movieId = movie.movieId {
+               movie.isFavorite = favoriteMoviesId.contains(movieId)
+            }
         }
     }
     

@@ -69,12 +69,16 @@ extension FavoviteMovieListViewController: FavoviteMovieListViewProtocol {
         navigationController?.pushViewController(movieDetail, animated: true)
     }
     
+    func setRemoveFilterButtonHidden(_ isHidden: Bool) {
+        screen.setRemoveFilterButtonHidden(true)
+    }
+    
 }
 
 // MARK: - FavoviteMovieRemoveFilterDelegate
 
 extension FavoviteMovieListViewController: FavoviteMovieRemoveFilterDelegate {
     func didTouchRemoveFilterButton() {
-        //TODO
+        presenter.didTouchRemoveFilterButton()
     }
 }

@@ -41,6 +41,20 @@ final class FavoviteMovieListScreen: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setRemoveFilterButtonHidden(_ isHidden: Bool) {
+        UIView.animate(withDuration: 0.4, animations: {
+            self.removeFilterButton.isHidden = isHidden
+            self.removeFilterButton.snp.updateConstraints { make in
+                if isHidden {
+                    make.top.equalTo(self.snp_topMargin).offset(-65)
+                } else {
+                    make.top.equalTo(self.snp_topMargin)
+                }
+            }
+            self.layoutIfNeeded()
+        })
+    }
+    
 }
 
 extension FavoviteMovieListScreen {
@@ -61,7 +75,7 @@ extension FavoviteMovieListScreen: CodeView {
         
         removeFilterButton.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
-            make.top.equalTo(self.snp_topMargin)
+            make.top.equalTo(self.snp_topMargin).offset(-65)
             make.height.equalTo(65)
         }
 
@@ -71,6 +85,10 @@ extension FavoviteMovieListScreen: CodeView {
             make.bottomMargin.equalTo(self.snp.bottomMargin)
         }
         
+    }
+    
+    func setupAdditionalConfiguration() {
+        removeFilterButton.isHidden = true
     }
     
 }

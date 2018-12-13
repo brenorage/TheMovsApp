@@ -14,4 +14,5 @@ protocol FavoviteMovieListPresenterProtocol: class {
     func didDeleteRow(at indexPath: IndexPath)
     func attachView(_ view: FavoviteMovieListViewProtocol)
     func viewDidAppear()
+    func didTouchRemoveFilterButton()
 }

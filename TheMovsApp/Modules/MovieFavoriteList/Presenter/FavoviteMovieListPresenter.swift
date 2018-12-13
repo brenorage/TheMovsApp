@@ -31,6 +31,10 @@ final class FavoviteMovieListPresenter: FavoviteMovieListPresenterProtocol {
         fetchFavoriteMovies()
     }
     
+    func didTouchRemoveFilterButton() {
+        viewProtocol?.setRemoveFilterButtonHidden(true)
+    }
+    
 }
 
 // MARK: - Funcs
@@ -54,6 +58,16 @@ extension FavoviteMovieListPresenter {
                 self?.viewProtocol?.reloadData()
             }
         })
+    }
+    
+    private func getDateFilters() -> [String] {
+        let allDates = favoriteMovieList.compactMap({ $0.releaseYear })
+        return allDates
+    }
+    
+    private func getGenreFilters() -> [String] {
+        let allGenres = favoriteMovieList.flatMap{ $0.cachedGenres.map({ $0.name }) }
+        return allGenres
     }
     
 }

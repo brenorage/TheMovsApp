@@ -11,4 +11,5 @@ import Foundation
 protocol FavoviteMovieListViewProtocol: class {
     func reloadData()
     func pushDetailViewController(with movie: MovieModel)
+    func setRemoveFilterButtonHidden(_ isHidden: Bool)
 }
