@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UITabBarController {
+class HomeViewController: UITabBarController, UITabBarControllerDelegate {
     
     private var homeTabs: [TabBarModel]
     private let searchController = UISearchController(searchResultsController: nil)
@@ -34,14 +34,15 @@ class HomeViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Movs"
+        self.delegate = self
         presenter.viewDidLoad()
         initialSetup()
     }
     
-    override public func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        tabBarChanged()
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        tabBarChanged(with: viewController)
     }
-
+    
 }
 
 // MARK: - Functions
@@ -52,7 +53,7 @@ extension HomeViewController {
         view.backgroundColor = .white
         setupTabs()
         setupSearchController()
-        tabBarChanged()
+        tabBarChanged(with: self.selectedViewController)
     }
     
     private func setupTabs() {
@@ -65,10 +66,10 @@ extension HomeViewController {
         setViewControllers(tabControllers, animated: true)
     }
     
-    private func tabBarChanged() {
-        if let childController = self.selectedViewController as? HomeTabBarChildProtocol {
-            navigationItem.rightBarButtonItem = childController.rightBarButtonItem
-            searchController.searchResultsUpdater = childController.searchResultsUpdating
+    private func tabBarChanged(with viewController: UIViewController?) {
+        if let vc = viewController as? HomeTabBarChildProtocol {
+            navigationItem.rightBarButtonItem = vc.rightBarButtonItem
+            searchController.searchResultsUpdater = vc.searchResultsUpdating
             searchController.searchBar.text = ""
         }
     }

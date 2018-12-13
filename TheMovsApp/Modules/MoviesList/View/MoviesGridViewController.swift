@@ -115,7 +115,7 @@ extension MoviesGridViewController: MoviesGridViewProtocol {
         navigationController?.pushViewController(movieDetail, animated: true)
     }
     
-    func changeDataSourceState(with state: MoviesCollectionViewDataSource.State) {
+    func changeDataSourceState(with state: SearchState) {
         dataSource.state = state
     }
 }
@@ -127,6 +127,7 @@ extension MoviesGridViewController: UISearchResultsUpdating {
     }
 }
 
+//MARK: - HomeTabBarChildProtocol -
 extension MoviesGridViewController: HomeTabBarChildProtocol {
     
     var searchResultsUpdating: UISearchResultsUpdating? {

@@ -115,7 +115,7 @@ class MockMoviesListView: MoviesGridViewProtocol {
     func pushDetailViewController(with movie: MovieModel) {
     }
     
-    func changeDataSourceState(with state: MoviesCollectionViewDataSource.State) {}
+    func changeDataSourceState(with state: SearchState) {}
     
     func reloadRow(at indexPath: IndexPath) {
     }

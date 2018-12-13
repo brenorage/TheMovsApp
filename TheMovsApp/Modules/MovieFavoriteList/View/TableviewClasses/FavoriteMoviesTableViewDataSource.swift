@@ -9,7 +9,10 @@
 import UIKit
 
 class FavoriteMoviesTableViewDataSource: NSObject {
-    let presenter: FavoviteMovieListPresenterProtocol
+    
+    var state: SearchState = .normal
+    
+    private let presenter: FavoviteMovieListPresenterProtocol
     
     init(presenter: FavoviteMovieListPresenterProtocol) {
         self.presenter = presenter
@@ -24,11 +27,16 @@ extension FavoriteMoviesTableViewDataSource: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter.favoriteMovieList.count
+        switch state {
+        case .normal:
+            return presenter.favoriteMovieList.count
+        case .search:
+            return presenter.filteredMovies.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = presenter.favoriteMovieList[indexPath.row]
+        let model = getModel(for: indexPath)
         let cell: FavoriteListTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
         cell.model = model
         return cell
@@ -42,6 +50,19 @@ extension FavoriteMoviesTableViewDataSource: UITableViewDataSource {
         if editingStyle == .delete {
             presenter.didDeleteRow(at: indexPath)
             tableView.deleteRows(at: [indexPath], with: .left)
+        }
+    }
+    
+}
+
+extension FavoriteMoviesTableViewDataSource {
+    
+    private func getModel(for indexPath: IndexPath) -> MovieModel {
+        switch state {
+        case .normal:
+            return presenter.favoriteMovieList[indexPath.row]
+        case .search:
+            return presenter.filteredMovies[indexPath.item]
         }
     }
     
