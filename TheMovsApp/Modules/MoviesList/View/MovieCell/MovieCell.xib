@@ -36,7 +36,7 @@
                             <bool key="isElement" value="YES"/>
                         </accessibility>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="251" image="ic_favorite_off" translatesAutoresizingMaskIntoConstraints="NO" id="5jF-S7-wqJ">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="251" image="favorite-gray" translatesAutoresizingMaskIntoConstraints="NO" id="5jF-S7-wqJ">
                         <rect key="frame" x="180" y="230" width="20" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="UCT-1d-hbb"/>
@@ -68,7 +68,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ic_favorite_off" width="17" height="16"/>
+        <image name="favorite-gray" width="17" height="16"/>
         <namedColor name="darkBlue">
             <color red="0.17647058823529413" green="0.18823529411764706" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

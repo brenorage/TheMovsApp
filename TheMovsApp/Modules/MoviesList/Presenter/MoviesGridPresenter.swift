@@ -74,6 +74,12 @@ extension MoviesGridPresenter {
         }
     }
     
+    func viewDidAppear() {
+        moviesClient.setupFavoriteMovies { [weak self] in
+            self?.viewProtocol?.reloadMoviesGrid()
+        }
+    }
+    
     private func getMoviesFromSearch(with text: String) -> MoviesPage {
         var movies: MoviesPage = []
         moviesPages.forEach {
@@ -105,19 +111,7 @@ extension MoviesGridPresenter {
         viewProtocol?.hideMoviesGrid()
         viewProtocol?.showError(with: emptyState)
     }
+    
 }
 
-// MARK: - FavoriteMovieDelegate
-extension MoviesGridPresenter: FavoriteMovieDelegate {
-    func didFavoriteMovie(_ movieId: Int) {
-        let allMoviesArray = moviesPages.flatMap({ $0 })
-        if let indexPath = allMoviesArray
-            .enumerated()
-            .filter({ $1.movieId == movieId })
-            .map({ return IndexPath(item: $0.offset, section: 0) })
-            .first {
-            
-            viewProtocol?.reloadRow(at: indexPath)
-        }
-    }
-}
+
