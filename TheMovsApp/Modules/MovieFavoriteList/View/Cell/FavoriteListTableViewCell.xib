@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="355" height="134.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VaF-r9-Ldf">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VaF-r9-Ldf">
                         <rect key="frame" x="0.0" y="0.0" width="101" height="134.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="VaF-r9-Ldf" secondAttribute="height" multiplier="1.5:2" id="Ois-Qr-zQL"/>

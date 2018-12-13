@@ -13,6 +13,7 @@ final class ThemeInitializer: Initializable {
     func performInitialization() {
         tabBarAppearence()
         navigationBarAppearence()
+        searchBarAppearence()
     }
     
 }
@@ -30,6 +31,11 @@ extension ThemeInitializer {
         UINavigationBar.appearance().barTintColor = .lightYellow
         UINavigationBar.appearance().tintColor = .black
         UINavigationBar.appearance().isTranslucent = true
+    }
+    
+    private func searchBarAppearence() {
+        UISearchBar.appearance().tintColor = .black
+        UISearchBar.appearance().barTintColor = .black
     }
 
 }
