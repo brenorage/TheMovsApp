@@ -16,7 +16,7 @@ protocol FavoriteMoviesClientProtocol {
 
 final class FavoriteMoviesClient: FavoriteMoviesClientProtocol {
     
-    var favoriteMovieList: [MovieModel] = []
+    private var favoriteMovieList: [MovieModel] = []
     private let coreDataWorker: CoreDataWorkerProtocol
     
     required init(coreDataWorker: CoreDataWorkerProtocol = CoreDataWorker()) {
@@ -64,6 +64,8 @@ extension FavoriteMoviesClient {
         coreDataWorker.fetch(with: predicate) { [weak self] (result: ResultType<[MovieMO]>) in
             if case let .success(movies) = result, let movie = movies.first {
                 self?.deleteMovie(movie, completion: completion)
+            } else {
+                completion(.failure)
             }
         }
     }
