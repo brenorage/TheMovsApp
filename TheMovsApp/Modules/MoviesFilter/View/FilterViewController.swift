@@ -8,10 +8,11 @@
 
 import UIKit
 
+typealias FilterParams = [String : String]
+
 class FilterViewController: UIViewController {
     
     enum State { case filterType, selectParams }
-    typealias FilterParams = [String : String]
     
     private let filterView = FilterView()
     private let model: [FilterModel]

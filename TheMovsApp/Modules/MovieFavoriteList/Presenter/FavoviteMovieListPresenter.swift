@@ -64,8 +64,9 @@ final class FavoviteMovieListPresenter: FavoviteMovieListPresenterProtocol {
         let genreFilterModel = FilterModel(filterType: "Genero", options: getGenreFilters())
         
         let filterVC = FilterViewController(with: [yearFilterModel, genreFilterModel], filterState: .filterType)
-        filterVC.filterCallback = { params in
-            print(params)
+        filterVC.filterCallback = { [weak self] params in
+            self?.viewProtocol?.setRemoveFilterButtonHidden(!params.isEmpty)
+            self?.filterMovies(with: params)
         }
         viewProtocol?.openNavigation(with: filterVC)
     }
@@ -106,6 +107,12 @@ extension FavoviteMovieListPresenter {
         return allGenresWithoutDuplicates
     }
     
+    private func filterMovies(with params: FilterParams) {
+        if !params.isEmpty {
+            let moviesFilteredPerYear = favoriteMovieList.filter { $0.releaseYear == params["Data"] }
+            filteredMovies = moviesFilteredPerYear.filter { $0.cachedGenres.contains(where: { $0.name == params["Genero"] }) }
+        }
+    }
     private func getMoviesFromSearch(with text: String) -> MoviesPage {
         let movies = favoriteMovieList.filter({
             guard let title = $0.title else { return false }

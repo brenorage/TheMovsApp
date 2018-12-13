@@ -16,7 +16,7 @@ class FavoviteMovieListViewController: UIViewController, HomeTabBarChildProtocol
     private var delegate: FavoriteMoviesTableViewDelegate
     
     var rightBarButtonItem: UIBarButtonItem?
-    var searchResultsUpdating: UISearchResultsUpdating?
+    lazy var searchResultsUpdating: UISearchResultsUpdating? = self
     
     init(presenter: FavoviteMovieListPresenterProtocol = FavoviteMovieListPresenter()) {
         self.delegate = FavoriteMoviesTableViewDelegate(presenter: presenter)
@@ -126,13 +126,4 @@ extension FavoviteMovieListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         presenter.filterSearch(with: searchController.searchBar.text)
     }
-}
-
-//MARK: - HomeTabBarChildProtocol -
-extension FavoviteMovieListViewController: HomeTabBarChildProtocol {
-    
-    var searchResultsUpdating: UISearchResultsUpdating? {
-        return self
-    }
-    
 }
