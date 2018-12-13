@@ -13,7 +13,7 @@ class MoviesGridView: UIView {
     lazy var moviesCollectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .vertical
-        collectionViewLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+        collectionViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.collectionViewLayout = collectionViewLayout
         collectionView.accessibilityIdentifier = "Lista de filmes"
@@ -53,7 +53,7 @@ extension MoviesGridView: CodeView {
     
     func setupConstraints() {
         moviesCollectionView.snp.makeConstraints { maker in
-            maker.edges.equalTo(safeAreaInsets).inset(UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5))
+            maker.edges.equalTo(safeAreaInsets)
         }
         
         activityIndicator.snp.makeConstraints { maker in
@@ -69,7 +69,7 @@ extension MoviesGridView: CodeView {
     }
     
     func setupAdditionalConfiguration() {
-        self.backgroundColor = UIColor.lightYellow
+        self.backgroundColor = .white
     }
     
     func setStateView(with model: GenericErrorModel) {

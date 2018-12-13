@@ -33,7 +33,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Icw-gk-HaV">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="416"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HrN-wg-XdT">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HrN-wg-XdT">
                                     <rect key="frame" x="16" y="16" width="343" height="250"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="250" id="Kua-0n-25X"/>
@@ -53,8 +53,8 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecW-WI-RR5">
                                                     <rect key="frame" x="326" y="0.0" width="17" height="22"/>
-                                                    <state key="normal" image="ic_favorite_off"/>
-                                                    <state key="selected" image="ic_favorite_on"/>
+                                                    <state key="normal" image="favorite-gray"/>
+                                                    <state key="selected" image="favorite-yellow"/>
                                                     <connections>
                                                         <action selector="didTouchFavorite:" destination="-1" eventType="touchUpInside" id="Lkn-Vm-TwP"/>
                                                     </connections>
@@ -151,7 +151,7 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_favorite_off" width="17" height="16"/>
-        <image name="ic_favorite_on" width="18" height="16"/>
+        <image name="favorite-gray" width="17" height="16"/>
+        <image name="favorite-yellow" width="18" height="16"/>
     </resources>
 </document>

@@ -7,7 +7,7 @@
 //
 
 import XCTest
-
+import CoreData
 @testable import TheMovsApp
 
 class MoviesGridPresenterTest: XCTestCase {
@@ -73,10 +73,10 @@ class MoviesGridPresenterTest: XCTestCase {
         XCTAssert(viewMock.calledShowEmptyState)
     }
     
-    func testIfFavoriteMovieActionWillReloadTheCorretRowIndexPath() {
+    func testViewDidAppearShouldRefreshFavoriteMovies() {
         presenter.getList()
-        presenter.didFavoriteMovie(335983)
-        XCTAssertEqual(viewMock.calledIndexPath, IndexPath(item: 0, section: 0))
+        presenter.viewDidAppear()
+        XCTAssertTrue(clientMock.movies.first!.first!.isFavorite)
     }
 }
 
@@ -86,7 +86,6 @@ class MockMoviesListView: MoviesGridViewProtocol {
     var calledReloadMovies = false
     var calledShowError = false
     var calledShowEmptyState = false
-    var calledIndexPath: IndexPath?
     
     func showLoading() {}
     
@@ -119,7 +118,6 @@ class MockMoviesListView: MoviesGridViewProtocol {
     func changeDataSourceState(with state: MoviesCollectionViewDataSource.State) {}
     
     func reloadRow(at indexPath: IndexPath) {
-        calledIndexPath = indexPath
     }
 }
 
@@ -140,4 +138,10 @@ class MockMoviesClient: MoviesGridClientProtocol {
         movies.append(object.results)
         completion(result)
     }
+    
+    func setupFavoriteMovies(completion: @escaping (() -> Void)) {
+        movies.first!.first!.isFavorite = true
+    }
 }
+
+

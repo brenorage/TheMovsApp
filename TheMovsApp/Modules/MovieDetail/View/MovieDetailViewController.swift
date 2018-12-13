@@ -20,7 +20,6 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet private weak var favoriteButton: UIButton!
     
     private var presenter: MovieDetailPresenterProtocol
-    var favoriteDelegate: FavoriteMovieDelegate?
     
     required init(with movie: MovieModel) {
         presenter = MovieDetailPresenter(with: movie)

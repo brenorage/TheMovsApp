@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import CoreData
 import Quick
 import Nimble
 import Nimble_Snapshots

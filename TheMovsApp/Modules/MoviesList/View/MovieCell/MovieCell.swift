@@ -21,9 +21,9 @@ class MovieCell: UICollectionViewCell {
         didSet {
             movieTitleLabel.text = model?.title
             if let isFavorite = model?.isFavorite, isFavorite {
-                favoriteImageView.image = UIImage(named: "ic_favorite_on")
+                favoriteImageView.image = UIImage(named: "favorite-yellow")
             } else {
-                favoriteImageView.image = UIImage(named: "ic_favorite_off")
+                favoriteImageView.image = UIImage(named: "favorite-gray")
             }
             DispatchQueue.main.async {
                 self.imageView.kf.setImage(with: self.model?.getPosterURL())

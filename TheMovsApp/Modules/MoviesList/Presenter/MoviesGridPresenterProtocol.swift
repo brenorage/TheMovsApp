@@ -15,6 +15,7 @@ protocol MoviesGridPresenterProtocol: class {
     func getList()
     func getMoreMovies()
     func filterSearch(with text: String?)
+    func viewDidAppear()
 }
 
 extension MoviesGridPresenterProtocol {

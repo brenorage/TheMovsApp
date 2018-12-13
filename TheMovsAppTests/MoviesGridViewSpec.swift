@@ -58,7 +58,8 @@ class MoviesGridViewSpec: QuickSpec {
     }
 }
 
-class MockMoviesGridPresenter: MoviesGridPresenterProtocol, FavoriteMovieDelegate {
+class MockMoviesGridPresenter: MoviesGridPresenterProtocol {
+    
     var filteredMovies: MoviesPage = []
     
     weak var viewProtocol: MoviesGridViewProtocol?
@@ -90,7 +91,7 @@ class MockMoviesGridPresenter: MoviesGridPresenterProtocol, FavoriteMovieDelegat
         viewProtocol?.reloadMoviesGrid()
     }
     
-    func didFavoriteMovie(_ movieId: Int) {
+    func viewDidAppear() {
         
     }
 }
