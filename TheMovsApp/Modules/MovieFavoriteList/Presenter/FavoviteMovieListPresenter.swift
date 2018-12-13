@@ -12,6 +12,7 @@ final class FavoviteMovieListPresenter: FavoviteMovieListPresenterProtocol {
     
     weak var viewProtocol: FavoviteMovieListViewProtocol?
     private let favoriteMoviesClient: FavoriteMoviesClientProtocol
+    var filteredMovies: MoviesPage = []
     
     var favoriteMovieList: [MovieModel] = []
     
@@ -33,6 +34,29 @@ final class FavoviteMovieListPresenter: FavoviteMovieListPresenterProtocol {
     
     func didTouchRemoveFilterButton() {
         viewProtocol?.setRemoveFilterButtonHidden(true)
+    }
+    
+    func filterSearch(with text: String?) {
+        guard let searchText = text else { return }
+        if searchText.count >= 3 {
+            let moviesFromSearch = getMoviesFromSearch(with: searchText)
+            viewProtocol?.changeDataSourceState(with: .search)
+            if moviesFromSearch.isEmpty {
+                showEmptySearch(with: searchText)
+            } else {
+                filteredMovies = moviesFromSearch
+                viewProtocol?.hideError()
+                viewProtocol?.showMoviesTableView()
+                viewProtocol?.reloadData()
+            }
+            
+        } else if searchText.isEmpty {
+            filteredMovies = []
+            viewProtocol?.changeDataSourceState(with: .normal)
+            viewProtocol?.hideError()
+            viewProtocol?.showMoviesTableView()
+            viewProtocol?.reloadData()
+        }
     }
     
     func openFilterVC() {
@@ -80,6 +104,20 @@ extension FavoviteMovieListPresenter {
         let allGenres = favoriteMovieList.flatMap{ $0.cachedGenres.map({ $0.name }) }
         let allGenresWithoutDuplicates = Array(Set(allGenres))
         return allGenresWithoutDuplicates
+    }
+    
+    private func getMoviesFromSearch(with text: String) -> MoviesPage {
+        let movies = favoriteMovieList.filter({
+            guard let title = $0.title else { return false }
+            return title.contains(text)
+        })
+        return movies
+    }
+    
+    private func showEmptySearch(with text: String) {
+        let emptyState = GenericErrorModel(imageName: "searchIcon", imageColor: .black, message: "Sua busca por \(text) não resultou em nenhum resultado.")
+        viewProtocol?.hideMoviesTableView()
+        viewProtocol?.showError(with: emptyState)
     }
     
 }

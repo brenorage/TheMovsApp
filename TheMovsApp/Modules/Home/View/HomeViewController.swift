@@ -42,7 +42,7 @@ class HomeViewController: UITabBarController, UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         tabBarChanged(with: viewController)
     }
-
+    
 }
 
 // MARK: - Functions

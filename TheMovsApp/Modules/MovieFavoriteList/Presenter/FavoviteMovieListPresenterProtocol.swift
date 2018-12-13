@@ -11,9 +11,11 @@ import Foundation
 protocol FavoviteMovieListPresenterProtocol: class {
     var viewProtocol: FavoviteMovieListViewProtocol? { get }
     var favoriteMovieList: [MovieModel] { get }
+    var filteredMovies: MoviesPage { get }
     func didDeleteRow(at indexPath: IndexPath)
     func attachView(_ view: FavoviteMovieListViewProtocol)
     func viewDidAppear()
     func didTouchRemoveFilterButton()
+    func filterSearch(with text: String?)
     func openFilterVC()
 }

@@ -10,9 +10,7 @@ import UIKit
 
 class MoviesCollectionViewDataSource: NSObject {
     
-    enum State { case normal, search }
-    
-    var state: State = .normal
+    var state: SearchState = .normal
     
     private var presenter: MoviesGridPresenterProtocol
     

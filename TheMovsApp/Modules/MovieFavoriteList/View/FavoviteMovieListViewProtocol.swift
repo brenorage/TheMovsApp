@@ -12,5 +12,10 @@ protocol FavoviteMovieListViewProtocol: class {
     func reloadData()
     func pushDetailViewController(with movie: MovieModel)
     func setRemoveFilterButtonHidden(_ isHidden: Bool)
+    func showMoviesTableView()
+    func hideMoviesTableView()
+    func showError(with errorModel: GenericErrorModel)
+    func hideError()
+    func changeDataSourceState(with state: SearchState)
     func openNavigation(with vc: UIViewController)
 }

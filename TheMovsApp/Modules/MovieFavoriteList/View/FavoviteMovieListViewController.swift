@@ -70,6 +70,29 @@ extension FavoviteMovieListViewController {
 
 extension FavoviteMovieListViewController: FavoviteMovieListViewProtocol {
     
+    func showMoviesTableView() {
+        screen.tableView.isHidden = false
+    }
+    
+    func hideMoviesTableView() {
+        screen.tableView.isHidden = true
+    }
+    
+    func showError(with errorModel: GenericErrorModel) {
+        screen.setStateView(with: errorModel)
+        screen.genericView.isHidden = false
+        screen.layoutIfNeeded()
+    }
+    
+    func hideError() {
+        screen.genericView.isHidden = true
+    }
+    
+    func changeDataSourceState(with state: SearchState) {
+        dataSource.state = state
+    }
+    
+    
     func reloadData() {
          DispatchQueue.main.async {
             self.screen.tableView.reloadData()
@@ -91,10 +114,25 @@ extension FavoviteMovieListViewController: FavoviteMovieListViewProtocol {
     }
 }
 
-// MARK: - FavoviteMovieRemoveFilterDelegate
-
+// MARK: - FavoviteMovieRemoveFilterDelegate -
 extension FavoviteMovieListViewController: FavoviteMovieRemoveFilterDelegate {
     func didTouchRemoveFilterButton() {
         presenter.didTouchRemoveFilterButton()
     }
+}
+
+//MARK: - Search controller methods -
+extension FavoviteMovieListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        presenter.filterSearch(with: searchController.searchBar.text)
+    }
+}
+
+//MARK: - HomeTabBarChildProtocol -
+extension FavoviteMovieListViewController: HomeTabBarChildProtocol {
+    
+    var searchResultsUpdating: UISearchResultsUpdating? {
+        return self
+    }
+    
 }

@@ -21,6 +21,7 @@
 		5242E7DD21C286050009DD7C /* FavoviteMovieListPresenterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242E7DC21C286050009DD7C /* FavoviteMovieListPresenterSpec.swift */; };
 		5242E7DF21C28E3A0009DD7C /* FavoviteMovieListViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242E7DE21C28E3A0009DD7C /* FavoviteMovieListViewControllerSpec.swift */; };
 		5242E7E121C2E46F0009DD7C /* HomeTabBarChildProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242E7E021C2E46F0009DD7C /* HomeTabBarChildProtocol.swift */; };
+		5242E7E421C2FAC40009DD7C /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242E7E321C2FAC40009DD7C /* SearchState.swift */; };
 		527A28D421C046010099235D /* FavoviteMovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A28D321C046010099235D /* FavoviteMovieListViewController.swift */; };
 		527A28D921C046570099235D /* FavoviteMovieListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A28D821C046570099235D /* FavoviteMovieListPresenter.swift */; };
 		527A28DB21C1284A0099235D /* FavoviteMovieListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A28DA21C1284A0099235D /* FavoviteMovieListScreen.swift */; };
@@ -139,6 +140,7 @@
 		5242E7DC21C286050009DD7C /* FavoviteMovieListPresenterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoviteMovieListPresenterSpec.swift; sourceTree = "<group>"; };
 		5242E7DE21C28E3A0009DD7C /* FavoviteMovieListViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoviteMovieListViewControllerSpec.swift; sourceTree = "<group>"; };
 		5242E7E021C2E46F0009DD7C /* HomeTabBarChildProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarChildProtocol.swift; sourceTree = "<group>"; };
+		5242E7E321C2FAC40009DD7C /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
 		527A28D321C046010099235D /* FavoviteMovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoviteMovieListViewController.swift; path = TheMovsApp/Modules/MovieFavoriteList/View/FavoviteMovieListViewController.swift; sourceTree = SOURCE_ROOT; };
 		527A28D821C046570099235D /* FavoviteMovieListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoviteMovieListPresenter.swift; sourceTree = "<group>"; };
 		527A28DA21C1284A0099235D /* FavoviteMovieListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoviteMovieListScreen.swift; sourceTree = "<group>"; };
@@ -284,6 +286,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		5242E7E221C2FA930009DD7C /* SearchState */ = {
+			isa = PBXGroup;
+			children = (
+				5242E7E321C2FAC40009DD7C /* SearchState.swift */,
+			);
+			path = SearchState;
+			sourceTree = "<group>";
+		};
 		527A28D521C046160099235D /* MovieFavoriteList */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +372,7 @@
 		52A218D521B16C4D00825CFB /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5242E7E221C2FA930009DD7C /* SearchState */,
 				C4BE2A9A21BAA68500DDA163 /* GenericError */,
 				52CF272E21B9531F0048D201 /* GenreClient */,
 				C4BE2A9721B9AF4700DDA163 /* UserDefaultWrapper */,
@@ -1172,6 +1183,7 @@
 				C4BE2A9621B9AEE500DDA163 /* MovsDataModel.xcdatamodeld in Sources */,
 				52A218DF21B1796900825CFB /* HomeViewController.swift in Sources */,
 				52CF271D21B7EEF30048D201 /* CoreDataWorker.swift in Sources */,
+				5242E7E421C2FAC40009DD7C /* SearchState.swift in Sources */,
 				52CF272221B7F1C90048D201 /* GenreMO.swift in Sources */,
 				C4BE2A4C21B5C16400DDA163 /* MovieModel.swift in Sources */,
 				52B2FF7521B186D90043052C /* TabBarModel.swift in Sources */,
