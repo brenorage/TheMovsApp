@@ -11,7 +11,6 @@ import UIKit
 class MoviesGridViewController: UIViewController {
     
     private let moviesGridView = MoviesGridView()
-    private let searchController = UISearchController(searchResultsController: nil)
     
     private var delegate: MoviesCollectionViewDelegate
     private var dataSource: MoviesCollectionViewDataSource
@@ -38,7 +37,6 @@ class MoviesGridViewController: UIViewController {
         hideMoviesGrid()
         setupGridView()
         presenter.getList()
-        setupSearchController()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,17 +51,6 @@ extension MoviesGridViewController {
         moviesGridView.moviesCollectionView.register(cellType: MovieCell.self)
         moviesGridView.moviesCollectionView.delegate = delegate
         moviesGridView.moviesCollectionView.dataSource = dataSource
-    }
-    
-    private func setupSearchController() {
-        searchController.searchResultsUpdater = self
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.sizeToFit()
-        parent?.navigationItem.searchController = searchController
-        definesPresentationContext = true
-        navigationItem.hidesSearchBarWhenScrolling = false
-        
     }
 }
 
@@ -140,3 +127,10 @@ extension MoviesGridViewController: UISearchResultsUpdating {
     }
 }
 
+extension MoviesGridViewController: HomeTabBarChildProtocol {
+    
+    var searchResultsUpdating: UISearchResultsUpdating? {
+        return self
+    }
+    
+}

@@ -8,10 +8,7 @@
 
 import UIKit
 
-protocol HomeTabBarDelegate { }
-
 protocol HomeTabBarChildProtocol {
-    var tabBarDelegate: HomeTabBarDelegate { get set }
     var rightBarButtonItem: UIBarButtonItem? { get }
     var searchResultsUpdating: UISearchResultsUpdating? { get }
 }
