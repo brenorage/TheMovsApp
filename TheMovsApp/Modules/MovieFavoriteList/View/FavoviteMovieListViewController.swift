@@ -10,7 +10,7 @@ import UIKit
 
 class FavoviteMovieListViewController: UIViewController, HomeTabBarChildProtocol {
     
-    private let screen = FavoviteMovieListScreen()
+    private lazy var screen = FavoviteMovieListScreen(delegate: self)
     private var presenter: FavoviteMovieListPresenterProtocol
     private var dataSource: FavoriteMoviesTableViewDataSource
     private var delegate: FavoriteMoviesTableViewDelegate
@@ -105,7 +105,7 @@ extension FavoviteMovieListViewController: FavoviteMovieListViewProtocol {
     }
     
     func setRemoveFilterButtonHidden(_ isHidden: Bool) {
-        screen.setRemoveFilterButtonHidden(true)
+        screen.setRemoveFilterButtonHidden(isHidden)
     }
     
     func openNavigation(with vc: UIViewController) {

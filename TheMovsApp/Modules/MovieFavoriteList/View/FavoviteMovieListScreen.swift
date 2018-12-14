@@ -37,7 +37,8 @@ final class FavoviteMovieListScreen: UIView {
         return view
     }()
     
-    override init(frame: CGRect = .zero) {
+    init(frame: CGRect = .zero, delegate: FavoviteMovieRemoveFilterDelegate? = nil) {
+        self.delegate = delegate
         super.init(frame: frame)
         setupView()
     }

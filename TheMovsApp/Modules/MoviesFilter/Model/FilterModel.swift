@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FilterModel {
+struct FilterModel: Equatable {
     let filterType: String
     let options: [String]
 }

@@ -14,8 +14,9 @@ class FilterViewController: UIViewController {
     
     enum State { case filterType, selectParams }
     
+    let model: [FilterModel]
+    
     private let filterView = FilterView()
-    private let model: [FilterModel]
     private let filterState: State
     private var filterParams: FilterParams = [:]
     

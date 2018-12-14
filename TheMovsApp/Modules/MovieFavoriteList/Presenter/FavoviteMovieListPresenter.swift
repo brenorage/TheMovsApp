@@ -34,6 +34,9 @@ final class FavoviteMovieListPresenter: FavoviteMovieListPresenterProtocol {
     
     func didTouchRemoveFilterButton() {
         viewProtocol?.setRemoveFilterButtonHidden(true)
+        viewProtocol?.changeDataSourceState(with: .normal)
+        viewProtocol?.reloadData()
+        filteredMovies = []
     }
     
     func filterSearch(with text: String?) {
@@ -65,7 +68,7 @@ final class FavoviteMovieListPresenter: FavoviteMovieListPresenterProtocol {
         
         let filterVC = FilterViewController(with: [yearFilterModel, genreFilterModel], filterState: .filterType)
         filterVC.filterCallback = { [weak self] params in
-            self?.viewProtocol?.setRemoveFilterButtonHidden(!params.isEmpty)
+            self?.viewProtocol?.setRemoveFilterButtonHidden(false)
             self?.filterMovies(with: params)
         }
         viewProtocol?.openNavigation(with: filterVC)
@@ -109,8 +112,14 @@ extension FavoviteMovieListPresenter {
     
     private func filterMovies(with params: FilterParams) {
         if !params.isEmpty {
-            let moviesFilteredPerYear = favoriteMovieList.filter { $0.releaseYear == params["Data"] }
-            filteredMovies = moviesFilteredPerYear.filter { $0.cachedGenres.contains(where: { $0.name == params["Genero"] }) }
+            let moviesPerYear = favoriteMovieList.filter { $0.releaseYear == params["Data"] }
+            let moviesPerGenre = favoriteMovieList.filter { $0.cachedGenres.contains(where: { $0.name == params["Genero"] }) }
+            
+            let movies = moviesPerYear + moviesPerGenre
+            filteredMovies = Array(Set(movies))
+            
+            viewProtocol?.changeDataSourceState(with: .search)
+            viewProtocol?.reloadData()
         }
     }
     private func getMoviesFromSearch(with text: String) -> MoviesPage {
