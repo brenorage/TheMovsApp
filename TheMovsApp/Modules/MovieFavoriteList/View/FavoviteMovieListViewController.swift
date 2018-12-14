@@ -90,6 +90,7 @@ extension FavoviteMovieListViewController: FavoviteMovieListViewProtocol {
     
     func changeDataSourceState(with state: SearchState) {
         dataSource.state = state
+        delegate.state = state
     }
     
     

@@ -10,6 +10,10 @@ import UIKit
 
 typealias FilterParams = [String : String]
 
+protocol FilterViewDelegate: class {
+    func didFinishFilter(with params: FilterParams)
+}
+
 class FilterViewController: UIViewController {
     
     enum State { case filterType, selectParams }
@@ -20,18 +24,18 @@ class FilterViewController: UIViewController {
     private let filterState: State
     private var filterParams: FilterParams = [:]
     
+    private weak var filterDelegate: FilterViewDelegate?
     private var delegate: UITableViewDelegate?
     private var dataSource: UITableViewDataSource?
-    
-    var filterCallback: ((FilterParams) -> Void)?
     
     override func loadView() {
         self.view = filterView
     }
     
-    init(with model: [FilterModel], filterState: State) {
+    init(with model: [FilterModel], filterState: State, filterDelegate: FilterViewDelegate?) {
         self.model = model
         self.filterState = filterState
+        self.filterDelegate = filterDelegate
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -59,7 +63,7 @@ class FilterViewController: UIViewController {
     
     private func buttonAction() {
         if !filterParams.isEmpty {
-            filterCallback?(self.filterParams)
+            filterDelegate?.didFinishFilter(with: filterParams)
             dismissFromButton()
         }
     }

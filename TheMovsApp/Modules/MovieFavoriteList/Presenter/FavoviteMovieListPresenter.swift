@@ -65,12 +65,7 @@ final class FavoviteMovieListPresenter: FavoviteMovieListPresenterProtocol {
     func openFilterVC() {
         let yearFilterModel = FilterModel(filterType: "Data", options: getDateFilters())
         let genreFilterModel = FilterModel(filterType: "Genero", options: getGenreFilters())
-        
-        let filterVC = FilterViewController(with: [yearFilterModel, genreFilterModel], filterState: .filterType)
-        filterVC.filterCallback = { [weak self] params in
-            self?.viewProtocol?.setRemoveFilterButtonHidden(false)
-            self?.filterMovies(with: params)
-        }
+        let filterVC = FilterViewController(with: [yearFilterModel, genreFilterModel], filterState: .filterType, filterDelegate: self)
         viewProtocol?.openNavigation(with: filterVC)
     }
 }
@@ -112,16 +107,31 @@ extension FavoviteMovieListPresenter {
     
     private func filterMovies(with params: FilterParams) {
         if !params.isEmpty {
-            let moviesPerYear = favoriteMovieList.filter { $0.releaseYear == params["Data"] }
-            let moviesPerGenre = favoriteMovieList.filter { $0.cachedGenres.contains(where: { $0.name == params["Genero"] }) }
+            var movies: [MovieModel] = []
             
-            let movies = moviesPerYear + moviesPerGenre
-            filteredMovies = Array(Set(movies))
+            let moviesPerYear = Set(favoriteMovieList.filter { $0.releaseYear == params["Data"] })
+            let moviesPerGenre = Set(favoriteMovieList.filter { $0.cachedGenres.contains(where: { $0.name == params["Genero"] }) })
+            
+            movies.append(contentsOf: moviesPerYear)
+            movies.append(contentsOf: moviesPerGenre)
+            
+            if  !moviesPerYear.isEmpty,
+                !moviesPerGenre.isEmpty {
+                movies = Array(moviesPerYear.intersection(moviesPerGenre))
+            }
+            
+            filteredMovies = movies
+//            var movies = favoriteMovieList.filter { $0.releaseYear == params["Data"] }
+//
+//            movies.append(contentsOf: favoriteMovieList.filter { $0.cachedGenres.contains(where: { $0.name == params["Genero"] }) })
+            
+//            filteredMovies = Array(Set(movies))
             
             viewProtocol?.changeDataSourceState(with: .search)
             viewProtocol?.reloadData()
         }
     }
+    
     private func getMoviesFromSearch(with text: String) -> MoviesPage {
         let movies = favoriteMovieList.filter({
             guard let title = $0.title else { return false }
@@ -138,3 +148,10 @@ extension FavoviteMovieListPresenter {
     
 }
 
+//MARK: - Filter delegate -
+extension FavoviteMovieListPresenter: FilterViewDelegate {
+    func didFinishFilter(with params: FilterParams) {
+        viewProtocol?.setRemoveFilterButtonHidden(false)
+        filterMovies(with: params)
+    }
+}

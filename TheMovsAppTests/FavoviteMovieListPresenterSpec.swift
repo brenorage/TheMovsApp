@@ -45,6 +45,21 @@ final class FavoviteMovieListPresenterSpec: XCTestCase {
         let vc = viewProtocol.calledFilterVC as! FilterViewController
         XCTAssert(vc.model == filterModels)
     }
+    
+    func testIfPresenterFilterMoviesWithTwoParams() {
+        sut.viewDidAppear()
+        var params = ["Data" : "2018"]
+        params["Genero"] = "Science Fiction"
+        sut.didFinishFilter(with: params)
+        XCTAssert(sut.filteredMovies.count == 1)
+    }
+    
+    func testIfPresenterFilterMoviesWithOneParam() {
+        sut.viewDidAppear()
+        let params = ["Data" : "2018"]
+        sut.didFinishFilter(with: params)
+        XCTAssert(sut.filteredMovies.count == 2)
+    }
 }
 
 
@@ -57,12 +72,10 @@ private final class FavoriteClientStub: FavoriteMoviesClientProtocol {
         let fileUrl = URL(fileURLWithPath: filePath)
         let data = try! Data(contentsOf: fileUrl, options: .alwaysMapped)
         let object = try! JSONDecoder().decode(MoviesListModel.self, from: data)
-        object.results.forEach {
-            let genre = GenreMO()
-            genre.genreId = 878
-            genre.name = "Science Fiction"
-            $0.cachedGenres.append(genre)
-        }
+        let genre = GenreMO()
+        genre.genreId = 878
+        genre.name = "Science Fiction"
+        object.results[0].cachedGenres.append(genre)
         completion(.success(object.results))
     }
     

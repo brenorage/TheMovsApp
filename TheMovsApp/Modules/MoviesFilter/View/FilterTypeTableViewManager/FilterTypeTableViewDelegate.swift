@@ -12,6 +12,8 @@ class FilterTypeTableViewDelegate: NSObject {
     
     private let modelList: [FilterModel]
     private weak var view: FilterTypeViewProtocol?
+    private var selectedIndex: IndexPath?
+    private var selectedCell: FilterTypeCell?
     
     init(modelList: [FilterModel], view: FilterTypeViewProtocol) {
         self.modelList = modelList
@@ -25,16 +27,27 @@ extension FilterTypeTableViewDelegate: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? FilterTypeCell else { return }
+        selectedIndex = indexPath
+        selectedCell = cell
+        
         let model = modelList[indexPath.row]
-        let filterViewController = FilterViewController(with: [model], filterState: .selectParams)
-        filterViewController.filterCallback = { [weak self] param in
-            guard
-                let cell = tableView.cellForRow(at: indexPath) as? FilterTypeCell,
-                let selectedOption = param[model.filterType]
-            else { return }
-            cell.setSelectedOption(with: selectedOption)
-            self?.view?.fillFilterParams(with: model.filterType, and: selectedOption)
-        }
+        let filterViewController = FilterViewController(with: [model], filterState: .selectParams, filterDelegate: self)
         view?.openVC(with: filterViewController)
+    }
+}
+
+extension FilterTypeTableViewDelegate: FilterViewDelegate {
+    func didFinishFilter(with params: FilterParams) {
+        guard
+            let index = selectedIndex,
+            let cell = selectedCell
+        else { return }
+        
+        let selectedType = modelList[index.row].filterType
+        
+        guard let selectedOption = params[selectedType] else { return }
+        cell.setSelectedOption(with: selectedOption)
+        view?.fillFilterParams(with: selectedType, and: selectedOption)
     }
 }

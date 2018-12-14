@@ -24,7 +24,7 @@ class FilterViewControllerSpec: QuickSpec {
                 let yearFilterModel = FilterModel(filterType: "Ano", options: ["2008", "2009"])
                 let genreFilterModel = FilterModel(filterType: "Genero", options: ["Ação", "Horror"])
                 
-                filterViewSUT = FilterViewController(with: [yearFilterModel, genreFilterModel], filterState: .filterType)
+                filterViewSUT = FilterViewController(with: [yearFilterModel, genreFilterModel], filterState: .filterType, filterDelegate: nil)
                 filterViewSUT.view.frame = UIScreen.main.bounds
                 _ = filterViewSUT.view
             }
@@ -42,7 +42,7 @@ class FilterViewControllerSpec: QuickSpec {
             beforeEach {
                 let yearFilterModel = FilterModel(filterType: "Ano", options: ["2008", "2009"])
                 
-                filterViewSUT = FilterViewController(with: [yearFilterModel], filterState: .selectParams)
+                filterViewSUT = FilterViewController(with: [yearFilterModel], filterState: .selectParams, filterDelegate: nil)
                 filterViewSUT.view.frame = UIScreen.main.bounds
                 _ = filterViewSUT.view
             }
