@@ -34,7 +34,6 @@ final class FavoviteMovieListPresenterSpec: XCTestCase {
         XCTAssertEqual(sut.favoriteMovieList.count, 1)
     }
     
-<<<<<<< HEAD
     func testSearchMovieShouldReturnFilteredList() {
         sut.viewDidAppear()
         sut.filterSearch(with: "Fan")
@@ -48,8 +47,6 @@ final class FavoviteMovieListPresenterSpec: XCTestCase {
         XCTAssertEqual(sut.filteredMovies.count, 0)
     }
     
-    
-=======
     func testIfPresenterCalledFilterWithCorrectParams() {
         sut.viewDidAppear()
         sut.openFilterVC()
@@ -61,7 +58,7 @@ final class FavoviteMovieListPresenterSpec: XCTestCase {
         let vc = viewProtocol.calledFilterVC as! FilterViewController
         XCTAssert(vc.model == filterModels)
     }
->>>>>>> 739c85c6f5f06f4f9b0ce97a46c593b622c394a3
+    
 }
 
 

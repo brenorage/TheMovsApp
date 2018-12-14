@@ -99,13 +99,13 @@ extension MovieDetailViewController: MovieDetailViewProtocol {
     
 }
 
-// MARK: Funcs
+// MARK: - Accessibility
 
 extension MovieDetailViewController {
     
     private func setupAccessibility() {
         backdropImageView.accessibilityIdentifier = "Backdrop do filme"
-        backdropImageView.accessibilityHint = "Imagem promocional do filme"
+        backdropImageView.accessibilityHint = "Exibe imagem promocional do filme"
         titleLabel.accessibilityIdentifier = "Título do filme"
         titleLabel.accessibilityHint = "\(titleLabel.text ?? "Sem título")"
         yearLabel.accessibilityIdentifier = "Ano do filme"
