@@ -69,7 +69,6 @@
 		C465772621C2D94000428456 /* FilterOptionsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C465772521C2D94000428456 /* FilterOptionsTableViewDataSource.swift */; };
 		C465772821C2D96200428456 /* FilterOptionsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C465772721C2D96200428456 /* FilterOptionsTableViewDelegate.swift */; };
 		C465772C21C2E5CC00428456 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C465772B21C2E5CC00428456 /* UITableView+Extension.swift */; };
-		C465773021C3DF4800428456 /* FilterViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C465772F21C3DF4800428456 /* FilterViewSpec.swift */; };
 		C4BE2A3521B1759900DDA163 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A3421B1759900DDA163 /* ResultType.swift */; };
 		C4BE2A3921B1763F00DDA163 /* HTTPServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A3821B1763F00DDA163 /* HTTPServices.swift */; };
 		C4BE2A3B21B18BFB00DDA163 /* NetworkLayerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BE2A3A21B18BFB00DDA163 /* NetworkLayerTest.swift */; };
@@ -197,7 +196,6 @@
 		C465772521C2D94000428456 /* FilterOptionsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionsTableViewDataSource.swift; sourceTree = "<group>"; };
 		C465772721C2D96200428456 /* FilterOptionsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionsTableViewDelegate.swift; sourceTree = "<group>"; };
 		C465772B21C2E5CC00428456 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
-		C465772F21C3DF4800428456 /* FilterViewSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewSpec.swift; sourceTree = "<group>"; };
 		C4BE2A3421B1759900DDA163 /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		C4BE2A3821B1763F00DDA163 /* HTTPServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPServices.swift; sourceTree = "<group>"; };
 		C4BE2A3A21B18BFB00DDA163 /* NetworkLayerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayerTest.swift; sourceTree = "<group>"; };
@@ -590,7 +588,6 @@
 				5242E7DC21C286050009DD7C /* FavoviteMovieListPresenterSpec.swift */,
 				5242E7DE21C28E3A0009DD7C /* FavoviteMovieListViewControllerSpec.swift */,
 				C465771E21C2CB5400428456 /* FilterViewControllerSpec.swift */,
-				C465772F21C3DF4800428456 /* FilterViewSpec.swift */,
 			);
 			path = TheMovsAppTests;
 			sourceTree = "<group>";
@@ -1222,7 +1219,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C465773021C3DF4800428456 /* FilterViewSpec.swift in Sources */,
 				C4BE2A7921B84EFB00DDA163 /* MoviesGridViewSpec.swift in Sources */,
 				5242E7DD21C286050009DD7C /* FavoviteMovieListPresenterSpec.swift in Sources */,
 				C465771F21C2CB5400428456 /* FilterViewControllerSpec.swift in Sources */,
