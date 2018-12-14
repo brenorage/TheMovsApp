@@ -34,6 +34,19 @@ final class FavoviteMovieListPresenterSpec: XCTestCase {
         XCTAssertEqual(sut.favoriteMovieList.count, 1)
     }
     
+    func testSearchMovieShouldReturnFilteredList() {
+        sut.viewDidAppear()
+        sut.filterSearch(with: "Fan")
+        XCTAssertEqual(sut.filteredMovies.first!.title, "Fantastic Beasts: The Crimes of Grindelwald")
+    }
+    
+    func testSearchEmptyTextShouldClearTheFilteredList() {
+        sut.viewDidAppear()
+        sut.filterSearch(with: "Fantas")
+        sut.filterSearch(with: "")
+        XCTAssertEqual(sut.filteredMovies.count, 0)
+    }
+    
     func testIfPresenterCalledFilterWithCorrectParams() {
         sut.viewDidAppear()
         sut.openFilterVC()

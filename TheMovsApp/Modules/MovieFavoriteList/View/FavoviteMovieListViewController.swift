@@ -128,3 +128,19 @@ extension FavoviteMovieListViewController: UISearchResultsUpdating {
         presenter.filterSearch(with: searchController.searchBar.text)
     }
 }
+
+// MARK: - Accessibility
+
+extension FavoviteMovieListViewController {
+    
+    private func setupAccessibility() {
+        screen.tableView.accessibilityIdentifier = "Lista de favoritos"
+        screen.tableView.accessibilityHint = "Lista os filmes favoritados"
+        screen.genericView.accessibilityIdentifier = "Lista vazia"
+        screen.genericView.accessibilityHint = "Nenhum filme na lista de favoritos"
+        screen.removeFilterButton.accessibilityIdentifier = "Botão de remover filtro"
+        screen.removeFilterButton.accessibilityHint = "Remove os filtros da lista"
+    }
+    
+}
+

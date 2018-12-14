@@ -49,11 +49,11 @@ final class FavoviteMovieListViewControllerSpec: QuickSpec {
 }
 
 private final class PresenterStub: FavoviteMovieListPresenterProtocol {
-    var filteredMovies: MoviesPage = []
     
     weak var viewProtocol: FavoviteMovieListViewProtocol?
 
     var favoriteMovieList: [MovieModel] = []
+    var filteredMovies: MoviesPage = []
 
 
     func didDeleteRow(at indexPath: IndexPath) {
@@ -79,4 +79,5 @@ private final class PresenterStub: FavoviteMovieListPresenterProtocol {
     func openFilterVC() {
         
     }
+    
 }

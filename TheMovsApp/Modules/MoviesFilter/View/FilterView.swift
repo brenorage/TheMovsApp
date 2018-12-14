@@ -19,7 +19,7 @@ class FilterView: UIView {
     
     private lazy var applyButton: UIButton = {
         let button = UIButton.init(frame: .zero)
-        button.backgroundColor = .yellow
+        button.backgroundColor = .lightYellow
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
