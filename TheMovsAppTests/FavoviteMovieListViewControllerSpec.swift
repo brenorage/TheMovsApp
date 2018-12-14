@@ -49,7 +49,8 @@ final class FavoviteMovieListViewControllerSpec: QuickSpec {
 }
 
 private final class PresenterStub: FavoviteMovieListPresenterProtocol {
-
+    var filteredMovies: MoviesPage = []
+    
     weak var viewProtocol: FavoviteMovieListViewProtocol?
 
     var favoriteMovieList: [MovieModel] = []
@@ -67,5 +68,15 @@ private final class PresenterStub: FavoviteMovieListPresenterProtocol {
         viewProtocol?.reloadData()
     }
 
-
+    func didTouchRemoveFilterButton() {
+        
+    }
+    
+    func filterSearch(with text: String?) {
+        
+    }
+    
+    func openFilterVC() {
+        
+    }
 }
