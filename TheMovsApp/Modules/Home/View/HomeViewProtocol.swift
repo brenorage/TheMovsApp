@@ -11,3 +11,4 @@ import UIKit
 protocol HomeViewProtocol: class {
     init(tabs: [TabBarModel])
 }
+

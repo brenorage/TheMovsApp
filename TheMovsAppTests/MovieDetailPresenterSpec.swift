@@ -42,6 +42,7 @@ final class MovieDetailPresenterSpec: XCTestCase {
         let expectation = XCTestExpectation(description: "Test if the list of genres will be downloaded in case they are empty")
         genreClienStub.expectation = expectation
         coreDataWorkerStub.shouldReturnEmptyList = true
+        modelStub.cachedGenres = []
         sut.viewDidLoad()
         wait(for: [expectation], timeout: 2.0)
         XCTAssertTrue(genreClienStub.didCallGetGenres)
@@ -166,6 +167,7 @@ private final class GenreClientStub: GenreClientProtocol {
         httpService.get(url: injectedURL, completion: { (result: ResultType<GenreResponseModel>) in
             self.didCallGetGenres = true
             self.expectation?.fulfill()
+            completion(.success(true))
         })
     }
 }

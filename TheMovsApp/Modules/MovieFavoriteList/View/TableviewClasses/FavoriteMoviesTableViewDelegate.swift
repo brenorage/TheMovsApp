@@ -11,6 +11,8 @@ import UIKit
 class FavoriteMoviesTableViewDelegate: NSObject {
     private var presenter: FavoviteMovieListPresenterProtocol
     
+    var state: SearchState = .normal
+    
     init(presenter: FavoviteMovieListPresenterProtocol) {
         self.presenter = presenter
     }
@@ -19,8 +21,15 @@ class FavoriteMoviesTableViewDelegate: NSObject {
 extension FavoriteMoviesTableViewDelegate: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let movie = presenter.favoriteMovieList[indexPath.row]
-        presenter.viewProtocol?.pushDetailViewController(with: movie)
+        switch state {
+        case .normal:
+            let movie = presenter.favoriteMovieList[indexPath.row]
+            presenter.viewProtocol?.pushDetailViewController(with: movie)
+        case .search:
+            let movie = presenter.filteredMovies[indexPath.row]
+            presenter.viewProtocol?.pushDetailViewController(with: movie)
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

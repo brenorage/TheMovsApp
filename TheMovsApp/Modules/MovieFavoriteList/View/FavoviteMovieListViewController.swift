@@ -8,12 +8,15 @@
 
 import UIKit
 
-class FavoviteMovieListViewController: UIViewController {
+class FavoviteMovieListViewController: UIViewController, HomeTabBarChildProtocol {
     
-    private let screen = FavoviteMovieListScreen()
+    private lazy var screen = FavoviteMovieListScreen(delegate: self)
     private var presenter: FavoviteMovieListPresenterProtocol
     private var dataSource: FavoriteMoviesTableViewDataSource
     private var delegate: FavoriteMoviesTableViewDelegate
+    
+    var rightBarButtonItem: UIBarButtonItem?
+    lazy var searchResultsUpdating: UISearchResultsUpdating? = self
     
     init(presenter: FavoviteMovieListPresenterProtocol = FavoviteMovieListPresenter()) {
         self.delegate = FavoriteMoviesTableViewDelegate(presenter: presenter)
@@ -34,6 +37,7 @@ class FavoviteMovieListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupListView()
+        setupFilterButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,11 +56,43 @@ extension FavoviteMovieListViewController {
         screen.tableView.delegate = delegate
     }
     
+    private func setupFilterButton() {
+        let filterButton = UIBarButtonItem(image: UIImage(named: "filterIcon"), style: .plain, target: self, action: #selector(openFilterVC))
+        rightBarButtonItem = filterButton
+    }
+    
+    @objc private func openFilterVC() {
+        presenter.openFilterVC()
+    }
 }
 
 // MARK: - FavoviteMovieListViewProtocol
 
 extension FavoviteMovieListViewController: FavoviteMovieListViewProtocol {
+    
+    func showMoviesTableView() {
+        screen.tableView.isHidden = false
+    }
+    
+    func hideMoviesTableView() {
+        screen.tableView.isHidden = true
+    }
+    
+    func showError(with errorModel: GenericErrorModel) {
+        screen.setStateView(with: errorModel)
+        screen.genericView.isHidden = false
+        screen.layoutIfNeeded()
+    }
+    
+    func hideError() {
+        screen.genericView.isHidden = true
+    }
+    
+    func changeDataSourceState(with state: SearchState) {
+        dataSource.state = state
+        delegate.state = state
+    }
+    
     
     func reloadData() {
          DispatchQueue.main.async {
@@ -70,15 +106,41 @@ extension FavoviteMovieListViewController: FavoviteMovieListViewProtocol {
     }
     
     func setRemoveFilterButtonHidden(_ isHidden: Bool) {
-        screen.setRemoveFilterButtonHidden(true)
+        screen.setRemoveFilterButtonHidden(isHidden)
     }
     
+    func openNavigation(with vc: UIViewController) {
+        let navController = UINavigationController(rootViewController: vc)
+        present(navController, animated: true, completion: nil)
+    }
 }
 
-// MARK: - FavoviteMovieRemoveFilterDelegate
-
+// MARK: - FavoviteMovieRemoveFilterDelegate -
 extension FavoviteMovieListViewController: FavoviteMovieRemoveFilterDelegate {
     func didTouchRemoveFilterButton() {
         presenter.didTouchRemoveFilterButton()
     }
 }
+
+//MARK: - Search controller methods -
+extension FavoviteMovieListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        presenter.filterSearch(with: searchController.searchBar.text)
+    }
+}
+
+// MARK: - Accessibility
+
+extension FavoviteMovieListViewController {
+    
+    private func setupAccessibility() {
+        screen.tableView.accessibilityIdentifier = "Lista de favoritos"
+        screen.tableView.accessibilityHint = "Lista os filmes favoritados"
+        screen.genericView.accessibilityIdentifier = "Lista vazia"
+        screen.genericView.accessibilityHint = "Nenhum filme na lista de favoritos"
+        screen.removeFilterButton.accessibilityIdentifier = "Botão de remover filtro"
+        screen.removeFilterButton.accessibilityHint = "Remove os filtros da lista"
+    }
+    
+}
+

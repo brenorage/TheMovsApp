@@ -13,10 +13,13 @@ final class FavoviteMovieListPresenterSpec: XCTestCase {
     
     private var sut: FavoviteMovieListPresenter!
     private var favoriteListClientStub: FavoriteClientStub!
+    private var viewProtocol: MockFavoriteMovieListView!
     
     override func setUp() {
+        viewProtocol = MockFavoriteMovieListView()
         favoriteListClientStub = FavoriteClientStub(coreDataWorker: CoreDataWorker())
         sut = FavoviteMovieListPresenter(favoriteMoviesClient: favoriteListClientStub)
+        sut.attachView(viewProtocol)
     }
     
     func testViewDidAppearShouldFetchFavoriteMoviesList() {
@@ -31,7 +34,45 @@ final class FavoviteMovieListPresenterSpec: XCTestCase {
         XCTAssertEqual(sut.favoriteMovieList.count, 1)
     }
     
+    func testSearchMovieShouldReturnFilteredList() {
+        sut.viewDidAppear()
+        sut.filterSearch(with: "Fan")
+        XCTAssertEqual(sut.filteredMovies.first!.title, "Fantastic Beasts: The Crimes of Grindelwald")
+    }
     
+    func testSearchEmptyTextShouldClearTheFilteredList() {
+        sut.viewDidAppear()
+        sut.filterSearch(with: "Fantas")
+        sut.filterSearch(with: "")
+        XCTAssertEqual(sut.filteredMovies.count, 0)
+    }
+    
+    func testIfPresenterCalledFilterWithCorrectParams() {
+        sut.viewDidAppear()
+        sut.openFilterVC()
+        let expectedYears = ["2018"]
+        let expectedGenres = ["Science Fiction"]
+        let filterYear = FilterModel(filterType: "Data", options: expectedYears)
+        let filterGenre = FilterModel(filterType: "Genero", options: expectedGenres)
+        let filterModels = [filterYear, filterGenre]
+        let vc = viewProtocol.calledFilterVC as! FilterViewController
+        XCTAssert(vc.model == filterModels)
+    }
+    
+    func testIfPresenterFilterMoviesWithTwoParams() {
+        sut.viewDidAppear()
+        var params = ["Data" : "2018"]
+        params["Genero"] = "Science Fiction"
+        sut.didFinishFilter(with: params)
+        XCTAssert(sut.filteredMovies.count == 1)
+    }
+    
+    func testIfPresenterFilterMoviesWithOneParam() {
+        sut.viewDidAppear()
+        let params = ["Data" : "2018"]
+        sut.didFinishFilter(with: params)
+        XCTAssert(sut.filteredMovies.count == 2)
+    }
 }
 
 
@@ -44,12 +85,39 @@ private final class FavoriteClientStub: FavoriteMoviesClientProtocol {
         let fileUrl = URL(fileURLWithPath: filePath)
         let data = try! Data(contentsOf: fileUrl, options: .alwaysMapped)
         let object = try! JSONDecoder().decode(MoviesListModel.self, from: data)
+        let genre = GenreMO()
+        genre.genreId = 878
+        genre.name = "Science Fiction"
+        object.results[0].cachedGenres.append(genre)
         completion(.success(object.results))
     }
     
     func removeFromFavorites(_ movie: MovieModel, completion: @escaping ((ResultType<Bool>) -> Void)) {
         completion(.success(true))
     }
+}
+
+final class MockFavoriteMovieListView: FavoviteMovieListViewProtocol {
     
+    var calledFilterVC: UIViewController!
     
+    func reloadData() {}
+    
+    func pushDetailViewController(with movie: MovieModel) {}
+    
+    func setRemoveFilterButtonHidden(_ isHidden: Bool) {}
+    
+    func showMoviesTableView() {}
+    
+    func hideMoviesTableView() {}
+    
+    func showError(with errorModel: GenericErrorModel) {}
+    
+    func hideError() {}
+    
+    func changeDataSourceState(with state: SearchState) {}
+    
+    func openNavigation(with vc: UIViewController) {
+        calledFilterVC = vc
+    }
 }

@@ -20,6 +20,9 @@ class MovieModel: Codable {
     var userDefaultWrapper: UserDefaultWrapperProtocol = UserDefaultWrapper()
     var isFavorite: Bool = false
     var cachedGenres: [GenreMO] = []
+    var hashValue: Int {
+        return movieId?.hashValue ?? 0
+    }
     
     var releaseYear: String? {
         guard let releaseDate = self.releaseDate else { return nil }
@@ -75,6 +78,10 @@ extension MovieModel {
         url?.appendPathComponent(backdropPath)
         return url
     }
-    
-    
+}
+
+extension MovieModel: Hashable {
+    static func == (lhs: MovieModel, rhs: MovieModel) -> Bool {
+        return lhs.movieId == rhs.movieId
+    }
 }

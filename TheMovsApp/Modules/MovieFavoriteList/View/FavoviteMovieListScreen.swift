@@ -32,7 +32,13 @@ final class FavoviteMovieListScreen: UIView {
         return tableView
     }()
     
-    override init(frame: CGRect = .zero) {
+    let genericView: GenericErrorView = {
+        let view = GenericErrorView()
+        return view
+    }()
+    
+    init(frame: CGRect = .zero, delegate: FavoviteMovieRemoveFilterDelegate? = nil) {
+        self.delegate = delegate
         super.init(frame: frame)
         setupView()
     }
@@ -69,6 +75,7 @@ extension FavoviteMovieListScreen: CodeView {
     func buildViewHierarchy() {
         addSubview(removeFilterButton)
         addSubview(tableView)
+        addSubview(genericView)
     }
     
     func setupConstraints() {
@@ -85,10 +92,18 @@ extension FavoviteMovieListScreen: CodeView {
             make.bottomMargin.equalTo(self.snp.bottomMargin)
         }
         
+        genericView.snp.makeConstraints { make in
+            make.margins.equalTo(self.snp_margins)
+        }
+        
     }
     
     func setupAdditionalConfiguration() {
         removeFilterButton.isHidden = true
+    }
+    
+    func setStateView(with model: GenericErrorModel) {
+        genericView.model = model
     }
     
 }
